@@ -1,0 +1,125 @@
+// ── Tabs ──
+
+:host {
+  display: block;
+}
+
+// ── Header ──
+
+.hyper-tabs-header {
+  display: flex;
+  border: var(--border-width) solid var(--border);
+  background: var(--card);
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Alignment
+:host(.hyper-tabs-align-center) .hyper-tabs-header { justify-content: center; }
+:host(.hyper-tabs-align-end) .hyper-tabs-header { justify-content: flex-end; }
+:host(.hyper-tabs-align-stretch) .hyper-tab-button { flex: 1; }
+
+// ── Tab Button ──
+
+.hyper-tab-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted-foreground);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+  outline: none;
+
+  &:hover:not(.hyper-tab-disabled) {
+    color: var(--foreground);
+    background: var(--muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+  }
+}
+
+// Active
+.hyper-tab-active {
+  color: var(--primary-foreground);
+  background: var(--primary);
+
+  &:hover:not(.hyper-tab-disabled) {
+    color: var(--primary-foreground);
+    background: var(--primary);
+    filter: brightness(1.1);
+  }
+}
+
+// Disabled
+.hyper-tab-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+// Icon inside tab
+.hyper-tab-icon {
+  font-size: 1.1rem;
+}
+
+// ── Color Variants ──
+
+:host(.hyper-tabs-secondary) {
+  .hyper-tab-active {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+
+    &:hover:not(.hyper-tab-disabled) {
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+    }
+  }
+}
+
+:host(.hyper-tabs-accent) {
+  .hyper-tab-active {
+    background: var(--accent);
+    color: var(--accent-foreground);
+
+    &:hover:not(.hyper-tab-disabled) {
+      background: var(--accent);
+      color: var(--accent-foreground);
+    }
+  }
+}
+
+// ── Body ──
+
+.hyper-tabs-body {
+  padding: 1rem;
+}
+
+:host(.hyper-tabs-bordered) .hyper-tabs-body {
+  border: var(--border-width) solid var(--border);
+  border-top: none;
+}
+
+// ── Density ──
+
+$density: var(--hyper-density, 0);
+
+.hyper-tab-button {
+  padding-top: calc(0.65rem + #{$density} * 2px);
+  padding-bottom: calc(0.65rem + #{$density} * 2px);
+}

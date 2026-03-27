@@ -1,0 +1,159 @@
+// ── Accordion / Expansion Panel ──
+
+:host {
+  display: block;
+}
+
+// ── Panel Header ──
+
+.hyper-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--foreground);
+  background: var(--card);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+  outline: none;
+
+  &:hover {
+    background: var(--muted);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+  }
+}
+
+// Bordered (set by parent .hyper-accordion-bordered)
+:host-context(.hyper-accordion-bordered) .hyper-panel-header {
+  border: var(--border-width) solid var(--border);
+}
+
+:host-context(.hyper-accordion-bordered):not(:first-child) .hyper-panel-header {
+  border-top: none;
+}
+
+:host-context(.hyper-accordion-spaced) .hyper-panel-header {
+  border: var(--border-width) solid var(--border);
+}
+
+// ── Header Content ──
+
+.hyper-panel-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.hyper-panel-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hyper-panel-description {
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hyper-panel-icon {
+  font-size: 1.15rem;
+  color: var(--primary);
+}
+
+// ── Toggle Icon ──
+
+.hyper-panel-toggle {
+  font-size: 1.25rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+.hyper-panel-toggle-open {
+  transform: rotate(180deg);
+}
+
+// ── Body ──
+
+.hyper-panel-body {
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--foreground);
+  background: var(--card);
+  animation: hyperPanelSlide 0.2s ease;
+}
+
+:host-context(.hyper-accordion-bordered) .hyper-panel-body {
+  border: var(--border-width) solid var(--border);
+  border-top: none;
+}
+
+:host-context(.hyper-accordion-spaced) .hyper-panel-body {
+  border: var(--border-width) solid var(--border);
+  border-top: none;
+}
+
+@keyframes hyperPanelSlide {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+// ── Expanded state ──
+
+:host(.hyper-panel-expanded) .hyper-panel-header {
+  color: var(--primary);
+  border-left-color: var(--primary);
+}
+
+// ── Disabled ──
+
+:host(.hyper-panel-disabled) .hyper-panel-header {
+  opacity: 0.35;
+  cursor: not-allowed;
+
+  &:hover {
+    background: var(--card);
+  }
+}
+
+// ── Density ──
+
+$density: var(--hyper-density, 0);
+
+.hyper-panel-header {
+  padding-top: calc(0.75rem + #{$density} * 2px);
+  padding-bottom: calc(0.75rem + #{$density} * 2px);
+}
+
+.hyper-panel-body {
+  padding-top: calc(1rem + #{$density} * 2px);
+  padding-bottom: calc(1rem + #{$density} * 2px);
+}

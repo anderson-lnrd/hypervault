@@ -1,0 +1,144 @@
+<div class="demo-page">
+  <h1 class="demo-title">Select</h1>
+  <p class="demo-intro">Componente dropdown select com suporte a ControlValueAccessor, selecao multipla, grupos e busca por teclado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Select simples com placeholder.</p>
+    <div class="demo-row">
+      <hyper-select placeholder="Selecione uma fruta" (selectionChange)="onFruitChange($event)">
+        <hyper-option value="apple">Maca</hyper-option>
+        <hyper-option value="banana">Banana</hyper-option>
+        <hyper-option value="cherry">Cereja</hyper-option>
+        <hyper-option value="grape">Uva</hyper-option>
+      </hyper-select>
+    </div>
+    <p style="margin-top: 0.5rem; color: var(--muted-foreground);">Selecionado: {{ selectedFruit || 'nenhum' }}</p>
+    <pre class="demo-code"><code>&lt;hyper-select placeholder="Selecione uma fruta" [(value)]="selected"&gt;
+  &lt;hyper-option value="apple"&gt;Maca&lt;/hyper-option&gt;
+  &lt;hyper-option value="banana"&gt;Banana&lt;/hyper-option&gt;
+&lt;/hyper-select&gt;</code></pre>
+  </section>
+
+  <!-- ── Selecao Multipla ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="selecao-multipla">Selecao Multipla</h2>
+    <p class="demo-card-desc">Use <code>[multiple]="true"</code> para permitir multiplas selecoes.</p>
+    <div class="demo-row">
+      <hyper-select placeholder="Cores favoritas" [multiple]="true" (selectionChange)="onColorsChange($event)">
+        <hyper-option value="red">Vermelho</hyper-option>
+        <hyper-option value="green">Verde</hyper-option>
+        <hyper-option value="blue">Azul</hyper-option>
+        <hyper-option value="yellow">Amarelo</hyper-option>
+        <hyper-option value="purple">Roxo</hyper-option>
+      </hyper-select>
+    </div>
+    <p style="margin-top: 0.5rem; color: var(--muted-foreground);">Selecionados: {{ selectedColors.join(', ') || 'nenhum' }}</p>
+    <pre class="demo-code"><code>&lt;hyper-select placeholder="Cores favoritas" [multiple]="true"&gt;
+  &lt;hyper-option value="red"&gt;Vermelho&lt;/hyper-option&gt;
+  &lt;hyper-option value="green"&gt;Verde&lt;/hyper-option&gt;
+&lt;/hyper-select&gt;</code></pre>
+  </section>
+
+  <!-- ── Grupos (OptGroup) ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="grupos-optgroup">Grupos (OptGroup)</h2>
+    <p class="demo-card-desc">Agrupe opcoes com <code>hyper-optgroup</code>.</p>
+    <div class="demo-row">
+      <hyper-select placeholder="Selecione um animal">
+        <hyper-optgroup label="Felinos">
+          <hyper-option value="cat">Gato</hyper-option>
+          <hyper-option value="lion">Leao</hyper-option>
+          <hyper-option value="tiger">Tigre</hyper-option>
+        </hyper-optgroup>
+        <hyper-optgroup label="Caninos">
+          <hyper-option value="dog">Cachorro</hyper-option>
+          <hyper-option value="wolf">Lobo</hyper-option>
+        </hyper-optgroup>
+      </hyper-select>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-select placeholder="Selecione um animal"&gt;
+  &lt;hyper-optgroup label="Felinos"&gt;
+    &lt;hyper-option value="cat"&gt;Gato&lt;/hyper-option&gt;
+    &lt;hyper-option value="lion"&gt;Leao&lt;/hyper-option&gt;
+  &lt;/hyper-optgroup&gt;
+&lt;/hyper-select&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Desabilite o select inteiro ou opcoes/grupos individuais.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <hyper-select placeholder="Select disabled" [disabled]="true">
+        <hyper-option value="a">Opcao A</hyper-option>
+      </hyper-select>
+      <hyper-select placeholder="Opcoes disabled">
+        <hyper-option value="ok">Habilitada</hyper-option>
+        <hyper-option value="no" [disabled]="true">Desabilitada</hyper-option>
+      </hyper-select>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-select [disabled]="true" placeholder="Disabled"&gt;...&lt;/hyper-select&gt;
+&lt;hyper-option value="no" [disabled]="true"&gt;Desabilitada&lt;/hyper-option&gt;</code></pre>
+  </section>
+
+  <!-- ── Required ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="required">Required</h2>
+    <p class="demo-card-desc">Use <code>[required]="true"</code> para indicar campo obrigatorio (exibe asterisco).</p>
+    <div class="demo-row">
+      <hyper-select placeholder="Campo obrigatorio" [required]="true">
+        <hyper-option value="opt1">Opcao 1</hyper-option>
+        <hyper-option value="opt2">Opcao 2</hyper-option>
+      </hyper-select>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-select [required]="true" placeholder="Campo obrigatorio"&gt;
+  &lt;hyper-option value="opt1"&gt;Opcao 1&lt;/hyper-option&gt;
+&lt;/hyper-select&gt;</code></pre>
+  </section>
+
+  <!-- ── Formularios ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-formularios">Com Formularios</h2>
+    <p class="demo-card-desc">Implementa <code>ControlValueAccessor</code>, compativel com <code>ngModel</code> e Reactive Forms.</p>
+    <pre class="demo-code"><code>&lt;hyper-select [(value)]="selected"&gt;...&lt;/hyper-select&gt;
+
+// Reactive Forms
+&lt;hyper-select [formControl]="myControl"&gt;
+  &lt;hyper-option value="a"&gt;A&lt;/hyper-option&gt;
+&lt;/hyper-select&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperselect">API — HyperSelect</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>any</code></td><td>—</td><td>Valor selecionado (two-way)</td></tr>
+        <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>''</code></td><td>Texto do placeholder</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o select</td></tr>
+        <tr><td><code>multiple</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Permitir multiplas selecoes</td></tr>
+        <tr><td><code>required</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Marcar como obrigatorio</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do select</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperOption</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>any</code></td><td>—</td><td>Valor da opcao</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita esta opcao</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperOptGroup</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td>—</td><td>Label do grupo</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o grupo inteiro</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

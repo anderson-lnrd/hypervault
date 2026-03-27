@@ -1,0 +1,185 @@
+<div class="demo-page">
+  <h1 class="demo-title">Progress</h1>
+  <p class="demo-intro">Indicadores de progresso linear e circular. Progress Bar para barras horizontais e Spinner para indicadores circulares SVG.</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!--               PROGRESS BAR                  -->
+  <!-- ════════════════════════════════════════════ -->
+
+  <h2 class="demo-title" style="font-size: 1.5rem; margin-top: 2rem;">Progress Bar</h2>
+
+  <!-- ── Determinado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="determinado">Determinado</h2>
+    <p class="demo-card-desc">Modo <code>determinate</code> — exibe progresso com base no <code>value</code> (0–100).</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar [value]="determinateValue()" />
+      <div class="demo-row" style="margin-top: 0.5rem;">
+        <button hyper-stroked-button size="sm" (click)="incrementProgress()">+10%</button>
+        <button hyper-ghost-button size="sm" (click)="resetProgress()">Reset</button>
+        <span style="color: var(--muted-foreground);">{{ determinateValue() }}%</span>
+      </div>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar [value]="45" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Indeterminado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="indeterminado">Indeterminado</h2>
+    <p class="demo-card-desc">Modo <code>indeterminate</code> — animacao continua para operacoes sem progresso mensuravel.</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar mode="indeterminate" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar mode="indeterminate" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Buffer ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="buffer">Buffer</h2>
+    <p class="demo-card-desc">Modo <code>buffer</code> — exibe progresso principal e buffer (ex: video buffering).</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar mode="buffer" [value]="determinateValue()" [bufferValue]="bufferValue()" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar mode="buffer" [value]="45" [bufferValue]="70" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Query ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="query">Query</h2>
+    <p class="demo-card-desc">Modo <code>query</code> — animacao reversa para indicar que o sistema esta buscando dados.</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar mode="query" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar mode="query" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores disponiveis: <code>primary</code> (padrao), <code>secondary</code>, <code>accent</code> e <code>destructive</code>.</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar [value]="60" color="primary" />
+      <hyper-progress-bar [value]="60" color="secondary" />
+      <hyper-progress-bar [value]="60" color="accent" />
+      <hyper-progress-bar [value]="60" color="destructive" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar [value]="60" color="secondary" /&gt;
+&lt;hyper-progress-bar [value]="60" color="accent" /&gt;
+&lt;hyper-progress-bar [value]="60" color="destructive" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Striped / Animated ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="striped-animated">Striped &amp; Animated</h2>
+    <p class="demo-card-desc">Use <code>[striped]="true"</code> para listras e <code>[animated]="true"</code> para animar.</p>
+    <div class="demo-form-col">
+      <hyper-progress-bar [value]="65" [striped]="true" />
+      <hyper-progress-bar [value]="65" [striped]="true" [animated]="true" />
+      <hyper-progress-bar [value]="65" [striped]="true" [animated]="true" color="secondary" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-progress-bar [value]="65" [striped]="true" [animated]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API Progress Bar ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-progress-bar">API — Progress Bar</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>number</code></td><td><code>0</code></td><td>Valor de progresso (0–100)</td></tr>
+        <tr><td><code>bufferValue</code></td><td><code>number</code></td><td><code>0</code></td><td>Valor de buffer (modo buffer)</td></tr>
+        <tr><td><code>mode</code></td><td><code>'determinate' | 'indeterminate' | 'buffer' | 'query'</code></td><td><code>'determinate'</code></td><td>Modo de exibicao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent' | 'destructive'</code></td><td><code>'primary'</code></td><td>Cor da barra</td></tr>
+        <tr><td><code>striped</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Exibe padrao listrado</td></tr>
+        <tr><td><code>animated</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Anima as listras</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!--                  SPINNER                     -->
+  <!-- ════════════════════════════════════════════ -->
+
+  <h2 class="demo-title" style="font-size: 1.5rem; margin-top: 3rem;">Spinner</h2>
+
+  <!-- ── Indeterminado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="indeterminado-2">Indeterminado</h2>
+    <p class="demo-card-desc">Modo <code>indeterminate</code> (padrao) — rotacao continua.</p>
+    <div class="demo-row" style="align-items: center;">
+      <hyper-spinner />
+      <hyper-spinner [diameter]="24" [strokeWidth]="3" />
+      <hyper-spinner [diameter]="60" [strokeWidth]="6" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-spinner /&gt;
+&lt;hyper-spinner [diameter]="24" [strokeWidth]="3" /&gt;
+&lt;hyper-spinner [diameter]="60" [strokeWidth]="6" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Determinado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="determinado-2">Determinado</h2>
+    <p class="demo-card-desc">Modo <code>determinate</code> — exibe progresso de 0 a 100 no arco.</p>
+    <div class="demo-row" style="align-items: center;">
+      <hyper-spinner mode="determinate" [value]="25" />
+      <hyper-spinner mode="determinate" [value]="50" />
+      <hyper-spinner mode="determinate" [value]="75" />
+      <hyper-spinner mode="determinate" [value]="spinnerValue()" [diameter]="56" [strokeWidth]="5" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-spinner mode="determinate" [value]="75" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores-2">Cores</h2>
+    <p class="demo-card-desc">Cores: <code>primary</code> (padrao), <code>secondary</code>, <code>accent</code>, <code>destructive</code> e <code>current</code> (herda <code>currentColor</code>).</p>
+    <div class="demo-row" style="align-items: center;">
+      <hyper-spinner color="primary" />
+      <hyper-spinner color="secondary" />
+      <hyper-spinner color="accent" />
+      <hyper-spinner color="destructive" />
+      <span style="color: #9333ea;">
+        <hyper-spinner color="current" />
+      </span>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-spinner color="secondary" /&gt;
+&lt;hyper-spinner color="accent" /&gt;
+&lt;hyper-spinner color="destructive" /&gt;
+
+&lt;!-- herda cor do pai --&gt;
+&lt;span style="color: purple;"&gt;
+  &lt;hyper-spinner color="current" /&gt;
+&lt;/span&gt;</code></pre>
+  </section>
+
+  <!-- ── Tamanhos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tamanhos-customizados">Tamanhos Customizados</h2>
+    <p class="demo-card-desc">Use <code>diameter</code> e <code>strokeWidth</code> para controlar dimensoes.</p>
+    <div class="demo-row" style="align-items: center;">
+      <hyper-spinner [diameter]="16" [strokeWidth]="2" />
+      <hyper-spinner [diameter]="24" [strokeWidth]="3" />
+      <hyper-spinner [diameter]="40" [strokeWidth]="4" />
+      <hyper-spinner [diameter]="64" [strokeWidth]="6" />
+      <hyper-spinner [diameter]="96" [strokeWidth]="8" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-spinner [diameter]="16" [strokeWidth]="2" /&gt;
+&lt;hyper-spinner [diameter]="64" [strokeWidth]="6" /&gt;
+&lt;hyper-spinner [diameter]="96" [strokeWidth]="8" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API Spinner ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-spinner">API — Spinner</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>diameter</code></td><td><code>number</code></td><td><code>40</code></td><td>Diametro em pixels</td></tr>
+        <tr><td><code>strokeWidth</code></td><td><code>number</code></td><td><code>4</code></td><td>Espessura do arco em pixels</td></tr>
+        <tr><td><code>value</code></td><td><code>number</code></td><td><code>0</code></td><td>Valor de progresso (0–100, modo determinate)</td></tr>
+        <tr><td><code>mode</code></td><td><code>'indeterminate' | 'determinate'</code></td><td><code>'indeterminate'</code></td><td>Modo de exibicao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent' | 'destructive' | 'current'</code></td><td><code>'primary'</code></td><td>Cor do spinner</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

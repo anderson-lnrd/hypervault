@@ -1,0 +1,215 @@
+// ── Stepper ──
+.hyper-stepper {
+  display: block;
+  font-family: var(--font-sans);
+}
+
+// ── Header (horizontal) ──
+.hyper-stepper-header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+// ── Step Header ──
+.hyper-step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+
+  &:hover:not(.hyper-step-header-disabled) {
+    .hyper-step-label {
+      color: var(--foreground);
+    }
+  }
+
+  &:focus-visible {
+    .hyper-step-icon {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.hyper-step-header-disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+// Label position: bottom (horizontal only)
+.hyper-stepper-horizontal .hyper-stepper-label-bottom {
+  .hyper-step-header {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
+}
+
+// ── Step Icon ──
+.hyper-step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: var(--border-width) solid var(--muted-foreground);
+  background: transparent;
+  color: var(--muted-foreground);
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+.hyper-step-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+// Active icon
+.hyper-step-header-active .hyper-step-icon {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+// Completed icon (only when not active)
+.hyper-step-header-completed:not(.hyper-step-header-active) .hyper-step-icon {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+// Error icon
+.hyper-step-header-error .hyper-step-icon {
+  background: var(--destructive);
+  border-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+// ── Step Label ──
+.hyper-step-label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hyper-step-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  transition: color 0.15s;
+}
+
+.hyper-step-header-active .hyper-step-label {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.hyper-step-header-completed .hyper-step-label {
+  color: var(--foreground);
+}
+
+.hyper-step-optional {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hyper-step-error-message {
+  font-size: 0.7rem;
+  color: var(--destructive);
+  font-weight: 600;
+}
+
+// ── Connector (horizontal) ──
+.hyper-stepper-horizontal .hyper-step-connector {
+  flex: 1;
+  height: var(--border-width);
+  min-width: 24px;
+  background: var(--muted);
+  transition: background 0.2s;
+}
+
+.hyper-step-connector-completed {
+  background: var(--primary);
+}
+
+// ── Content (horizontal) ──
+.hyper-stepper-content {
+  padding: 1.25rem 0;
+}
+
+// ── Vertical Layout ──
+.hyper-step-vertical-body {
+  margin-left: calc(0.75rem + 16px - var(--border-width) / 2);
+  padding-left: calc(16px + 0.65rem + var(--border-width) / 2);
+  border-left: var(--border-width) solid var(--muted);
+  padding-top: 0.25rem;
+  padding-bottom: 0.75rem;
+  min-height: 1rem;
+}
+
+.hyper-step-vertical-body-last {
+  border-left-color: transparent;
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+.hyper-step-vertical-body-completed {
+  border-left-color: var(--primary);
+}
+
+// ── Secondary Color ──
+.hyper-stepper-secondary {
+  .hyper-step-header-active .hyper-step-icon {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  .hyper-step-header-completed:not(.hyper-step-header-active) .hyper-step-icon {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  .hyper-step-connector-completed {
+    background: var(--secondary);
+  }
+
+  .hyper-step-vertical-body-completed {
+    border-left-color: var(--secondary);
+  }
+
+  .hyper-step-header:focus-visible .hyper-step-icon {
+    outline-color: var(--secondary);
+  }
+}
+
+// ── Step Body ──
+.hyper-step-body {
+  animation: hyper-step-enter 0.2s ease-out;
+}
+
+@keyframes hyper-step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

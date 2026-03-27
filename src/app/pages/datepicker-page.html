@@ -1,0 +1,108 @@
+<div class="demo-page">
+  <h1 class="demo-title">Datepicker</h1>
+  <p class="demo-intro">Seletor de data com popup e calendario standalone. Suporta min/max, filtro, cores e navegacao por teclado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Datepicker padrao com popup de calendario.</p>
+    <hyper-datepicker (dateChange)="selectedDate.set($event)" />
+    <p style="margin-top: 1rem; color: var(--primary);">
+      Data selecionada: {{ formatDate(selectedDate()) }}
+    </p>
+    <pre class="demo-code"><code>&lt;hyper-datepicker (dateChange)="onDate($event)" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Placeholder customizado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="placeholder-customizado">Placeholder Customizado</h2>
+    <p class="demo-card-desc">Use <code>placeholder</code> para alterar o texto.</p>
+    <hyper-datepicker placeholder="Data de nascimento" />
+    <pre class="demo-code"><code>&lt;hyper-datepicker placeholder="Data de nascimento" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Cor Secondary ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cor-secondary">Cor Secondary</h2>
+    <p class="demo-card-desc">Use <code>color="secondary"</code> para trocar a cor.</p>
+    <hyper-datepicker color="secondary" placeholder="Selecionar data" />
+    <pre class="demo-code"><code>&lt;hyper-datepicker color="secondary" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Min / Max ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="min-max">Min / Max</h2>
+    <p class="demo-card-desc">Restrinja o intervalo de datas com <code>min</code> e <code>max</code>.</p>
+    <hyper-datepicker [min]="minDate" [max]="maxDate" placeholder="2024 – 2025" />
+    <pre class="demo-code"><code>&lt;hyper-datepicker [min]="minDate" [max]="maxDate" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Filtro de Data ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="filtro-de-data">Filtro de Data</h2>
+    <p class="demo-card-desc">Use <code>dateFilter</code> para desabilitar datas especificas (ex: sem fins de semana).</p>
+    <hyper-datepicker [dateFilter]="noWeekends" placeholder="Somente dias uteis" />
+    <pre class="demo-code" ngNonBindable><code>noWeekends = (date: Date): boolean =&gt; &#123;
+  const day = date.getDay();
+  return day !== 0 &amp;&amp; day !== 6;
+&#125;;
+
+&lt;hyper-datepicker [dateFilter]="noWeekends" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Disabled ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para desabilitar o datepicker.</p>
+    <hyper-datepicker [disabled]="true" placeholder="Indisponivel" />
+    <pre class="demo-code"><code>&lt;hyper-datepicker [disabled]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Calendario Standalone ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="calendario-standalone">Calendario Standalone</h2>
+    <p class="demo-card-desc">Use <code>hyper-calendar</code> diretamente como componente.</p>
+    <hyper-calendar color="secondary" (selectedChange)="calendarDate.set($event)" />
+    <p style="margin-top: 1rem; color: var(--secondary);">
+      Selecionada: {{ formatDate(calendarDate()) }}
+    </p>
+    <pre class="demo-code"><code>&lt;hyper-calendar (selectedChange)="onDate($event)" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperdatepicker">API — HyperDatepicker</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>'Selecionar data'</code></td><td>Texto do input</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o datepicker</td></tr>
+        <tr><td><code>min</code></td><td><code>Date</code></td><td>—</td><td>Data minima</td></tr>
+        <tr><td><code>max</code></td><td><code>Date</code></td><td>—</td><td>Data maxima</td></tr>
+        <tr><td><code>dateFilter</code></td><td><code>(date: Date) =&gt; boolean</code></td><td>—</td><td>Funcao para filtrar datas</td></tr>
+        <tr><td><code>firstDayOfWeek</code></td><td><code>number</code></td><td><code>0</code></td><td>0=Dom, 1=Seg, etc.</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do calendario</td></tr>
+        <tr><td><code>format</code></td><td><code>string</code></td><td><code>'dd/MM/yyyy'</code></td><td>Formato de exibicao</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperCalendar</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do calendario</td></tr>
+        <tr><td><code>firstDayOfWeek</code></td><td><code>number</code></td><td><code>0</code></td><td>Primeiro dia da semana</td></tr>
+        <tr><td><code>startView</code></td><td><code>'month' | 'year' | 'multi-year'</code></td><td><code>'month'</code></td><td>View inicial</td></tr>
+        <tr><td><code>min</code></td><td><code>Date</code></td><td>—</td><td>Data minima</td></tr>
+        <tr><td><code>max</code></td><td><code>Date</code></td><td>—</td><td>Data maxima</td></tr>
+        <tr><td><code>dateFilter</code></td><td><code>(date: Date) =&gt; boolean</code></td><td>—</td><td>Filtro de datas</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">Diretivas</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Seletor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>[hyperDatepickerToggle]</code></td><td>Toggle externo vinculado a um HyperDatepicker</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

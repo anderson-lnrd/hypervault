@@ -1,0 +1,25 @@
+<div class="hyper-panel-header" (click)="toggle()" [attr.tabindex]="disabled() ? -1 : 0"
+  role="button" [attr.aria-expanded]="expanded()" (keydown.enter)="toggle()" (keydown.space)="$event.preventDefault(); toggle()">
+  @if (customHeader(); as hdr) {
+    <ng-container *ngTemplateOutlet="hdr.template" />
+  } @else {
+    <div class="hyper-panel-header-content">
+      @if (icon()) {
+        <span class="material-icons hyper-panel-icon">{{ icon() }}</span>
+      }
+      <span class="hyper-panel-title">{{ title() }}</span>
+      @if (description()) {
+        <span class="hyper-panel-description">{{ description() }}</span>
+      }
+    </div>
+  }
+  @if (!hideToggle()) {
+    <span class="material-icons hyper-panel-toggle" [class.hyper-panel-toggle-open]="expanded()">expand_more</span>
+  }
+</div>
+
+@if (expanded()) {
+  <div class="hyper-panel-body" role="region">
+    <ng-content />
+  </div>
+}

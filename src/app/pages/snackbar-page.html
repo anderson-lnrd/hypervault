@@ -1,0 +1,122 @@
+<div class="demo-page">
+  <h1 class="demo-title">Snackbar</h1>
+  <p class="demo-intro">Notificacoes temporarias via servico imperativo. Suporta variantes, posicoes, icones, acoes e auto-dismiss.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Abra um snackbar simples com <code>HyperSnackbar.open()</code>.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openBasic()">Snackbar Basico</button>
+    </div>
+    <pre class="demo-code"><code>snackbar.open({{ '{' }} message: 'Operacao realizada.' {{ '}' }});</code></pre>
+  </section>
+
+  <!-- ── Variantes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="variantes">Variantes</h2>
+    <p class="demo-card-desc">Atalhos semanticos: <code>success()</code>, <code>error()</code> e <code>warning()</code>. Cada um inclui icone padrao.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openSuccess()">Success</button>
+      <button hyper-stroked-button (click)="openError()">Error</button>
+      <button hyper-stroked-button (click)="openWarning()">Warning</button>
+    </div>
+    <pre class="demo-code"><code>snackbar.success('Salvo com sucesso!');
+snackbar.error('Falha ao conectar ao servidor.');
+snackbar.warning('Sua sessao expira em 5 minutos.');</code></pre>
+  </section>
+
+  <!-- ── Com Acao ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-acao">Com Acao</h2>
+    <p class="demo-card-desc">Adicione um botao de acao com <code>action</code>. Use <code>afterDismissed()</code> para saber se a acao foi clicada.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openWithAction()">Com Acao "Desfazer"</button>
+    </div>
+    <pre class="demo-code"><code>const ref = snackbar.open({{ '{' }}
+  message: 'Item removido.',
+  action: 'Desfazer',
+  duration: 6000,
+{{ '}' }});
+
+ref.afterDismissed().then(actionClicked => {{ '{' }}
+  if (actionClicked) snackbar.success('Item restaurado!');
+{{ '}' }});</code></pre>
+  </section>
+
+  <!-- ── Com Icone ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icone">Com Icone</h2>
+    <p class="demo-card-desc">Exiba um Material Icon com a propriedade <code>icon</code>.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openWithIcon()">Com Icone</button>
+    </div>
+    <pre class="demo-code"><code>snackbar.open({{ '{' }}
+  message: 'Novo email recebido!',
+  icon: 'mail',
+{{ '}' }});</code></pre>
+  </section>
+
+  <!-- ── Posicoes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="posicoes">Posicoes</h2>
+    <p class="demo-card-desc">Seis posicoes na tela: <code>top-left</code>, <code>top-center</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-center</code> (padrao), <code>bottom-right</code>.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openTopLeft()">Top Left</button>
+      <button hyper-stroked-button (click)="openTopCenter()">Top Center</button>
+      <button hyper-stroked-button (click)="openBottomRight()">Bottom Right</button>
+    </div>
+    <pre class="demo-code"><code>snackbar.open({{ '{' }}
+  message: 'Notificacao no topo!',
+  position: 'top-center',
+{{ '}' }});</code></pre>
+  </section>
+
+  <!-- ── Duracao ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="duracao">Duracao</h2>
+    <p class="demo-card-desc">Controle o tempo de auto-dismiss com <code>duration</code> (em ms). Use <code>0</code> para desabilitar o auto-dismiss.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openLong()">10 segundos</button>
+      <button hyper-stroked-button (click)="openPersistent()">Persistente (manual)</button>
+    </div>
+    <pre class="demo-code"><code>// Auto-dismiss apos 10s
+snackbar.open({{ '{' }} message: '...', duration: 10000 {{ '}' }});
+
+// Sem auto-dismiss
+snackbar.open({{ '{' }} message: '...', action: 'Fechar', duration: 0 {{ '}' }});</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc"><code>HyperSnackbar</code> e um servico injetavel (<code>providedIn: 'root'</code>).</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo</th><th>Parametros</th><th>Retorno</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>open()</code></td><td><code>HyperSnackbarConfig</code></td><td><code>HyperSnackbarRef</code></td><td>Abre um snackbar com configuracao completa</td></tr>
+        <tr><td><code>success()</code></td><td><code>message, config?</code></td><td><code>HyperSnackbarRef</code></td><td>Atalho para variante success</td></tr>
+        <tr><td><code>error()</code></td><td><code>message, config?</code></td><td><code>HyperSnackbarRef</code></td><td>Atalho para variante error</td></tr>
+        <tr><td><code>warning()</code></td><td><code>message, config?</code></td><td><code>HyperSnackbarRef</code></td><td>Atalho para variante warning</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Config</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>message</code></td><td><code>string</code></td><td>—</td><td>Texto da mensagem</td></tr>
+        <tr><td><code>action</code></td><td><code>string?</code></td><td><code>undefined</code></td><td>Label do botao de acao</td></tr>
+        <tr><td><code>duration</code></td><td><code>number</code></td><td><code>4000</code></td><td>Tempo de auto-dismiss (0 = manual)</td></tr>
+        <tr><td><code>variant</code></td><td><code>'default' | 'success' | 'warning' | 'error'</code></td><td><code>'default'</code></td><td>Variante visual</td></tr>
+        <tr><td><code>position</code></td><td><code>HyperSnackbarPosition</code></td><td><code>'bottom-center'</code></td><td>Posicao na tela</td></tr>
+        <tr><td><code>icon</code></td><td><code>string?</code></td><td><code>undefined</code></td><td>Nome do Material Icon</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>HyperSnackbarRef</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>dismiss()</code></td><td><code>() => void</code></td><td>Fecha o snackbar programaticamente</td></tr>
+        <tr><td><code>afterDismissed()</code></td><td><code>() => Promise&lt;boolean&gt;</code></td><td>Resolve quando fechado (true = acao clicada)</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

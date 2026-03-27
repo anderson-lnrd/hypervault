@@ -1,0 +1,101 @@
+<div class="demo-page">
+  <h1 class="demo-title">Divider</h1>
+  <p class="demo-intro">Separador visual horizontal ou vertical com cores, espessura e estilo tracejado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Divisor horizontal padrao.</p>
+    <p>Conteudo acima</p>
+    <hyper-divider />
+    <p>Conteudo abaixo</p>
+    <pre class="demo-code"><code>&lt;hyper-divider /&gt;</code></pre>
+  </section>
+
+  <!-- ── Espessura ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="espessura">Espessura</h2>
+    <p class="demo-card-desc">Variantes: <code>thin</code> (1px), <code>medium</code> (2px) e <code>thick</code> (4px).</p>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <div>
+        <span style="font-size: 0.8rem; color: var(--muted-foreground);">thin</span>
+        <hyper-divider thickness="thin" />
+      </div>
+      <div>
+        <span style="font-size: 0.8rem; color: var(--muted-foreground);">medium</span>
+        <hyper-divider thickness="medium" />
+      </div>
+      <div>
+        <span style="font-size: 0.8rem; color: var(--muted-foreground);">thick</span>
+        <hyper-divider thickness="thick" />
+      </div>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-divider thickness="thin" /&gt;
+&lt;hyper-divider thickness="medium" /&gt;
+&lt;hyper-divider thickness="thick" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores: <code>border</code>, <code>muted</code>, <code>primary</code> e <code>secondary</code>.</p>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <hyper-divider color="border" thickness="medium" />
+      <hyper-divider color="muted" thickness="medium" />
+      <hyper-divider color="primary" thickness="medium" />
+      <hyper-divider color="secondary" thickness="medium" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-divider color="primary" thickness="medium" /&gt;
+&lt;hyper-divider color="secondary" thickness="medium" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Tracejado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tracejado">Tracejado</h2>
+    <p class="demo-card-desc">Use <code>[dashed]="true"</code> para estilo tracejado.</p>
+    <hyper-divider [dashed]="true" thickness="medium" />
+    <div style="margin-top: 1rem;">
+      <hyper-divider [dashed]="true" color="primary" thickness="medium" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-divider [dashed]="true" thickness="medium" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Vertical ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="vertical">Vertical</h2>
+    <p class="demo-card-desc">Divisor vertical entre elementos inline.</p>
+    <div style="display: flex; align-items: center; gap: 1rem; height: 2rem;">
+      <span>Item A</span>
+      <hyper-divider [vertical]="true" thickness="medium" color="primary" />
+      <span>Item B</span>
+      <hyper-divider [vertical]="true" thickness="medium" />
+      <span>Item C</span>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-divider [vertical]="true" thickness="medium" color="primary" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Inset ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="inset">Inset</h2>
+    <p class="demo-card-desc">Use <code>[inset]="true"</code> para adicionar margem lateral.</p>
+    <p>Conteudo acima</p>
+    <hyper-divider [inset]="true" />
+    <p>Conteudo abaixo (divisor com margem)</p>
+    <pre class="demo-code"><code>&lt;hyper-divider [inset]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>vertical</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Orientacao vertical</td></tr>
+        <tr><td><code>inset</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Adiciona margem lateral</td></tr>
+        <tr><td><code>color</code></td><td><code>'border' | 'muted' | 'primary' | 'secondary'</code></td><td><code>'border'</code></td><td>Cor do divisor</td></tr>
+        <tr><td><code>thickness</code></td><td><code>'thin' | 'medium' | 'thick'</code></td><td><code>'thin'</code></td><td>Espessura</td></tr>
+        <tr><td><code>dashed</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estilo tracejado</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

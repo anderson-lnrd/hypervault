@@ -1,0 +1,74 @@
+<div class="demo-page">
+  <h1 class="demo-title">Checkbox</h1>
+  <p class="demo-intro">Componente de checkbox com suporte a ControlValueAccessor, estado indeterminado e cores customizaveis.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Checkbox simples com label via content projection.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <hyper-checkbox>Aceitar Termos</hyper-checkbox>
+      <hyper-checkbox [checked]="true">Notificacoes</hyper-checkbox>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-checkbox&gt;Aceitar Termos&lt;/hyper-checkbox&gt;
+&lt;hyper-checkbox [checked]="true"&gt;Notificacoes&lt;/hyper-checkbox&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores disponiveis: <code>primary</code> (padrao) e <code>secondary</code>.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <hyper-checkbox [checked]="true">Primary</hyper-checkbox>
+      <hyper-checkbox color="secondary" [checked]="true">Secondary</hyper-checkbox>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-checkbox color="secondary" [checked]="true"&gt;Secondary&lt;/hyper-checkbox&gt;</code></pre>
+  </section>
+
+  <!-- ── Indeterminado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="indeterminado">Indeterminado</h2>
+    <p class="demo-card-desc">O estado <code>indeterminate</code> exibe um traco horizontal. Util para selecionar parcialmente um grupo.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <hyper-checkbox [indeterminate]="true">Selecionar Todos</hyper-checkbox>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-checkbox [indeterminate]="true"&gt;Selecionar Todos&lt;/hyper-checkbox&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para desabilitar interacao.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <hyper-checkbox [disabled]="true">Desabilitado</hyper-checkbox>
+      <hyper-checkbox [disabled]="true" [checked]="true">Checked Disabled</hyper-checkbox>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-checkbox [disabled]="true"&gt;Desabilitado&lt;/hyper-checkbox&gt;
+&lt;hyper-checkbox [disabled]="true" [checked]="true"&gt;Checked Disabled&lt;/hyper-checkbox&gt;</code></pre>
+  </section>
+
+  <!-- ── Formularios ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="formularios">Com Formularios</h2>
+    <p class="demo-card-desc">Implementa <code>ControlValueAccessor</code>, compativel com <code>ngModel</code> e Reactive Forms.</p>
+    <pre class="demo-code"><code>&lt;hyper-checkbox [(checked)]="aceito"&gt;Aceito os termos&lt;/hyper-checkbox&gt;
+
+// Reactive Forms
+&lt;hyper-checkbox [formControl]="meuControl"&gt;Opcao&lt;/hyper-checkbox&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc">Referencia completa dos inputs e outputs.</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>checked</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado de marcacao (two-way binding)</td></tr>
+        <tr><td><code>indeterminate</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado indeterminado</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita interacao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do checkbox</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

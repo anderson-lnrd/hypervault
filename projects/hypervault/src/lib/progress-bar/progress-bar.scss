@@ -1,0 +1,135 @@
+// ── Progress Bar ──
+
+:host {
+  --_pb-color: var(--primary, #39ff14);
+  --_pb-track: var(--muted, #2a2a2a);
+  --_pb-height: 6px;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+// ── Colors ──
+
+:host(.hyper-progress-primary) {
+  --_pb-color: var(--primary, #39ff14);
+}
+
+:host(.hyper-progress-secondary) {
+  --_pb-color: var(--secondary, #ff1493);
+}
+
+:host(.hyper-progress-accent) {
+  --_pb-color: var(--accent, #ffff00);
+}
+
+:host(.hyper-progress-destructive) {
+  --_pb-color: var(--destructive, #ff4444);
+}
+
+// ── Track ──
+
+.hyper-progress-track {
+  position: relative;
+  width: 100%;
+  height: var(--_pb-height);
+  background: var(--_pb-track);
+  overflow: hidden;
+}
+
+// ── Fill ──
+
+.hyper-progress-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--_pb-color);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+// ── Buffer ──
+
+.hyper-progress-buffer {
+  position: absolute;
+  inset: 0;
+  background: var(--_pb-color);
+  opacity: 0.25;
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+// ── Indeterminate ──
+
+:host(.hyper-progress-indeterminate) {
+  .hyper-progress-fill {
+    transform: none !important;
+    width: 40%;
+    animation: hyper-progress-indeterminate 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  }
+}
+
+// ── Query (reverse indeterminate) ──
+
+:host(.hyper-progress-query) {
+  .hyper-progress-fill {
+    transform: none !important;
+    width: 40%;
+    animation: hyper-progress-query 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  }
+}
+
+// ── Striped ──
+
+:host(.hyper-progress-striped) {
+  .hyper-progress-fill {
+    background-image: linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 1rem 1rem;
+  }
+}
+
+:host(.hyper-progress-animated) {
+  .hyper-progress-fill {
+    animation: hyper-progress-stripe-move 0.6s linear infinite;
+  }
+}
+
+// ── Animations ──
+
+@keyframes hyper-progress-indeterminate {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes hyper-progress-query {
+  0% {
+    right: -40%;
+    left: auto;
+  }
+  100% {
+    right: 100%;
+    left: auto;
+  }
+}
+
+@keyframes hyper-progress-stripe-move {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}

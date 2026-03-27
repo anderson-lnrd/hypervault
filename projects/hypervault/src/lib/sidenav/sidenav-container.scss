@@ -1,0 +1,49 @@
+.hyper-sidenav-container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.hyper-sidenav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hyper-sidenav-container.hyper-sidenav-container-has-open {
+  .hyper-sidenav-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  // In side mode, no backdrop
+  hyper-sidenav.hyper-sidenav-side {
+    & ~ .hyper-sidenav-backdrop {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.hyper-sidenav-content-wrapper {
+  flex: 1;
+  overflow: auto;
+  z-index: 1;
+  transition: margin-left 0.3s ease, margin-right 0.3s ease;
+}
+
+// Push mode: margin on content-wrapper
+.hyper-sidenav-container hyper-sidenav.hyper-sidenav-push.hyper-sidenav-opened ~ .hyper-sidenav-content-wrapper {
+  margin-left: 260px;
+}
+
+.hyper-sidenav-container hyper-sidenav.hyper-sidenav-push.hyper-sidenav-end.hyper-sidenav-opened ~ .hyper-sidenav-content-wrapper {
+  margin-left: 0;
+  margin-right: 260px;
+}

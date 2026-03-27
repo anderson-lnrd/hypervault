@@ -1,0 +1,26 @@
+<label
+  class="hyper-checkbox-layout"
+  (click)="toggle(); $event.preventDefault()"
+  (keydown)="onKeydown($event)"
+>
+  <span
+    class="hyper-checkbox-frame"
+    role="checkbox"
+    tabindex="0"
+    [attr.aria-checked]="indeterminate() ? 'mixed' : checked()"
+    [attr.aria-disabled]="disabled()"
+  >
+    @if (indeterminate()) {
+      <svg class="hyper-checkbox-icon" viewBox="0 0 24 24" fill="none">
+        <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="3"/>
+      </svg>
+    } @else if (checked()) {
+      <svg class="hyper-checkbox-icon" viewBox="0 0 24 24" fill="none">
+        <polyline points="4,12 9,17 20,6" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>
+      </svg>
+    }
+  </span>
+  <span class="hyper-checkbox-label">
+    <ng-content></ng-content>
+  </span>
+</label>

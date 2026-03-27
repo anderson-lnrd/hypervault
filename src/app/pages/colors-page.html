@@ -1,0 +1,176 @@
+<div class="demo-page">
+  <h1 class="demo-title">Cores</h1>
+  <p class="demo-intro">Paleta de cores do design system HyperVault. Todas as cores sao definidas como CSS custom properties em <code>:root</code> e podem ser sobrescritas para temas personalizados.</p>
+
+  <!-- ── Cores Primarias ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="primarias">Cores Primarias</h2>
+    <p class="demo-card-desc">As cores principais usadas em botoes, links, destaques e acoes.</p>
+    <div class="color-grid">
+      <div class="color-swatch" style="--swatch: var(--primary);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Primary</strong>
+          <code>--primary</code>
+          <span>#39ff14</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--secondary);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Secondary</strong>
+          <code>--secondary</code>
+          <span>#ff1493</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--accent);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Accent</strong>
+          <code>--accent</code>
+          <span>#ffff00</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--destructive);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Destructive</strong>
+          <code>--destructive</code>
+          <span>#ff4444</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Foregrounds ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="foregrounds">Foregrounds</h2>
+    <p class="demo-card-desc">Cores de texto usadas sobre cada cor primaria.</p>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="--swatch: var(--primary); color: var(--primary-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem;">Aa</div>
+        <div class="color-swatch-info">
+          <strong>Primary FG</strong>
+          <code>--primary-foreground</code>
+          <span>#0f0f0f</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="--swatch: var(--secondary); color: var(--secondary-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem;">Aa</div>
+        <div class="color-swatch-info">
+          <strong>Secondary FG</strong>
+          <code>--secondary-foreground</code>
+          <span>#0f0f0f</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="--swatch: var(--accent); color: var(--accent-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem;">Aa</div>
+        <div class="color-swatch-info">
+          <strong>Accent FG</strong>
+          <code>--accent-foreground</code>
+          <span>#0f0f0f</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="--swatch: var(--destructive); color: var(--destructive-foreground); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem;">Aa</div>
+        <div class="color-swatch-info">
+          <strong>Destructive FG</strong>
+          <code>--destructive-foreground</code>
+          <span>#fafafa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Superficies ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="superficies">Superficies</h2>
+    <p class="demo-card-desc">Cores de fundo, cards, bordas e elementos mutados.</p>
+    <div class="color-grid">
+      <div class="color-swatch" style="--swatch: var(--background);">
+        <div class="color-swatch-block" style="border: 1px solid var(--muted);"></div>
+        <div class="color-swatch-info">
+          <strong>Background</strong>
+          <code>--background</code>
+          <span>#0f0f0f</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--foreground);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Foreground</strong>
+          <code>--foreground</code>
+          <span>#fafafa</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--card);">
+        <div class="color-swatch-block" style="border: 1px solid var(--muted);"></div>
+        <div class="color-swatch-info">
+          <strong>Card</strong>
+          <code>--card</code>
+          <span>#1a1a1a</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--muted);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Muted</strong>
+          <code>--muted</code>
+          <span>#2a2a2a</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--muted-foreground);">
+        <div class="color-swatch-block"></div>
+        <div class="color-swatch-info">
+          <strong>Muted FG</strong>
+          <code>--muted-foreground</code>
+          <span>#a3a3a3</span>
+        </div>
+      </div>
+      <div class="color-swatch" style="--swatch: var(--input);">
+        <div class="color-swatch-block" style="border: 1px solid var(--muted);"></div>
+        <div class="color-swatch-info">
+          <strong>Input</strong>
+          <code>--input</code>
+          <span>#242424</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Neo-Brutalist Tokens ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tokens">Design Tokens</h2>
+    <p class="demo-card-desc">Variaveis estruturais do tema neo-brutalist.</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Variavel</th><th>Valor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>--border-width</code></td><td><code>4px</code></td><td>Espessura padrao das bordas</td></tr>
+        <tr><td><code>--border-radius</code></td><td><code>0px</code></td><td>Raio de borda (angular, sem arredondamento)</td></tr>
+        <tr><td><code>--shadow-offset</code></td><td><code>4px</code></td><td>Offset da sombra brutal (box-shadow)</td></tr>
+        <tr><td><code>--hyper-density</code></td><td><code>0</code></td><td>Nivel de densidade (0 a -4)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Uso ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="como-usar">Como Usar</h2>
+    <p class="demo-card-desc">Todas as cores estao disponiveis via CSS custom properties. Para criar um tema customizado, sobrescreva as variaveis em <code>:root</code>.</p>
+    <pre class="demo-code"><code>/* Sobrescrevendo cores no seu tema */
+:root {{ '{' }}
+  --primary: #00ffcc;
+  --secondary: #ff6600;
+  --background: #111;
+  --foreground: #eee;
+{{ '}' }}
+
+/* Usando em CSS */
+.my-element {{ '{' }}
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: var(--border-width) solid var(--foreground);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--foreground);
+{{ '}' }}</code></pre>
+  </section>
+</div>

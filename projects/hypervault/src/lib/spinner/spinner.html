@@ -1,0 +1,21 @@
+<svg [attr.viewBox]="viewBox()">
+  <circle
+    class="hyper-spinner-track"
+    [attr.cx]="center()"
+    [attr.cy]="center()"
+    [attr.r]="radius()"
+    [style.stroke-width.px]="strokeWidth()"
+    fill="none"
+  />
+  <circle
+    class="hyper-spinner-circle"
+    [attr.cx]="center()"
+    [attr.cy]="center()"
+    [attr.r]="radius()"
+    [style.stroke-width.px]="strokeWidth()"
+    [style.stroke-dasharray]="circumference()"
+    [style.stroke-dashoffset]="dashOffset()"
+    fill="none"
+    stroke-linecap="square"
+  />
+</svg>

@@ -1,0 +1,185 @@
+.hyper-theme-picker-host {
+  display: inline-block;
+}
+
+.hyper-theme-picker {
+  position: relative;
+}
+
+// ── Trigger Button ──
+.hyper-theme-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.65rem;
+  background: var(--card);
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--foreground);
+
+  &:hover {
+    border-color: var(--primary);
+  }
+}
+
+.hyper-theme-trigger-swatch {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hyper-theme-trigger-color {
+  flex: 1;
+  display: block;
+}
+
+.hyper-theme-trigger-label {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hyper-theme-trigger-arrow {
+  font-size: 18px !important;
+  color: var(--muted-foreground);
+}
+
+// ── Dropdown Panel ──
+.hyper-theme-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 1000;
+  width: 320px;
+  max-height: 420px;
+  overflow-y: auto;
+  background: var(--card);
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  animation: hyper-theme-dropdown-in 0.15s ease-out;
+}
+
+@keyframes hyper-theme-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hyper-theme-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--muted);
+}
+
+.hyper-theme-dropdown-title {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-foreground);
+}
+
+.hyper-theme-dropdown-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.hyper-theme-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: 2px solid var(--muted);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+
+  .material-icons {
+    font-size: 16px;
+  }
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+}
+
+.hyper-theme-action-btn-active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+
+  &:hover {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+// ── Theme Grid ──
+.hyper-theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  padding: 4px;
+}
+
+.hyper-theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  background: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+  text-align: left;
+
+  &:hover {
+    background: var(--muted);
+  }
+}
+
+.hyper-theme-option-active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.hyper-theme-option-swatch {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--muted-foreground);
+}
+
+.hyper-theme-option-color {
+  flex: 1;
+  display: block;
+}
+
+.hyper-theme-option-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

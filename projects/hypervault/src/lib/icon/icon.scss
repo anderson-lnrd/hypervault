@@ -1,0 +1,19 @@
+:host {
+	font-family: 'Material Symbols Outlined', 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: calc(20px + var(--hyper-density, 0) * 1px);
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
+	user-select: none;
+}

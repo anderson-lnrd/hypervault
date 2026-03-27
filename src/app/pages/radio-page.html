@@ -1,0 +1,134 @@
+<div class="demo-page">
+  <h1 class="demo-title">Radio Button</h1>
+  <p class="demo-intro">Grupo de radio buttons com suporte a ControlValueAccessor, cores, layout horizontal/vertical e label position.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Radio group simples com opcoes verticais.</p>
+    <div class="demo-row">
+      <hyper-radio-group [(value)]="selectedFruit">
+        <hyper-radio-button value="apple">Maca</hyper-radio-button>
+        <hyper-radio-button value="banana">Banana</hyper-radio-button>
+        <hyper-radio-button value="cherry">Cereja</hyper-radio-button>
+      </hyper-radio-group>
+    </div>
+    <p style="margin-top: 0.5rem; color: var(--muted-foreground);">Selecionado: {{ selectedFruit() }}</p>
+    <pre class="demo-code"><code>&lt;hyper-radio-group [(value)]="selectedFruit"&gt;
+  &lt;hyper-radio-button value="apple"&gt;Maca&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="banana"&gt;Banana&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="cherry"&gt;Cereja&lt;/hyper-radio-button&gt;
+&lt;/hyper-radio-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Layout Horizontal ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="layout-horizontal">Layout Horizontal</h2>
+    <p class="demo-card-desc">Use <code>layout="horizontal"</code> para dispor as opcoes em linha.</p>
+    <div class="demo-row">
+      <hyper-radio-group layout="horizontal" value="sm">
+        <hyper-radio-button value="sm">Pequeno</hyper-radio-button>
+        <hyper-radio-button value="md">Medio</hyper-radio-button>
+        <hyper-radio-button value="lg">Grande</hyper-radio-button>
+      </hyper-radio-group>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-radio-group layout="horizontal" value="sm"&gt;
+  &lt;hyper-radio-button value="sm"&gt;Pequeno&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="md"&gt;Medio&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="lg"&gt;Grande&lt;/hyper-radio-button&gt;
+&lt;/hyper-radio-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores disponiveis: <code>primary</code> (padrao) e <code>secondary</code>.</p>
+    <div class="demo-row" style="gap: 2rem;">
+      <hyper-radio-group color="primary" layout="horizontal" value="a">
+        <hyper-radio-button value="a">Primary A</hyper-radio-button>
+        <hyper-radio-button value="b">Primary B</hyper-radio-button>
+      </hyper-radio-group>
+      <hyper-radio-group color="secondary" layout="horizontal" value="a">
+        <hyper-radio-button value="a">Secondary A</hyper-radio-button>
+        <hyper-radio-button value="b">Secondary B</hyper-radio-button>
+      </hyper-radio-group>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-radio-group color="secondary" layout="horizontal" value="a"&gt;
+  &lt;hyper-radio-button value="a"&gt;Secondary A&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="b"&gt;Secondary B&lt;/hyper-radio-button&gt;
+&lt;/hyper-radio-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Label Position ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="label-position">Label Position</h2>
+    <p class="demo-card-desc">Use <code>labelPosition="before"</code> para posicionar o label antes do radio.</p>
+    <div class="demo-row">
+      <hyper-radio-group labelPosition="before" value="opt1">
+        <hyper-radio-button value="opt1">Opcao 1</hyper-radio-button>
+        <hyper-radio-button value="opt2">Opcao 2</hyper-radio-button>
+      </hyper-radio-group>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-radio-group labelPosition="before" value="opt1"&gt;
+  &lt;hyper-radio-button value="opt1"&gt;Opcao 1&lt;/hyper-radio-button&gt;
+  &lt;hyper-radio-button value="opt2"&gt;Opcao 2&lt;/hyper-radio-button&gt;
+&lt;/hyper-radio-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Desabilite o grupo inteiro ou opcoes individuais.</p>
+    <div class="demo-row" style="gap: 2rem;">
+      <hyper-radio-group [disabled]="true" value="x">
+        <hyper-radio-button value="x">Grupo Disabled</hyper-radio-button>
+        <hyper-radio-button value="y">Opcao Y</hyper-radio-button>
+      </hyper-radio-group>
+      <hyper-radio-group value="a">
+        <hyper-radio-button value="a">Habilitado</hyper-radio-button>
+        <hyper-radio-button value="b" [disabled]="true">Individual Disabled</hyper-radio-button>
+      </hyper-radio-group>
+    </div>
+    <pre class="demo-code"><code>&lt;!-- Grupo inteiro --&gt;
+&lt;hyper-radio-group [disabled]="true" value="x"&gt;...&lt;/hyper-radio-group&gt;
+
+&lt;!-- Opcao individual --&gt;
+&lt;hyper-radio-button value="b" [disabled]="true"&gt;Disabled&lt;/hyper-radio-button&gt;</code></pre>
+  </section>
+
+  <!-- ── Formularios ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-formularios">Com Formularios</h2>
+    <p class="demo-card-desc">Implementa <code>ControlValueAccessor</code>, compativel com <code>ngModel</code> e Reactive Forms.</p>
+    <pre class="demo-code"><code>&lt;hyper-radio-group [(value)]="selected"&gt;...&lt;/hyper-radio-group&gt;
+
+// Reactive Forms
+&lt;hyper-radio-group [formControl]="myControl"&gt;
+  &lt;hyper-radio-button value="opt1"&gt;Opcao 1&lt;/hyper-radio-button&gt;
+&lt;/hyper-radio-group&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperradiogroup">API — HyperRadioGroup</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>any</code></td><td>—</td><td>Valor selecionado (two-way)</td></tr>
+        <tr><td><code>name</code></td><td><code>string</code></td><td>auto</td><td>Nome do grupo de radio</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o grupo inteiro</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do radio</td></tr>
+        <tr><td><code>labelPosition</code></td><td><code>'after' | 'before'</code></td><td><code>'after'</code></td><td>Posicao do label</td></tr>
+        <tr><td><code>layout</code></td><td><code>'vertical' | 'horizontal'</code></td><td><code>'vertical'</code></td><td>Disposicao dos radios</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperRadioButton</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>any</code></td><td>—</td><td>Valor do radio button</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita este radio</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

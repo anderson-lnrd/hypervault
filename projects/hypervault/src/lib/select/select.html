@@ -1,0 +1,21 @@
+<div class="hyper-select-trigger" (click)="toggle()" [attr.tabindex]="disabled() ? -1 : 0"
+  role="combobox" [attr.aria-expanded]="isOpen()" [attr.aria-disabled]="disabled()"
+  (keydown.enter)="toggle()" (keydown.space)="$event.preventDefault(); toggle()"
+  (keydown.arrowDown)="$event.preventDefault(); open()">
+  @if (customTrigger(); as ct) {
+    <ng-container *ngTemplateOutlet="ct.template" />
+  } @else {
+    <span class="hyper-select-value" [class.hyper-select-placeholder]="!triggerText()">
+      {{ triggerText() || placeholder() }}
+    </span>
+  }
+  <span class="material-icons hyper-select-arrow" [class.hyper-select-arrow-open]="isOpen()">expand_more</span>
+</div>
+
+@if (isOpen()) {
+  <div class="hyper-select-panel" #panel role="listbox"
+    [attr.aria-multiselectable]="multiple() || null"
+    (keydown)="onPanelKeydown($event)">
+    <ng-content />
+  </div>
+}

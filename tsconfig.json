@@ -1,0 +1,143 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "paths": {
+      "hypervault": [
+        "./projects/hypervault/src/public-api.ts"
+      ],
+      "hypervault/accordion": [
+        "./projects/hypervault/accordion/src/public_api.ts"
+      ],
+      "hypervault/alert": [
+        "./projects/hypervault/alert/src/public_api.ts"
+      ],
+      "hypervault/badge": [
+        "./projects/hypervault/badge/src/public_api.ts"
+      ],
+      "hypervault/breadcrumb": [
+        "./projects/hypervault/breadcrumb/src/public_api.ts"
+      ],
+      "hypervault/button": [
+        "./projects/hypervault/button/src/public_api.ts"
+      ],
+      "hypervault/checkbox": [
+        "./projects/hypervault/checkbox/src/public_api.ts"
+      ],
+      "hypervault/chip": [
+        "./projects/hypervault/chip/src/public_api.ts"
+      ],
+      "hypervault/core": [
+        "./projects/hypervault/core/src/public_api.ts"
+      ],
+      "hypervault/datepicker": [
+        "./projects/hypervault/datepicker/src/public_api.ts"
+      ],
+      "hypervault/density": [
+        "./projects/hypervault/density/src/public_api.ts"
+      ],
+      "hypervault/dialog": [
+        "./projects/hypervault/dialog/src/public_api.ts"
+      ],
+      "hypervault/divider": [
+        "./projects/hypervault/divider/src/public_api.ts"
+      ],
+      "hypervault/form-field": [
+        "./projects/hypervault/form-field/src/public_api.ts"
+      ],
+      "hypervault/icon": [
+        "./projects/hypervault/icon/src/public_api.ts"
+      ],
+      "hypervault/list": [
+        "./projects/hypervault/list/src/public_api.ts"
+      ],
+      "hypervault/menu": [
+        "./projects/hypervault/menu/src/public_api.ts"
+      ],
+      "hypervault/paginator": [
+        "./projects/hypervault/paginator/src/public_api.ts"
+      ],
+      "hypervault/progress-bar": [
+        "./projects/hypervault/progress-bar/src/public_api.ts"
+      ],
+      "hypervault/radio": [
+        "./projects/hypervault/radio/src/public_api.ts"
+      ],
+      "hypervault/select": [
+        "./projects/hypervault/select/src/public_api.ts"
+      ],
+      "hypervault/sidenav": [
+        "./projects/hypervault/sidenav/src/public_api.ts"
+      ],
+      "hypervault/slider": [
+        "./projects/hypervault/slider/src/public_api.ts"
+      ],
+      "hypervault/snackbar": [
+        "./projects/hypervault/snackbar/src/public_api.ts"
+      ],
+      "hypervault/spinner": [
+        "./projects/hypervault/spinner/src/public_api.ts"
+      ],
+      "hypervault/stepper": [
+        "./projects/hypervault/stepper/src/public_api.ts"
+      ],
+      "hypervault/switch": [
+        "./projects/hypervault/switch/src/public_api.ts"
+      ],
+      "hypervault/table": [
+        "./projects/hypervault/table/src/public_api.ts"
+      ],
+      "hypervault/tabs": [
+        "./projects/hypervault/tabs/src/public_api.ts"
+      ],
+      "hypervault/theming": [
+        "./projects/hypervault/theming/src/public_api.ts"
+      ],
+      "hypervault/toolbar": [
+        "./projects/hypervault/toolbar/src/public_api.ts"
+      ],
+      "hypervault/tooltip": [
+        "./projects/hypervault/tooltip/src/public_api.ts"
+      ],
+      "hypervault/tree": [
+        "./projects/hypervault/tree/src/public_api.ts"
+      ],
+      "hypervault/page-summary": [
+        "./projects/hypervault/page-summary/src/public_api.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/hypervault/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/hypervault/tsconfig.spec.json"
+    }
+  ]
+}

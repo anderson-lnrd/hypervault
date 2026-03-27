@@ -1,0 +1,65 @@
+.hyper-form-field {
+	display: block;
+
+	.hyper-form-field-label {
+		display: block;
+		font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--primary, #39ff14);
+		margin-bottom: 0.5rem;
+	}
+
+	.hyper-form-field-container {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		background: var(--input, #242424);
+		border: 2px solid var(--muted, #2a2a2a);
+		border-radius: var(--border-radius, 0);
+		padding: 0 0.75rem;
+		min-height: 2.75rem;
+		transition:
+			border-color 0.15s ease,
+			box-shadow 0.15s ease;
+
+		&:focus-within {
+			border-color: var(--primary, #39ff14);
+			box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #39ff14) 20%, transparent);
+		}
+	}
+}
+
+// Styles for native inputs/textareas inside hyper-form-field
+.hyper-form-field {
+	input.hyper-input,
+	textarea.hyper-textarea {
+		flex: 1;
+		background: transparent;
+		border: none;
+		outline: none;
+		color: var(--foreground, #fafafa);
+		font-family: var(--font-mono, 'Space Mono', monospace);
+		font-size: 0.875rem;
+		padding: 0.625rem 0;
+		width: 100%;
+
+		&::placeholder {
+			color: var(--muted-foreground, #a3a3a3);
+			opacity: 0.7;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+
+	textarea.hyper-textarea {
+		resize: vertical;
+		min-height: 5rem;
+		padding: 0.625rem 0;
+	}
+}

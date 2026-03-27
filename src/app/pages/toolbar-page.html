@@ -1,0 +1,324 @@
+<div class="demo-page">
+  <h1 class="demo-title">Toolbar</h1>
+  <p class="demo-intro">Barra de ferramentas flexivel com suporte a cores, tamanhos, densidade, multiplas linhas e integracao nativa com o Sidenav. Slots de layout organizam conteudo em start, center e end.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Toolbar simples com titulo e botoes de acao.</p>
+    <hyper-toolbar>
+      <button hyper-icon-button aria-label="Menu">
+        <hyper-icon>menu</hyper-icon>
+      </button>
+      <span hyper-toolbar-title>Meu App</span>
+      <hyper-toolbar-end>
+        <button hyper-icon-button aria-label="Buscar">
+          <hyper-icon>search</hyper-icon>
+        </button>
+        <button hyper-icon-button aria-label="Mais">
+          <hyper-icon>more_vert</hyper-icon>
+        </button>
+      </hyper-toolbar-end>
+    </hyper-toolbar>
+    <pre class="demo-code"><code>&lt;hyper-toolbar&gt;
+  &lt;button hyper-icon-button aria-label="Menu"&gt;
+    &lt;hyper-icon&gt;menu&lt;/hyper-icon&gt;
+  &lt;/button&gt;
+  &lt;span hyper-toolbar-title&gt;Meu App&lt;/span&gt;
+  &lt;hyper-toolbar-end&gt;
+    &lt;button hyper-icon-button aria-label="Buscar"&gt;
+      &lt;hyper-icon&gt;search&lt;/hyper-icon&gt;
+    &lt;/button&gt;
+  &lt;/hyper-toolbar-end&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Quatro variantes de cor: <code>default</code>, <code>primary</code>, <code>secondary</code> e <code>accent</code>.</p>
+    <div style="display: grid; gap: 1rem;">
+      <hyper-toolbar color="default">
+        <span hyper-toolbar-title>Default</span>
+        <hyper-toolbar-end>
+          <button hyper-ghost-button size="sm">Action</button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+      <hyper-toolbar color="primary">
+        <span hyper-toolbar-title>Primary</span>
+        <hyper-toolbar-end>
+          <button hyper-ghost-button size="sm">Action</button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+      <hyper-toolbar color="secondary">
+        <span hyper-toolbar-title>Secondary</span>
+        <hyper-toolbar-end>
+          <button hyper-ghost-button size="sm">Action</button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+      <hyper-toolbar color="accent">
+        <span hyper-toolbar-title>Accent</span>
+        <hyper-toolbar-end>
+          <button hyper-ghost-button size="sm">Action</button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-toolbar color="primary"&gt;...&lt;/hyper-toolbar&gt;
+&lt;hyper-toolbar color="secondary"&gt;...&lt;/hyper-toolbar&gt;
+&lt;hyper-toolbar color="accent"&gt;...&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Tamanhos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tamanhos">Tamanhos</h2>
+    <p class="demo-card-desc">Tres tamanhos: <code>sm</code>, <code>md</code> (padrao) e <code>lg</code>.</p>
+    <div style="display: grid; gap: 1rem;">
+      <hyper-toolbar size="sm">
+        <span hyper-toolbar-title>Small</span>
+        <hyper-toolbar-end>
+          <button hyper-icon-button size="sm" aria-label="Settings">
+            <hyper-icon>settings</hyper-icon>
+          </button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+      <hyper-toolbar size="md">
+        <span hyper-toolbar-title>Medium (default)</span>
+        <hyper-toolbar-end>
+          <button hyper-icon-button aria-label="Settings">
+            <hyper-icon>settings</hyper-icon>
+          </button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+      <hyper-toolbar size="lg">
+        <span hyper-toolbar-title>Large</span>
+        <hyper-toolbar-end>
+          <button hyper-icon-button size="lg" aria-label="Settings">
+            <hyper-icon>settings</hyper-icon>
+          </button>
+        </hyper-toolbar-end>
+      </hyper-toolbar>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-toolbar size="sm"&gt;...&lt;/hyper-toolbar&gt;
+&lt;hyper-toolbar size="lg"&gt;...&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Layout: Start / Center / End ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="layout-start-center-end">Layout: Start / Center / End</h2>
+    <p class="demo-card-desc">Use as diretivas <code>hyper-toolbar-start</code>, <code>hyper-toolbar-center</code> e <code>hyper-toolbar-end</code> para organizar o conteudo.</p>
+    <hyper-toolbar color="primary">
+      <hyper-toolbar-start>
+        <button hyper-icon-button aria-label="Menu">
+          <hyper-icon>menu</hyper-icon>
+        </button>
+      </hyper-toolbar-start>
+      <hyper-toolbar-center>
+        <span hyper-toolbar-title>Titulo Central</span>
+      </hyper-toolbar-center>
+      <hyper-toolbar-end>
+        <button hyper-icon-button aria-label="Notificacoes">
+          <hyper-icon>notifications</hyper-icon>
+        </button>
+        <button hyper-icon-button aria-label="Perfil">
+          <hyper-icon>account_circle</hyper-icon>
+        </button>
+      </hyper-toolbar-end>
+    </hyper-toolbar>
+    <pre class="demo-code"><code>&lt;hyper-toolbar color="primary"&gt;
+  &lt;hyper-toolbar-start&gt;
+    &lt;button hyper-icon-button&gt;&lt;hyper-icon&gt;menu&lt;/hyper-icon&gt;&lt;/button&gt;
+  &lt;/hyper-toolbar-start&gt;
+  &lt;hyper-toolbar-center&gt;
+    &lt;span hyper-toolbar-title&gt;Titulo Central&lt;/span&gt;
+  &lt;/hyper-toolbar-center&gt;
+  &lt;hyper-toolbar-end&gt;
+    &lt;button hyper-icon-button&gt;&lt;hyper-icon&gt;notifications&lt;/hyper-icon&gt;&lt;/button&gt;
+    &lt;button hyper-icon-button&gt;&lt;hyper-icon&gt;account_circle&lt;/hyper-icon&gt;&lt;/button&gt;
+  &lt;/hyper-toolbar-end&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Separator ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="separador">Separador</h2>
+    <p class="demo-card-desc">Use <code>&lt;hyper-toolbar-separator&gt;</code> para criar divisoes visuais entre grupos de acoes.</p>
+    <hyper-toolbar>
+      <button hyper-icon-button aria-label="Menu">
+        <hyper-icon>menu</hyper-icon>
+      </button>
+      <hyper-toolbar-separator />
+      <span hyper-toolbar-title>Dashboard</span>
+      <hyper-toolbar-end>
+        <button hyper-ghost-button size="sm">
+          <hyper-icon>download</hyper-icon>
+          Exportar
+        </button>
+        <hyper-toolbar-separator />
+        <button hyper-icon-button aria-label="Filtrar">
+          <hyper-icon>filter_list</hyper-icon>
+        </button>
+        <button hyper-icon-button aria-label="Configuracoes">
+          <hyper-icon>settings</hyper-icon>
+        </button>
+      </hyper-toolbar-end>
+    </hyper-toolbar>
+    <pre class="demo-code"><code>&lt;hyper-toolbar&gt;
+  &lt;button hyper-icon-button&gt;...&lt;/button&gt;
+  &lt;hyper-toolbar-separator /&gt;
+  &lt;span hyper-toolbar-title&gt;Dashboard&lt;/span&gt;
+  &lt;hyper-toolbar-end&gt;
+    &lt;button hyper-ghost-button&gt;Exportar&lt;/button&gt;
+    &lt;hyper-toolbar-separator /&gt;
+    &lt;button hyper-icon-button&gt;...&lt;/button&gt;
+  &lt;/hyper-toolbar-end&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Elevated ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="elevated-sombra-brutal">Elevated (Sombra Brutal)</h2>
+    <p class="demo-card-desc">Adicione <code>[elevated]="true"</code> para aplicar sombra no estilo neo-brutalist.</p>
+    <hyper-toolbar [elevated]="true" color="primary">
+      <span hyper-toolbar-title>Elevated Toolbar</span>
+      <hyper-toolbar-end>
+        <hyper-badge>BETA</hyper-badge>
+        <button hyper-icon-button aria-label="Info">
+          <hyper-icon>info</hyper-icon>
+        </button>
+      </hyper-toolbar-end>
+    </hyper-toolbar>
+    <pre class="demo-code"><code>&lt;hyper-toolbar [elevated]="true" color="primary"&gt;
+  &lt;span hyper-toolbar-title&gt;Elevated&lt;/span&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Dense ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dense-compacto">Dense (Compacto)</h2>
+    <p class="demo-card-desc"><code>[dense]="true"</code> reduz padding e altura. Ideal para sub-toolbars ou interfaces compactas.</p>
+    <div style="display: grid; gap: 1rem;">
+      <hyper-toolbar>
+        <span hyper-toolbar-title>Normal</span>
+      </hyper-toolbar>
+      <hyper-toolbar [dense]="true">
+        <span hyper-toolbar-title>Dense</span>
+      </hyper-toolbar>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-toolbar [dense]="true"&gt;
+  &lt;span hyper-toolbar-title&gt;Compact Toolbar&lt;/span&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Multi-Row ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="multi-row">Multi-Row</h2>
+    <p class="demo-card-desc">Use <code>&lt;hyper-toolbar-row&gt;</code> para adicionar linhas extras. Util para sub-navegacao, filtros ou breadcrumbs.</p>
+    <hyper-toolbar>
+      <button hyper-icon-button aria-label="Menu">
+        <hyper-icon>menu</hyper-icon>
+      </button>
+      <span hyper-toolbar-title>Painel Admin</span>
+      <hyper-toolbar-end>
+        <button hyper-icon-button aria-label="Notificacoes">
+          <hyper-icon>notifications</hyper-icon>
+        </button>
+      </hyper-toolbar-end>
+      <hyper-toolbar-row>
+        <button hyper-ghost-button size="sm">Usuarios</button>
+        <button hyper-ghost-button size="sm">Relatorios</button>
+        <button hyper-ghost-button size="sm">Configuracoes</button>
+      </hyper-toolbar-row>
+    </hyper-toolbar>
+    <pre class="demo-code"><code>&lt;hyper-toolbar&gt;
+  &lt;span hyper-toolbar-title&gt;Admin&lt;/span&gt;
+  &lt;hyper-toolbar-row&gt;
+    &lt;button hyper-ghost-button size="sm"&gt;Usuarios&lt;/button&gt;
+    &lt;button hyper-ghost-button size="sm"&gt;Relatorios&lt;/button&gt;
+  &lt;/hyper-toolbar-row&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Sticky ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sticky">Sticky</h2>
+    <p class="demo-card-desc"><code>[sticky]="true"</code> fixa o toolbar no topo durante o scroll. Funciona dentro de qualquer container com overflow.</p>
+    <pre class="demo-code"><code>&lt;hyper-toolbar [sticky]="true"&gt;
+  &lt;span hyper-toolbar-title&gt;Fixed Header&lt;/span&gt;
+&lt;/hyper-toolbar&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Sidenav ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-sidenav">Com Sidenav</h2>
+    <p class="demo-card-desc">O toolbar foi projetado para funcionar dentro de <code>hyper-sidenav-content</code>, ocupando a largura total do conteudo. O botao de menu alterna o sidenav.</p>
+    <pre class="demo-code"><code>&lt;hyper-sidenav-container&gt;
+  &lt;hyper-sidenav [(opened)]="opened" mode="side"&gt;
+    ...nav...
+  &lt;/hyper-sidenav&gt;
+  &lt;hyper-sidenav-content&gt;
+    &lt;hyper-toolbar [sticky]="true"&gt;
+      &lt;button hyper-icon-button (click)="opened = !opened"&gt;
+        &lt;hyper-icon&gt;menu&lt;/hyper-icon&gt;
+      &lt;/button&gt;
+      &lt;span hyper-toolbar-title&gt;Dashboard&lt;/span&gt;
+    &lt;/hyper-toolbar&gt;
+    &lt;main&gt;...&lt;/main&gt;
+  &lt;/hyper-sidenav-content&gt;
+&lt;/hyper-sidenav-container&gt;</code></pre>
+  </section>
+
+  <!-- ── Density Scale ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="density-scale">Density Scale</h2>
+    <p class="demo-card-desc">O toolbar respeita o sistema de densidade. Aplique <code>[hyperDensity]</code> para ajustar de 0 (padrao) a -4 (mais compacto).</p>
+    <div style="display: grid; gap: 1rem;">
+      @for (d of [0, -1, -2, -3, -4]; track d) {
+        <div [hyperDensity]="$any(d)">
+          <hyper-toolbar>
+            <span class="demo-density-label">density: {{ d }}</span>
+            <span hyper-toolbar-title>Toolbar</span>
+            <hyper-toolbar-end>
+              <button hyper-icon-button aria-label="Action">
+                <hyper-icon>star</hyper-icon>
+              </button>
+            </hyper-toolbar-end>
+          </hyper-toolbar>
+        </div>
+      }
+    </div>
+    <pre class="demo-code"><code>&lt;div [hyperDensity]="-2"&gt;
+  &lt;hyper-toolbar&gt;...&lt;/hyper-toolbar&gt;
+&lt;/div&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8;">HyperToolbar</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>color</code></td><td><code>'default' | 'primary' | 'secondary' | 'accent'</code></td><td><code>'default'</code></td><td>Variante de cor</td></tr>
+        <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Altura/padding preset</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Borda inferior</td></tr>
+        <tr><td><code>elevated</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Sombra brutal (neo-brutalist)</td></tr>
+        <tr><td><code>dense</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Modo compacto</td></tr>
+        <tr><td><code>sticky</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Fixa no topo durante scroll</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="demo-card-title" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">Diretivas de Layout</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Seletor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyper-toolbar-start</code></td><td>Agrupa conteudo no inicio (esquerda)</td></tr>
+        <tr><td><code>hyper-toolbar-center</code></td><td>Agrupa conteudo no centro (flex: 1, justify-content: center)</td></tr>
+        <tr><td><code>hyper-toolbar-end</code></td><td>Agrupa conteudo no final (margin-left: auto)</td></tr>
+        <tr><td><code>hyper-toolbar-separator</code></td><td>Linha vertical separadora entre grupos</td></tr>
+        <tr><td><code>hyper-toolbar-title</code></td><td>Estilo de titulo (bold, uppercase, tracking)</td></tr>
+        <tr><td><code>hyper-toolbar-row</code></td><td>Linha adicional em toolbars multi-row</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

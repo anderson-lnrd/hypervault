@@ -1,0 +1,190 @@
+<div class="demo-page">
+  <h1 class="demo-title">Menu</h1>
+  <p class="demo-intro">Context menu com icones, grupos, dividers, posicionamento e navegacao por teclado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Clique no botao para abrir o menu. Itens emitem <code>(activated)</code> ao serem clicados.</p>
+    <div class="demo-row">
+      <button hyper-raised-button [hyperMenuTriggerFor]="basicMenu">Abrir Menu</button>
+      @if (lastAction()) {
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--primary);">
+          > {{ lastAction() }}
+        </span>
+      }
+    </div>
+    <hyper-menu #basicMenu>
+      <hyper-menu-item (activated)="onAction('Copiar')">Copiar</hyper-menu-item>
+      <hyper-menu-item (activated)="onAction('Colar')">Colar</hyper-menu-item>
+      <hyper-menu-item (activated)="onAction('Recortar')">Recortar</hyper-menu-item>
+    </hyper-menu>
+    <pre class="demo-code"><code>&lt;button [hyperMenuTriggerFor]="menu"&gt;Abrir&lt;/button&gt;
+&lt;hyper-menu #menu&gt;
+  &lt;hyper-menu-item (activated)="fn()"&gt;Copiar&lt;/hyper-menu-item&gt;
+&lt;/hyper-menu&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Use o input <code>icon</code> para adicionar icones Material aos itens.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button [hyperMenuTriggerFor]="iconMenu">
+        <span class="material-icons" style="font-size: 18px; vertical-align: middle;">more_vert</span>
+        Acoes
+      </button>
+      <button hyper-raised-button color="secondary" [hyperMenuTriggerFor]="fileMenu">
+        <span class="material-icons" style="font-size: 18px; vertical-align: middle;">folder</span>
+        Arquivo
+      </button>
+    </div>
+    <hyper-menu #iconMenu>
+      <hyper-menu-item icon="edit" (activated)="onAction('Editar')">Editar</hyper-menu-item>
+      <hyper-menu-item icon="content_copy" (activated)="onAction('Duplicar')">Duplicar</hyper-menu-item>
+      <hyper-menu-item icon="share" (activated)="onAction('Compartilhar')">Compartilhar</hyper-menu-item>
+      <hyper-menu-divider />
+      <hyper-menu-item icon="delete" (activated)="onAction('Excluir')">Excluir</hyper-menu-item>
+    </hyper-menu>
+    <hyper-menu #fileMenu>
+      <hyper-menu-item icon="note_add" (activated)="onAction('Novo')">Novo</hyper-menu-item>
+      <hyper-menu-item icon="folder_open" (activated)="onAction('Abrir')">Abrir</hyper-menu-item>
+      <hyper-menu-item icon="save" (activated)="onAction('Salvar')">Salvar</hyper-menu-item>
+      <hyper-menu-divider />
+      <hyper-menu-item icon="download" (activated)="onAction('Exportar')">Exportar</hyper-menu-item>
+      <hyper-menu-item icon="print" (activated)="onAction('Imprimir')">Imprimir</hyper-menu-item>
+    </hyper-menu>
+    <pre class="demo-code"><code>&lt;hyper-menu-item icon="edit"&gt;Editar&lt;/hyper-menu-item&gt;
+&lt;hyper-menu-divider /&gt;
+&lt;hyper-menu-item icon="delete"&gt;Excluir&lt;/hyper-menu-item&gt;</code></pre>
+  </section>
+
+  <!-- ── Grupos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="grupos">Grupos</h2>
+    <p class="demo-card-desc">Agrupe itens com <code>hyper-menu-group</code> e separadores para organizar o menu.</p>
+    <button hyper-raised-button color="secondary" [hyperMenuTriggerFor]="groupMenu">
+      <span class="material-icons" style="font-size: 18px; vertical-align: middle;">settings</span>
+      Configuracoes
+    </button>
+    <hyper-menu #groupMenu>
+      <hyper-menu-group label="Conta">
+        <hyper-menu-item icon="person">Perfil</hyper-menu-item>
+        <hyper-menu-item icon="settings">Preferencias</hyper-menu-item>
+        <hyper-menu-item icon="notifications">Notificacoes</hyper-menu-item>
+      </hyper-menu-group>
+      <hyper-menu-divider />
+      <hyper-menu-group label="Sessao">
+        <hyper-menu-item icon="lock">Alterar Senha</hyper-menu-item>
+        <hyper-menu-item icon="logout">Sair</hyper-menu-item>
+      </hyper-menu-group>
+    </hyper-menu>
+    <pre class="demo-code"><code>&lt;hyper-menu-group label="Conta"&gt;
+  &lt;hyper-menu-item icon="person"&gt;Perfil&lt;/hyper-menu-item&gt;
+&lt;/hyper-menu-group&gt;
+&lt;hyper-menu-divider /&gt;</code></pre>
+  </section>
+
+  <!-- ── Disabled Items ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="itens-desabilitados">Itens Desabilitados</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para desabilitar itens. Eles nao recebem hover, focus ou click.</p>
+    <button hyper-stroked-button [hyperMenuTriggerFor]="disMenu">Permissoes</button>
+    <hyper-menu #disMenu>
+      <hyper-menu-item icon="visibility">Visualizar</hyper-menu-item>
+      <hyper-menu-item icon="edit">Editar</hyper-menu-item>
+      <hyper-menu-item icon="admin_panel_settings" [disabled]="true">Admin (sem permissao)</hyper-menu-item>
+      <hyper-menu-divider />
+      <hyper-menu-item icon="delete" [disabled]="true">Excluir (bloqueado)</hyper-menu-item>
+    </hyper-menu>
+    <pre class="demo-code"><code>&lt;hyper-menu-item [disabled]="true"&gt;Bloqueado&lt;/hyper-menu-item&gt;</code></pre>
+  </section>
+
+  <!-- ── Posicionamento ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="posicionamento">Posicionamento</h2>
+    <p class="demo-card-desc">Configure <code>xPosition</code> (before/after) e <code>yPosition</code> (above/below). O menu auto-ajusta se ultrapassar a viewport.</p>
+    <div class="demo-row" style="gap: 1rem; flex-wrap: wrap;">
+      <button hyper-stroked-button [hyperMenuTriggerFor]="posBA">
+        <span class="material-icons" style="font-size: 16px; vertical-align: middle;">south_east</span>
+        Below + After
+      </button>
+      <hyper-menu #posBA yPosition="below" xPosition="after">
+        <hyper-menu-item>Opcao 1</hyper-menu-item>
+        <hyper-menu-item>Opcao 2</hyper-menu-item>
+        <hyper-menu-item>Opcao 3</hyper-menu-item>
+      </hyper-menu>
+
+      <button hyper-stroked-button [hyperMenuTriggerFor]="posBB">
+        <span class="material-icons" style="font-size: 16px; vertical-align: middle;">south_west</span>
+        Below + Before
+      </button>
+      <hyper-menu #posBB yPosition="below" xPosition="before">
+        <hyper-menu-item>Opcao A</hyper-menu-item>
+        <hyper-menu-item>Opcao B</hyper-menu-item>
+        <hyper-menu-item>Opcao C</hyper-menu-item>
+      </hyper-menu>
+
+      <button hyper-stroked-button [hyperMenuTriggerFor]="posAA">
+        <span class="material-icons" style="font-size: 16px; vertical-align: middle;">north_east</span>
+        Above + After
+      </button>
+      <hyper-menu #posAA yPosition="above" xPosition="after">
+        <hyper-menu-item>Opcao X</hyper-menu-item>
+        <hyper-menu-item>Opcao Y</hyper-menu-item>
+        <hyper-menu-item>Opcao Z</hyper-menu-item>
+      </hyper-menu>
+
+      <button hyper-stroked-button [hyperMenuTriggerFor]="posAB">
+        <span class="material-icons" style="font-size: 16px; vertical-align: middle;">north_west</span>
+        Above + Before
+      </button>
+      <hyper-menu #posAB yPosition="above" xPosition="before">
+        <hyper-menu-item>Item I</hyper-menu-item>
+        <hyper-menu-item>Item II</hyper-menu-item>
+        <hyper-menu-item>Item III</hyper-menu-item>
+      </hyper-menu>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-menu yPosition="above" xPosition="before"&gt;
+  ...
+&lt;/hyper-menu&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hypermenu">API — HyperMenu</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>xPosition</code></td><td><code>'before' | 'after'</code></td><td><code>'after'</code></td><td>Posicao horizontal</td></tr>
+        <tr><td><code>yPosition</code></td><td><code>'above' | 'below'</code></td><td><code>'below'</code></td><td>Posicao vertical</td></tr>
+        <tr><td><code>hasBackdrop</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Backdrop invisivel para fechar</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperMenuItem</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>icon</code></td><td><code>string</code></td><td><code>''</code></td><td>Material icon name</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o item</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperMenuTrigger</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyperMenuTriggerFor</code></td><td><code>HyperMenu</code></td><td>Referencia ao menu</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">Teclado</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Tecla</th><th>Acao</th></tr></thead>
+      <tbody>
+        <tr><td><code>Enter / Space</code></td><td>Abre o menu ou ativa o item</td></tr>
+        <tr><td><code>Arrow Down</code></td><td>Move para o proximo item</td></tr>
+        <tr><td><code>Arrow Up</code></td><td>Move para o item anterior</td></tr>
+        <tr><td><code>Escape</code></td><td>Fecha o menu</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

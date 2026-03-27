@@ -1,0 +1,113 @@
+<div class="demo-page">
+  <h1 class="demo-title">Sidenav</h1>
+  <p class="demo-intro">Painel lateral de navegacao (drawer) com tres modos de exibicao, posicionamento start/end e controle programatico.</p>
+
+  <!-- ── Demo Interativa ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="demo">Demo Interativa</h2>
+    <p class="demo-card-desc">Escolha o modo e posicao, depois abra o sidenav para ver o comportamento.</p>
+    <div class="demo-row" style="margin-bottom: 1rem;">
+      <button hyper-raised-button (click)="mode = 'over'" [color]="mode === 'over' ? 'primary' : 'accent'">Over</button>
+      <button hyper-raised-button (click)="mode = 'push'" [color]="mode === 'push' ? 'primary' : 'accent'">Push</button>
+      <button hyper-raised-button (click)="mode = 'side'" [color]="mode === 'side' ? 'primary' : 'accent'">Side</button>
+      <span style="width: 1px; height: 24px; background: var(--muted);"></span>
+      <button hyper-raised-button (click)="position = 'start'" [color]="position === 'start' ? 'secondary' : 'accent'">Start</button>
+      <button hyper-raised-button (click)="position = 'end'" [color]="position === 'end' ? 'secondary' : 'accent'">End</button>
+      <span style="width: 1px; height: 24px; background: var(--muted);"></span>
+      <button hyper-raised-button hoverEffect="press-3d" (click)="opened = !opened">
+        <hyper-icon>{{ opened ? 'menu_open' : 'menu' }}</hyper-icon>
+        {{ opened ? 'Fechar' : 'Abrir' }}
+      </button>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.75rem; opacity: 0.5; margin: 0 0 0.5rem;">
+      Mode: <strong>{{ mode }}</strong> · Position: <strong>{{ position }}</strong> · {{ opened ? 'Aberto' : 'Fechado' }}
+    </p>
+    <div style="height: 300px; border: 2px solid var(--muted); position: relative;">
+      <hyper-sidenav-container>
+        <hyper-sidenav [(opened)]="opened" [mode]="mode" [position]="position">
+          <div style="padding: 1rem;">
+            <h3 style="margin: 0 0 1rem; font-family: var(--font-sans); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.06em;">Menu</h3>
+            <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem; cursor: pointer; opacity: 0.7;">Dashboard</span>
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem; cursor: pointer; opacity: 0.7;">Produtos</span>
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem; cursor: pointer; opacity: 0.7;">Relatorios</span>
+            </nav>
+          </div>
+        </hyper-sidenav>
+        <hyper-sidenav-content>
+          <div style="padding: 1.5rem;">
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; opacity: 0.6;">
+              Conteudo principal. Use os controles acima para abrir/fechar o sidenav e trocar modo e posicao.
+            </p>
+          </div>
+        </hyper-sidenav-content>
+      </hyper-sidenav-container>
+    </div>
+  </section>
+
+  <!-- ── Modos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="modos">Modos</h2>
+    <p class="demo-card-desc">Tres modos de exibicao controlam como o sidenav interage com o conteudo.</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Modo</th><th>Comportamento</th></tr></thead>
+      <tbody>
+        <tr><td><code>over</code></td><td>Abre sobre o conteudo com backdrop escuro. Clique no backdrop para fechar.</td></tr>
+        <tr><td><code>push</code></td><td>Empurra o conteudo para o lado. Backdrop visivel, clicavel para fechar.</td></tr>
+        <tr><td><code>side</code></td><td>Fica ao lado do conteudo sem backdrop. Nao fecha ao clicar fora.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Codigo ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="uso">Exemplo de Uso</h2>
+    <pre class="demo-code"><code>&lt;hyper-sidenav-container&gt;
+  &lt;hyper-sidenav [(opened)]="menuAberto" mode="side"&gt;
+    &lt;!-- conteudo do menu --&gt;
+  &lt;/hyper-sidenav&gt;
+  &lt;hyper-sidenav-content&gt;
+    &lt;!-- conteudo principal --&gt;
+  &lt;/hyper-sidenav-content&gt;
+&lt;/hyper-sidenav-container&gt;</code></pre>
+  </section>
+
+  <!-- ── Controle Programatico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="controle-programatico">Controle Programatico</h2>
+    <p class="demo-card-desc">Acesse a instancia via <code>viewChild</code> para controlar programaticamente.</p>
+    <pre class="demo-code"><code>readonly sidenav = viewChild(HyperSidenav);
+
+// Abrir
+this.sidenav().open();
+
+// Fechar
+this.sidenav().close();
+
+// Toggle
+this.sidenav().toggle();</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8;">HyperSidenav</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>opened</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado aberto/fechado (two-way binding)</td></tr>
+        <tr><td><code>mode</code></td><td><code>'over' | 'push' | 'side'</code></td><td><code>'over'</code></td><td>Modo de exibicao</td></tr>
+        <tr><td><code>position</code></td><td><code>'start' | 'end'</code></td><td><code>'start'</code></td><td>Lado do painel</td></tr>
+      </tbody>
+    </table>
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8; margin-top: 1rem;">Metodos</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>open()</code></td><td>Abre o sidenav</td></tr>
+        <tr><td><code>close()</code></td><td>Fecha o sidenav</td></tr>
+        <tr><td><code>toggle()</code></td><td>Alterna aberto/fechado</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

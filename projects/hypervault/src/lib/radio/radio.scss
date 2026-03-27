@@ -1,0 +1,129 @@
+// ── Radio Button ──
+
+// Individual radio button host inside group
+:host(.hyper-radio-button) {
+  display: block;
+  flex-shrink: 0;
+}
+
+:host(.hyper-radio-group) {
+  display: flex;
+  gap: 0.75rem;
+
+  &.hyper-radio-vertical {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  &.hyper-radio-horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+}
+
+// ── Layout ──
+
+.hyper-radio-layout {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  user-select: none;
+
+  &.hyper-radio-label-before {
+    flex-direction: row-reverse;
+  }
+}
+
+// ── Outer circle ──
+
+.hyper-radio-outer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: var(--border-width) solid var(--border);
+  border-radius: 50%;
+  background: var(--card);
+  flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  outline: none;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+}
+
+// ── Inner dot ──
+
+.hyper-radio-inner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  transform: scale(0);
+  transition: transform 0.15s ease, background 0.15s;
+}
+
+// ── Checked state ──
+
+:host(.hyper-radio-checked) {
+  .hyper-radio-outer {
+    border-color: var(--primary);
+  }
+
+  .hyper-radio-inner {
+    transform: scale(1);
+    background: var(--primary);
+  }
+
+  // Colors
+  .hyper-secondary .hyper-radio-outer {
+    border-color: var(--secondary);
+  }
+  .hyper-secondary .hyper-radio-inner {
+    background: var(--secondary);
+  }
+}
+
+// ── Hover ──
+
+.hyper-radio-layout:hover .hyper-radio-outer {
+  border-color: var(--primary);
+}
+
+.hyper-radio-layout.hyper-secondary:hover .hyper-radio-outer {
+  border-color: var(--secondary);
+}
+
+// ── Disabled ──
+
+:host(.hyper-radio-disabled) {
+  .hyper-radio-layout {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .hyper-radio-outer {
+    pointer-events: none;
+  }
+}
+
+// ── Density ──
+
+$density: var(--hyper-density, 0);
+
+.hyper-radio-outer {
+  width: calc(20px + #{$density} * 1px);
+  height: calc(20px + #{$density} * 1px);
+}
+
+.hyper-radio-inner {
+  width: calc(10px + #{$density} * 0.5px);
+  height: calc(10px + #{$density} * 0.5px);
+}

@@ -1,0 +1,94 @@
+<div class="demo-page">
+  <h1 class="demo-title">Form Field</h1>
+  <p class="demo-intro">Wrapper para inputs com label, prefixo e sufixo. Fornece estilo consistente para campos de texto, email, senha e textarea.</p>
+
+  <!-- ── Input Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="input-basico">Input Basico</h2>
+    <p class="demo-card-desc">Use a classe <code>hyper-input</code> no elemento <code>&lt;input&gt;</code> dentro de <code>&lt;hyper-form-field&gt;</code>.</p>
+    <div class="demo-form-col">
+      <hyper-form-field label="Email">
+        <input class="hyper-input" placeholder="seu&#64;email.com" />
+      </hyper-form-field>
+      <hyper-form-field label="Nome">
+        <input class="hyper-input" placeholder="Joao Silva" />
+      </hyper-form-field>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-form-field label="Email"&gt;
+  &lt;input class="hyper-input" placeholder="seu&#64;email.com" /&gt;
+&lt;/hyper-form-field&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Prefixo ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="prefixo">Com Prefixo (Icone)</h2>
+    <p class="demo-card-desc">Use a diretiva <code>hyperPrefix</code> em um <code>&lt;hyper-icon&gt;</code> para exibir um icone antes do input.</p>
+    <div class="demo-form-col">
+      <hyper-form-field>
+        <hyper-icon hyperPrefix>search</hyper-icon>
+        <input class="hyper-input" placeholder="Buscar produtos..." />
+      </hyper-form-field>
+      <hyper-form-field>
+        <hyper-icon hyperPrefix>mail</hyper-icon>
+        <input class="hyper-input" placeholder="Seu melhor email" />
+      </hyper-form-field>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-form-field&gt;
+  &lt;hyper-icon hyperPrefix&gt;search&lt;/hyper-icon&gt;
+  &lt;input class="hyper-input" placeholder="Buscar..." /&gt;
+&lt;/hyper-form-field&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Sufixo ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sufixo">Com Sufixo</h2>
+    <p class="demo-card-desc">A diretiva <code>hyperSuffix</code> posiciona um elemento apos o input. Ideal para botoes de toggle ou acoes.</p>
+    <div class="demo-form-col">
+      <hyper-form-field label="Senha">
+        <input class="hyper-input" [type]="showPassword ? 'text' : 'password'" placeholder="********" />
+        <button hyperSuffix class="hyper-icon-toggle" (click)="togglePassword()" type="button" aria-label="Mostrar senha">
+          <hyper-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</hyper-icon>
+        </button>
+      </hyper-form-field>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-form-field label="Senha"&gt;
+  &lt;input class="hyper-input" [type]="show ? 'text' : 'password'" /&gt;
+  &lt;button hyperSuffix (click)="show = !show"&gt;
+    &lt;hyper-icon&gt;visibility&lt;/hyper-icon&gt;
+  &lt;/button&gt;
+&lt;/hyper-form-field&gt;</code></pre>
+  </section>
+
+  <!-- ── Textarea ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="textarea">Textarea</h2>
+    <p class="demo-card-desc">Use a classe <code>hyper-textarea</code> no elemento <code>&lt;textarea&gt;</code>.</p>
+    <div class="demo-form-col">
+      <hyper-form-field label="Mensagem">
+        <textarea class="hyper-textarea" placeholder="Digite sua mensagem aqui..." rows="4"></textarea>
+      </hyper-form-field>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-form-field label="Mensagem"&gt;
+  &lt;textarea class="hyper-textarea" rows="4"&gt;&lt;/textarea&gt;
+&lt;/hyper-form-field&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td><code>''</code></td><td>Label exibida acima do campo</td></tr>
+      </tbody>
+    </table>
+    <h3 class="demo-card-title" style="margin-top: 1rem;">Diretivas</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Diretiva</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyperPrefix</code></td><td>Posiciona elemento antes do input</td></tr>
+        <tr><td><code>hyperSuffix</code></td><td>Posiciona elemento apos o input</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

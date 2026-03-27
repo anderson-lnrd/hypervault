@@ -1,0 +1,179 @@
+<div class="demo-page">
+  <h1 class="demo-title">List</h1>
+  <p class="demo-intro">Componente de lista com itens interativos, icones, meta info, dividers, subheaders e lista de selecao.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Lista simples com bordas.</p>
+    <hyper-list [bordered]="true">
+      <hyper-list-item>Inbox</hyper-list-item>
+      <hyper-list-item>Enviados</hyper-list-item>
+      <hyper-list-item>Rascunhos</hyper-list-item>
+      <hyper-list-item>Lixeira</hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list [bordered]="true"&gt;
+  &lt;hyper-list-item&gt;Inbox&lt;/hyper-list-item&gt;
+  &lt;hyper-list-item&gt;Enviados&lt;/hyper-list-item&gt;
+&lt;/hyper-list&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones-e-meta">Com Icones e Meta</h2>
+    <p class="demo-card-desc">Adicione icones (leading) e meta info (trailing) via content projection.</p>
+    <hyper-list [bordered]="true">
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">inbox</span>
+        Inbox
+        <span hyper-list-item-meta>42</span>
+      </hyper-list-item>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">send</span>
+        Enviados
+        <span hyper-list-item-meta>12</span>
+      </hyper-list-item>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">drafts</span>
+        Rascunhos
+        <span hyper-list-item-meta>3</span>
+      </hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list-item&gt;
+  &lt;span hyper-list-item-icon class="material-icons"&gt;inbox&lt;/span&gt;
+  Inbox
+  &lt;span hyper-list-item-meta&gt;42&lt;/span&gt;
+&lt;/hyper-list-item&gt;</code></pre>
+  </section>
+
+  <!-- ── Multi-line ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="multi-line">Multi-line</h2>
+    <p class="demo-card-desc">Use <code>hyper-list-item-line</code> para itens com titulo e descricao.</p>
+    <hyper-list [bordered]="true">
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">person</span>
+        <span hyper-list-item-line>Maria Silva</span>
+        <span hyper-list-item-line>Desenvolvedora Frontend</span>
+      </hyper-list-item>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">person</span>
+        <span hyper-list-item-line>Joao Santos</span>
+        <span hyper-list-item-line>Designer UI/UX</span>
+      </hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list-item&gt;
+  &lt;span hyper-list-item-icon class="material-icons"&gt;person&lt;/span&gt;
+  &lt;span hyper-list-item-line&gt;Maria Silva&lt;/span&gt;
+  &lt;span hyper-list-item-line&gt;Desenvolvedora Frontend&lt;/span&gt;
+&lt;/hyper-list-item&gt;</code></pre>
+  </section>
+
+  <!-- ── Dividers e Subheaders ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dividers-e-subheaders">Dividers e Subheaders</h2>
+    <p class="demo-card-desc">Agrupe itens com subheaders e dividers.</p>
+    <hyper-list [bordered]="true">
+      <hyper-list-subheader>Pastas</hyper-list-subheader>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">folder</span>
+        Documentos
+      </hyper-list-item>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">folder</span>
+        Imagens
+      </hyper-list-item>
+      <hyper-list-divider />
+      <hyper-list-subheader>Arquivos</hyper-list-subheader>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">description</span>
+        relatorio.pdf
+      </hyper-list-item>
+      <hyper-list-item>
+        <span hyper-list-item-icon class="material-icons">image</span>
+        foto.jpg
+      </hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list-subheader&gt;Pastas&lt;/hyper-list-subheader&gt;
+&lt;hyper-list-item&gt;...&lt;/hyper-list-item&gt;
+&lt;hyper-list-divider /&gt;
+&lt;hyper-list-subheader&gt;Arquivos&lt;/hyper-list-subheader&gt;</code></pre>
+  </section>
+
+  <!-- ── Dense ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dense">Dense</h2>
+    <p class="demo-card-desc">Use <code>[dense]="true"</code> para reduzir o padding dos itens.</p>
+    <hyper-list [bordered]="true" [dense]="true">
+      <hyper-list-item>Item compacto 1</hyper-list-item>
+      <hyper-list-item>Item compacto 2</hyper-list-item>
+      <hyper-list-item>Item compacto 3</hyper-list-item>
+      <hyper-list-item>Item compacto 4</hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list [bordered]="true" [dense]="true"&gt;...&lt;/hyper-list&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado e Selecionado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado-e-selecionado">Desabilitado e Selecionado</h2>
+    <p class="demo-card-desc">Itens podem ser desabilitados ou marcados como selecionados.</p>
+    <hyper-list [bordered]="true">
+      <hyper-list-item [selected]="true">
+        <span hyper-list-item-icon class="material-icons">check</span>
+        Selecionado
+      </hyper-list-item>
+      <hyper-list-item>Normal</hyper-list-item>
+      <hyper-list-item [disabled]="true">Desabilitado</hyper-list-item>
+    </hyper-list>
+    <pre class="demo-code"><code>&lt;hyper-list-item [selected]="true"&gt;Selecionado&lt;/hyper-list-item&gt;
+&lt;hyper-list-item [disabled]="true"&gt;Desabilitado&lt;/hyper-list-item&gt;</code></pre>
+  </section>
+
+  <!-- ── Selection List ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="selection-list">Selection List</h2>
+    <p class="demo-card-desc">Lista com checkboxes para selecao multipla.</p>
+    <hyper-selection-list [bordered]="true" (selectionChange)="onSelectionChange($event)">
+      <hyper-list-option value="angular">Angular</hyper-list-option>
+      <hyper-list-option value="react">React</hyper-list-option>
+      <hyper-list-option value="vue">Vue</hyper-list-option>
+      <hyper-list-option value="svelte" [disabled]="true">Svelte (disabled)</hyper-list-option>
+    </hyper-selection-list>
+    <p style="margin-top: 0.5rem; color: var(--muted-foreground);">Selecionados: {{ selectedItems().join(', ') || 'nenhum' }}</p>
+    <pre class="demo-code"><code>&lt;hyper-selection-list [bordered]="true" (selectionChange)="onChange($event)"&gt;
+  &lt;hyper-list-option value="angular"&gt;Angular&lt;/hyper-list-option&gt;
+  &lt;hyper-list-option value="react"&gt;React&lt;/hyper-list-option&gt;
+&lt;/hyper-selection-list&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperlist">API — HyperList</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>dense</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Modo compacto</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Borda ao redor da lista</td></tr>
+        <tr><td><code>interactive</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Hover effects nos itens</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperListItem</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o item</td></tr>
+        <tr><td><code>selected</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Marca como selecionado</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperSelectionList</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>multiple</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Selecao multipla</td></tr>
+        <tr><td><code>dense</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Modo compacto</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Borda ao redor</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do checkbox</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

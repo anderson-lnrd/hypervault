@@ -1,0 +1,62 @@
+<hyper-sidenav-container>
+  <hyper-sidenav [(opened)]="sidenavOpened" mode="side">
+    <div class="nav-header">
+      <span class="nav-logo">HV</span>
+      <span class="nav-brand">HyperVault</span>
+    </div>
+    <div class="nav-search">
+      <span class="material-icons nav-search-icon">search</span>
+      <input
+        type="text"
+        placeholder="Buscar..."
+        [ngModel]="searchQuery()"
+        (ngModelChange)="searchQuery.set($event)"
+        class="nav-search-input"
+      />
+      @if (searchQuery()) {
+        <button class="nav-search-clear" (click)="clearSearch()" aria-label="Limpar busca">
+          <span class="material-icons">close</span>
+        </button>
+      }
+    </div>
+    <nav class="nav-links">
+      @for (entry of filteredNav(); track entry) {
+        @if (isGroup(entry)) {
+          <span class="nav-group-label">{{ entry.title }}</span>
+          @for (item of entry.items; track item.route) {
+            <a [routerLink]="item.route" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: item.route === '/' }">
+              <span class="material-icons">{{ item.icon }}</span>
+              {{ item.label }}
+            </a>
+          }
+        } @else {
+          <a [routerLink]="entry.route" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: entry.route === '/' }">
+            <span class="material-icons">{{ entry.icon }}</span>
+            {{ entry.label }}
+          </a>
+        }
+      }
+      @if (!filteredNav().length) {
+        <span class="nav-no-results">Nenhum resultado</span>
+      }
+    </nav>
+  </hyper-sidenav>
+  <hyper-sidenav-content>
+    <hyper-toolbar [sticky]="true" [bordered]="true" size="lg">
+      <button hyper-icon-button size="sm" aria-label="Menu" (click)="sidenavOpened = !sidenavOpened">
+        <hyper-icon>menu</hyper-icon>
+      </button>
+      <hyper-breadcrumb />
+      <span class="toolbar-spacer"></span>
+      <hyper-theme-picker />
+    </hyper-toolbar>
+    <main>
+      <div class="main-content">
+        <router-outlet />
+      </div>
+      <aside class="main-toc">
+        <hyper-page-summary position="sticky" />
+      </aside>
+    </main>
+  </hyper-sidenav-content>
+</hyper-sidenav-container>

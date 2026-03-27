@@ -1,0 +1,87 @@
+// ── Spinner ──
+
+:host {
+  --_sp-color: var(--primary, #39ff14);
+  --_sp-track: var(--muted, #2a2a2a);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+// ── Colors ──
+
+:host(.hyper-spinner-primary) {
+  --_sp-color: var(--primary, #39ff14);
+}
+
+:host(.hyper-spinner-secondary) {
+  --_sp-color: var(--secondary, #ff1493);
+}
+
+:host(.hyper-spinner-accent) {
+  --_sp-color: var(--accent, #ffff00);
+}
+
+:host(.hyper-spinner-destructive) {
+  --_sp-color: var(--destructive, #ff4444);
+}
+
+:host(.hyper-spinner-current) {
+  --_sp-color: currentColor;
+}
+
+// ── Track ──
+
+.hyper-spinner-track {
+  stroke: var(--_sp-track);
+}
+
+// ── Circle ──
+
+.hyper-spinner-circle {
+  stroke: var(--_sp-color);
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+// ── Indeterminate ──
+
+:host(.hyper-spinner-indeterminate) {
+  svg {
+    animation: hyper-spinner-rotate 1.4s linear infinite;
+  }
+
+  .hyper-spinner-circle {
+    stroke-dasharray: 80, 200;
+    stroke-dashoffset: 0;
+    animation: hyper-spinner-dash 1.4s ease-in-out infinite;
+  }
+}
+
+// ── Animations ──
+
+@keyframes hyper-spinner-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hyper-spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

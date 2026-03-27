@@ -1,0 +1,66 @@
+<div class="hyper-calendar-header">
+  <button class="hyper-calendar-nav-btn" (click)="previousPeriod()" type="button" aria-label="Anterior">
+    <span class="material-icons">chevron_left</span>
+  </button>
+  <button class="hyper-calendar-header-label" (click)="switchView()" type="button">
+    {{ headerLabel() }}
+  </button>
+  <button class="hyper-calendar-nav-btn" (click)="nextPeriod()" type="button" aria-label="Proximo">
+    <span class="material-icons">chevron_right</span>
+  </button>
+</div>
+
+@switch (currentView()) {
+  @case ('month') {
+    <div class="hyper-calendar-grid hyper-calendar-month-grid">
+      @for (day of weekDays(); track day) {
+        <div class="hyper-calendar-weekday">{{ day }}</div>
+      }
+      @for (day of calendarDays(); track day.date.getTime()) {
+        <button
+          class="hyper-calendar-day"
+          [class.hyper-calendar-day-other]="!day.isCurrentMonth"
+          [class.hyper-calendar-day-today]="day.isToday"
+          [class.hyper-calendar-day-selected]="day.isSelected"
+          [class.hyper-calendar-day-disabled]="day.isDisabled"
+          [disabled]="day.isDisabled"
+          (click)="selectDay(day)"
+          type="button">
+          {{ day.day }}
+        </button>
+      }
+    </div>
+  }
+  @case ('year') {
+    <div class="hyper-calendar-grid hyper-calendar-year-grid">
+      @for (month of months(); track $index) {
+        <button
+          class="hyper-calendar-month-cell"
+          [class.hyper-calendar-cell-current]="isCurrentMonth($index)"
+          [class.hyper-calendar-cell-selected]="isSelectedMonth($index)"
+          (click)="selectMonth($index)"
+          type="button">
+          {{ month }}
+        </button>
+      }
+    </div>
+  }
+  @case ('multi-year') {
+    <div class="hyper-calendar-grid hyper-calendar-multiyear-grid">
+      @for (year of years(); track year) {
+        <button
+          class="hyper-calendar-year-cell"
+          [class.hyper-calendar-cell-current]="isCurrentYear(year)"
+          [class.hyper-calendar-cell-selected]="isSelectedYear(year)"
+          (click)="selectYear(year)"
+          type="button">
+          {{ year }}
+        </button>
+      }
+    </div>
+  }
+}
+
+<div class="hyper-calendar-footer">
+  <button class="hyper-calendar-today-btn" (click)="goToToday()" type="button">Hoje</button>
+</div>

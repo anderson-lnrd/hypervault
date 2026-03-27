@@ -1,0 +1,22 @@
+<div class="hyper-slider-layout">
+  <span class="hyper-slider-label">
+    <ng-content></ng-content>
+  </span>
+  @if (showValue()) {
+    <span class="hyper-slider-value">{{ displayValue() }}</span>
+  }
+</div>
+<div class="hyper-slider-track-wrapper">
+  <div class="hyper-slider-fill" [style.width.%]="fillPercent()"></div>
+  <input
+    class="hyper-slider-input"
+    type="range"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [value]="value()"
+    [disabled]="disabled()"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+</div>

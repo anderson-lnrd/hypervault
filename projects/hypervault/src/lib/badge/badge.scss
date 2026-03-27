@@ -1,0 +1,74 @@
+:host {
+  display: inline-flex;
+}
+
+:host(.hyper-badge-base) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+  border-radius: 9999px;
+
+  .material-icons {
+    font-size: 13px;
+    line-height: 1;
+  }
+}
+
+// Variantes
+:host(.hyper-badge-default) {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+:host(.hyper-badge-secondary) {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border-color: var(--secondary);
+}
+
+:host(.hyper-badge-outline) {
+  background: transparent;
+  color: var(--foreground);
+  border-color: var(--muted-foreground);
+}
+
+:host(.hyper-badge-destructive) {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  border-color: var(--destructive);
+}
+
+// Raridade
+:host(.hyper-rarity-common) {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border-color: var(--muted-foreground);
+}
+
+:host(.hyper-rarity-rare) {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+:host(.hyper-rarity-epic) {
+  background: color-mix(in srgb, var(--secondary) 15%, transparent);
+  color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+:host(.hyper-rarity-legendary) {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  border-color: var(--accent);
+}

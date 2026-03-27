@@ -1,0 +1,204 @@
+<div class="demo-page">
+  <h1 class="demo-title">Page <span>Summary</span></h1>
+  <p class="demo-intro">Sumário automático de página. Detecta todos os pontos de ancoragem, gera um índice navegável com suporte a hierarquia, ícones customizados e três modos de posicionamento.</p>
+
+  <div class="ps-demo-layout">
+    <!-- ── Main content ── -->
+    <div class="ps-demo-content">
+
+      <!-- ── Overview ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="overview">Visão Geral</h2>
+        <p class="demo-card-desc">
+          O <code>hyper-page-summary</code> escaneia o DOM em busca de headings com <code>id</code>
+          e constrói um índice hierárquico clicável. A seção ativa é destacada automaticamente via
+          <code>IntersectionObserver</code> — o que está visível na tela fica marcado em tempo real.
+        </p>
+        <p class="demo-card-desc">
+          Suporte nativo a estruturas aninhadas: <code>h3</code> dentro de <code>h2</code> vira
+          um sub-item, e assim por diante. Ícones Material customizáveis por <code>id</code>.
+        </p>
+      </section>
+
+      <!-- ── Usage básico ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="basic-usage">Uso Básico</h2>
+        <p class="demo-card-desc">Importe e coloque o componente onde quiser. Por padrão escaneia <code>.demo-page</code>:</p>
+        <pre class="demo-code"><code>import &#123; HyperPageSummary &#125; from 'hypervault/page-summary';
+
+&#64;Component(&#123;
+  imports: [HyperPageSummary],
+  template: `&lt;hyper-page-summary /&gt;`,
+&#125;)</code></pre>
+        <p class="demo-card-desc">Para um container diferente use o input <code>container</code>:</p>
+        <pre class="demo-code"><code>&lt;hyper-page-summary container=".minha-pagina" /&gt;</code></pre>
+      </section>
+
+      <!-- ── Posicionamento ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="positioning">Posicionamento</h2>
+        <p class="demo-card-desc">Três estratégias de posicionamento via input <code>position</code>:</p>
+
+        <h3 class="demo-card-title" id="pos-inline" style="font-size:0.9rem;margin-top:1rem;">inline (padrão)</h3>
+        <p class="demo-card-desc">Renderiza no fluxo normal do documento. Ideal para colocar no início ou fim da página:</p>
+        <pre class="demo-code"><code>&lt;hyper-page-summary position="inline" /&gt;</code></pre>
+
+        <h3 class="demo-card-title" id="pos-sticky" style="font-size:0.9rem;margin-top:1rem;">sticky</h3>
+        <p class="demo-card-desc">
+          Fica colado ao topo enquanto o usuário rola. Requer que o componente esteja numa coluna de grid com <code>align-items: start</code>
+          — exatamente como nesta página de demo:
+        </p>
+        <pre class="demo-code"><code>.meu-layout &#123;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  align-items: start;
+&#125;
+
+&lt;div class="meu-layout"&gt;
+  &lt;div class="conteudo"&gt;...&lt;/div&gt;
+  &lt;hyper-page-summary position="sticky" /&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3 class="demo-card-title" id="pos-fixed" style="font-size:0.9rem;margin-top:1rem;">fixed-end</h3>
+        <p class="demo-card-desc">Flutua sobre o conteúdo, fixo na borda direita da tela. Bom para páginas com layout de coluna única larga:</p>
+        <pre class="demo-code"><code>&lt;hyper-page-summary position="fixed-end" /&gt;</code></pre>
+      </section>
+
+      <!-- ── Hierarquia ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="hierarchy">Hierarquia (h2 → h3 → h4)</h2>
+        <p class="demo-card-desc">
+          O componente constrói automaticamente uma árvore a partir dos níveis dos headings.
+          <code>h3[id]</code> vira filho do <code>h2[id]</code> anterior, igual à estrutura de um PDF.
+          Esta página usa exatamente isso — veja os sub-itens de "Posicionamento" no sumário ao lado.
+        </p>
+
+        <h3 class="demo-card-title" id="hierarchy-selectors" style="font-size:0.9rem;margin-top:1rem;">Seletores customizados</h3>
+        <p class="demo-card-desc">Controle quais headings são capturados com o input <code>selectors</code>:</p>
+        <pre class="demo-code"><code>&lt;!-- Apenas h2 e h3 --&gt;
+&lt;hyper-page-summary selectors="h2[id], h3[id]" /&gt;
+
+&lt;!-- Qualquer elemento com id e classe específica --&gt;
+&lt;hyper-page-summary selectors=".section-heading[id]" /&gt;</code></pre>
+      </section>
+
+      <!-- ── Ícones ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="icons">Ícones por Seção</h2>
+        <p class="demo-card-desc">
+          Passe um objeto <code>Record&lt;id, iconName&gt;</code> para o input <code>icons</code>.
+          Cada entrada mapeia o <code>id</code> do heading a um nome de ícone do Material Icons.
+          Seções sem mapeamento usam ícones padrão por nível (<code>tag</code> / <code>chevron_right</code> / <code>fiber_manual_record</code>).
+        </p>
+        <pre class="demo-code"><code>&#64;Component(&#123;
+  template: `
+    &lt;hyper-page-summary
+      [icons]="tocIcons" /&gt;
+  `
+&#125;)
+export class MinhaPagina &#123;
+  tocIcons = &#123;
+    'instalacao':  'rocket_launch',
+    'componentes': 'widgets',
+    'theming':     'color_lens',
+    'density':     'density_small',
+  &#125;;
+&#125;</code></pre>
+        <p class="demo-card-desc">O sumário <strong>nesta página</strong> usa ícones customizados — veja ao lado.</p>
+      </section>
+
+      <!-- ── Título ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="title">Título do Painel</h2>
+        <p class="demo-card-desc">Configure o texto do cabeçalho com o input <code>title</code>. Passe uma string vazia para ocultar:</p>
+        <pre class="demo-code"><code>&lt;hyper-page-summary title="Nesta página" /&gt;
+&lt;hyper-page-summary title="Sumário" /&gt;
+&lt;hyper-page-summary title="" /&gt; &lt;!-- sem cabeçalho --&gt;</code></pre>
+      </section>
+
+      <!-- ── API ── -->
+      <section class="demo-card">
+        <h2 class="demo-card-title" id="api">API Reference</h2>
+
+        <h3 class="demo-card-title" id="api-inputs" style="font-size:0.9rem;margin-top:1rem;">Inputs</h3>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-family:var(--font-mono);font-size:0.75rem;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--muted);">
+                <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--primary);">Input</th>
+                <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--primary);">Tipo</th>
+                <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--primary);">Padrão</th>
+                <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--primary);">Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--muted);">
+                <td style="padding:0.4rem 0.6rem;"><code>container</code></td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">string</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">.demo-page</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Seletor CSS do container a escanear</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--muted);">
+                <td style="padding:0.4rem 0.6rem;"><code>title</code></td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">string</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Nesta página</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Texto do cabeçalho (vazio = sem cabeçalho)</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--muted);">
+                <td style="padding:0.4rem 0.6rem;"><code>selectors</code></td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">string</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">h2[id], h3[id], h4[id]</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Seletor CSS dos headings a capturar</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--muted);">
+                <td style="padding:0.4rem 0.6rem;"><code>icons</code></td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Record&lt;string,string&gt;</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">&#123;&#125;</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">Mapa de id → nome de ícone Material</td>
+              </tr>
+              <tr>
+                <td style="padding:0.4rem 0.6rem;"><code>position</code></td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">HyperPageSummaryPosition</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">inline</td>
+                <td style="padding:0.4rem 0.6rem;color:var(--muted-foreground);">inline | sticky | fixed-end</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="demo-card-title" id="api-types" style="font-size:0.9rem;margin-top:1.5rem;">HyperTocEntry</h3>
+        <pre class="demo-code"><code>interface HyperTocEntry &#123;
+  id: string;
+  text: string;
+  level: number;        // 2 | 3 | 4
+  icon?: string;        // Material Icon name
+  children: HyperTocEntry[];
+&#125;</code></pre>
+      </section>
+
+    </div>
+
+    <!-- ── Sticky TOC (this is the demo itself) ── -->
+    <hyper-page-summary
+      position="sticky"
+      container=".ps-demo-content"
+      title="Nesta página"
+      [icons]="{
+        'overview':           'home',
+        'basic-usage':        'code',
+        'positioning':        'layers',
+        'pos-inline':         'view_stream',
+        'pos-sticky':         'push_pin',
+        'pos-fixed':          'picture_in_picture',
+        'hierarchy':          'account_tree',
+        'hierarchy-selectors':'filter_list',
+        'icons':              'emoji_symbols',
+        'title':              'title',
+        'api':                'api',
+        'api-inputs':         'input',
+        'api-types':          'data_object'
+      }" />
+  </div>
+
+  <hyper-divider />
+</div>

@@ -1,0 +1,202 @@
+<div class="demo-page">
+  <h1 class="demo-title">Tabs</h1>
+  <p class="demo-intro">Navegacao por abas com suporte a icones, labels customizados, cores, alinhamento, conteudo lazy e navegacao por teclado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Tab group simples com labels de texto.</p>
+    <hyper-tab-group>
+      <hyper-tab label="Overview">
+        <ng-template hyperTabLazyContent>
+          <p>Visao geral do produto com destaques e novidades.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Specs">
+        <ng-template hyperTabLazyContent>
+          <p>Especificacoes tecnicas detalhadas do produto.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Reviews">
+        <ng-template hyperTabLazyContent>
+          <p>Avaliacoes de usuarios e pontuacoes.</p>
+        </ng-template>
+      </hyper-tab>
+    </hyper-tab-group>
+    <pre class="demo-code"><code>&lt;hyper-tab-group&gt;
+  &lt;hyper-tab label="Overview"&gt;
+    &lt;ng-template hyperTabLazyContent&gt;
+      &lt;p&gt;Visao geral do produto.&lt;/p&gt;
+    &lt;/ng-template&gt;
+  &lt;/hyper-tab&gt;
+  &lt;hyper-tab label="Specs"&gt;...&lt;/hyper-tab&gt;
+  &lt;hyper-tab label="Reviews"&gt;...&lt;/hyper-tab&gt;
+&lt;/hyper-tab-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Cada tab pode exibir um Material Icon com o input <code>icon</code>.</p>
+    <hyper-tab-group>
+      <hyper-tab label="Dashboard" icon="dashboard">
+        <ng-template hyperTabLazyContent>
+          <p>Painel principal com metricas em tempo real.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Analytics" icon="analytics">
+        <ng-template hyperTabLazyContent>
+          <p>Graficos e relatorios detalhados.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Settings" icon="settings">
+        <ng-template hyperTabLazyContent>
+          <p>Configuracoes da conta e preferencias.</p>
+        </ng-template>
+      </hyper-tab>
+    </hyper-tab-group>
+    <pre class="demo-code"><code>&lt;hyper-tab label="Dashboard" icon="dashboard"&gt;...&lt;/hyper-tab&gt;
+&lt;hyper-tab label="Analytics" icon="analytics"&gt;...&lt;/hyper-tab&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores do indicador ativo: <code>primary</code> (padrao), <code>secondary</code>, <code>accent</code>.</p>
+    <div class="demo-form-col">
+      <hyper-tab-group color="primary">
+        <hyper-tab label="Primary A"><ng-template hyperTabLazyContent><p>Tab com cor primary.</p></ng-template></hyper-tab>
+        <hyper-tab label="Primary B"><ng-template hyperTabLazyContent><p>Segundo tab.</p></ng-template></hyper-tab>
+      </hyper-tab-group>
+      <hyper-tab-group color="secondary">
+        <hyper-tab label="Secondary A"><ng-template hyperTabLazyContent><p>Tab com cor secondary.</p></ng-template></hyper-tab>
+        <hyper-tab label="Secondary B"><ng-template hyperTabLazyContent><p>Segundo tab.</p></ng-template></hyper-tab>
+      </hyper-tab-group>
+      <hyper-tab-group color="accent">
+        <hyper-tab label="Accent A"><ng-template hyperTabLazyContent><p>Tab com cor accent.</p></ng-template></hyper-tab>
+        <hyper-tab label="Accent B"><ng-template hyperTabLazyContent><p>Segundo tab.</p></ng-template></hyper-tab>
+      </hyper-tab-group>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-tab-group color="secondary"&gt;...&lt;/hyper-tab-group&gt;
+&lt;hyper-tab-group color="accent"&gt;...&lt;/hyper-tab-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Alinhamento ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="alinhamento">Alinhamento</h2>
+    <p class="demo-card-desc">Alinhe os tabs com <code>align</code>: <code>start</code> (padrao), <code>center</code>, <code>end</code>, <code>stretch</code>.</p>
+    <div class="demo-form-col">
+      <hyper-tab-group align="center">
+        <hyper-tab label="Center A"><ng-template hyperTabLazyContent><p>Alinhamento centralizado.</p></ng-template></hyper-tab>
+        <hyper-tab label="Center B"><ng-template hyperTabLazyContent><p>Segundo tab.</p></ng-template></hyper-tab>
+        <hyper-tab label="Center C"><ng-template hyperTabLazyContent><p>Terceiro tab.</p></ng-template></hyper-tab>
+      </hyper-tab-group>
+      <hyper-tab-group align="stretch">
+        <hyper-tab label="Stretch A"><ng-template hyperTabLazyContent><p>Tabs esticados.</p></ng-template></hyper-tab>
+        <hyper-tab label="Stretch B"><ng-template hyperTabLazyContent><p>Segundo tab.</p></ng-template></hyper-tab>
+        <hyper-tab label="Stretch C"><ng-template hyperTabLazyContent><p>Terceiro tab.</p></ng-template></hyper-tab>
+      </hyper-tab-group>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-tab-group align="center"&gt;...&lt;/hyper-tab-group&gt;
+&lt;hyper-tab-group align="stretch"&gt;...&lt;/hyper-tab-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Bordered ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="bordered">Bordered</h2>
+    <p class="demo-card-desc">Use <code>[bordered]="true"</code> para adicionar borda ao corpo do tab.</p>
+    <hyper-tab-group [bordered]="true">
+      <hyper-tab label="Inventory" icon="inventory_2">
+        <ng-template hyperTabLazyContent>
+          <p>Conteudo com borda ao redor da area do corpo.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Orders" icon="receipt_long">
+        <ng-template hyperTabLazyContent>
+          <p>Pedidos recentes e historico.</p>
+        </ng-template>
+      </hyper-tab>
+    </hyper-tab-group>
+    <pre class="demo-code"><code>&lt;hyper-tab-group [bordered]="true"&gt;...&lt;/hyper-tab-group&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tab-desabilitado">Tab Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> em um tab individual para impedir selecao.</p>
+    <hyper-tab-group>
+      <hyper-tab label="Ativo"><ng-template hyperTabLazyContent><p>Este tab esta ativo.</p></ng-template></hyper-tab>
+      <hyper-tab label="Desabilitado" [disabled]="true"><ng-template hyperTabLazyContent><p>Nao deveria aparecer.</p></ng-template></hyper-tab>
+      <hyper-tab label="Outro"><ng-template hyperTabLazyContent><p>Outro tab ativo.</p></ng-template></hyper-tab>
+    </hyper-tab-group>
+    <pre class="demo-code"><code>&lt;hyper-tab label="Desabilitado" [disabled]="true"&gt;...&lt;/hyper-tab&gt;</code></pre>
+  </section>
+
+  <!-- ── Custom Label ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="label-customizado">Label Customizado</h2>
+    <p class="demo-card-desc">Use <code>hyper-tab-label</code> para projetar um template customizado no botao do tab.</p>
+    <hyper-tab-group color="secondary">
+      <hyper-tab>
+        <ng-template hyper-tab-label>
+          <span class="material-icons" style="font-size: 1rem;">star</span>
+          <strong>Favoritos</strong>
+          <span style="background: var(--secondary); color: var(--secondary-foreground); padding: 0.1rem 0.4rem; font-size: 0.65rem; font-weight: 800;">3</span>
+        </ng-template>
+        <ng-template hyperTabLazyContent>
+          <p>Lista de itens favoritados.</p>
+        </ng-template>
+      </hyper-tab>
+      <hyper-tab label="Recentes">
+        <ng-template hyperTabLazyContent>
+          <p>Itens visualizados recentemente.</p>
+        </ng-template>
+      </hyper-tab>
+    </hyper-tab-group>
+    <pre class="demo-code"><code>&lt;hyper-tab&gt;
+  &lt;ng-template hyper-tab-label&gt;
+    &lt;span class="material-icons"&gt;star&lt;/span&gt;
+    &lt;strong&gt;Favoritos&lt;/strong&gt;
+    &lt;span class="badge"&gt;3&lt;/span&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template hyperTabLazyContent&gt;...&lt;/ng-template&gt;
+&lt;/hyper-tab&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc"><strong>hyper-tab-group</strong></p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>selectedIndex</code></td><td><code>number</code></td><td><code>0</code></td><td>Indice do tab selecionado (two-way)</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent'</code></td><td><code>'primary'</code></td><td>Cor do tab ativo</td></tr>
+        <tr><td><code>align</code></td><td><code>'start' | 'center' | 'end' | 'stretch'</code></td><td><code>'start'</code></td><td>Alinhamento dos tabs</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Borda ao redor do corpo</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Output</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>selectedTabChange</code></td><td><code>number</code></td><td>Emitido quando o tab selecionado muda</td></tr>
+      </tbody>
+    </table>
+    <p class="demo-card-desc" style="margin-top: 1rem;"><strong>hyper-tab</strong></p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td><code>''</code></td><td>Texto do tab</td></tr>
+        <tr><td><code>icon</code></td><td><code>string?</code></td><td><code>undefined</code></td><td>Material Icon antes do label</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o tab</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Diretiva</th><th>Selector</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>HyperTabLabel</code></td><td><code>[hyper-tab-label]</code></td><td>Template customizado para o label do tab</td></tr>
+        <tr><td><code>HyperTabLazyContent</code></td><td><code>[hyperTabLazyContent]</code></td><td>Conteudo lazy — renderizado apenas quando ativo</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

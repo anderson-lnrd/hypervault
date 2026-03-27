@@ -1,0 +1,173 @@
+// ── Select ──
+
+// --- Host ---
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+// --- Trigger ---
+
+.hyper-select-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--foreground);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+
+  &:focus-visible {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+  }
+}
+
+:host(.hyper-select-disabled) .hyper-select-trigger {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.hyper-select-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.hyper-select-placeholder {
+  color: var(--muted-foreground);
+}
+
+// --- Arrow ---
+
+.hyper-select-arrow {
+  font-size: 1.2rem;
+  color: var(--muted-foreground);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.hyper-select-arrow-open {
+  transform: rotate(180deg);
+}
+
+// --- Panel ---
+
+.hyper-select-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  max-height: 256px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-top: none;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+  animation: hyperSelectOpen 0.15s ease;
+}
+
+@keyframes hyperSelectOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// --- Option ---
+
+// HyperOption is its own component with select.scss as styleUrl
+:host(.hyper-option) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--foreground);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--muted);
+  }
+
+  &.hyper-option-selected {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  &.hyper-option-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// --- Option Checkbox (multiple) ---
+
+.hyper-option-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hyper-option-checkbox-checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.hyper-option-check-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--primary-foreground);
+}
+
+.hyper-option-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// --- Density ---
+
+$density: var(--hyper-density, 0);
+
+.hyper-select-trigger {
+  padding-top: calc(0.6rem + #{$density} * 2px);
+  padding-bottom: calc(0.6rem + #{$density} * 2px);
+}

@@ -1,0 +1,75 @@
+<div class="demo-page">
+  <h1 class="demo-title">Slider</h1>
+  <p class="demo-intro">Componente de slider (range input) com barra de preenchimento, exibicao de valor e ControlValueAccessor.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Slider com label via content projection e two-way binding no valor.</p>
+    <div class="demo-form-col">
+      <hyper-slider [(value)]="volume">Volume: {{ volume }}</hyper-slider>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-slider [(value)]="volume"&gt;Volume: {{'{{' }} volume {{ '}}' }}&lt;/hyper-slider&gt;</code></pre>
+  </section>
+
+  <!-- ── Min / Max / Step ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="min-max-step">Min / Max / Step</h2>
+    <p class="demo-card-desc">Configure o intervalo com <code>min</code>, <code>max</code> e <code>step</code>.</p>
+    <div class="demo-form-col">
+      <hyper-slider [min]="0" [max]="100" [step]="10" [(value)]="brightness">Brilho: {{ brightness }}%</hyper-slider>
+      <hyper-slider [min]="0" [max]="1000" [step]="50" [value]="500">Preco max</hyper-slider>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-slider [min]="0" [max]="100" [step]="10" [(value)]="brilho"&gt;
+  Brilho: {{'{{' }} brilho {{ '}}' }}%
+&lt;/hyper-slider&gt;</code></pre>
+  </section>
+
+  <!-- ── Exibir Valor ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="exibir-valor">Exibir Valor</h2>
+    <p class="demo-card-desc">Ative <code>[showValue]="true"</code> para mostrar o valor numerico ao lado do slider.</p>
+    <div class="demo-form-col">
+      <hyper-slider [showValue]="true" [value]="65">Qualidade</hyper-slider>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-slider [showValue]="true" [value]="65"&gt;Qualidade&lt;/hyper-slider&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores disponiveis: <code>primary</code> (padrao) e <code>secondary</code>.</p>
+    <div class="demo-form-col">
+      <hyper-slider color="primary" [value]="60" [showValue]="true">Primary</hyper-slider>
+      <hyper-slider color="secondary" [value]="40" [showValue]="true">Secondary</hyper-slider>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-slider color="secondary" [(value)]="val"&gt;Label&lt;/hyper-slider&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para impedir interacao.</p>
+    <div class="demo-form-col">
+      <hyper-slider [disabled]="true" [value]="30">Desabilitado</hyper-slider>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-slider [disabled]="true" [value]="30"&gt;Desabilitado&lt;/hyper-slider&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>number</code></td><td><code>0</code></td><td>Valor atual (two-way binding)</td></tr>
+        <tr><td><code>min</code></td><td><code>number</code></td><td><code>0</code></td><td>Valor minimo</td></tr>
+        <tr><td><code>max</code></td><td><code>number</code></td><td><code>100</code></td><td>Valor maximo</td></tr>
+        <tr><td><code>step</code></td><td><code>number</code></td><td><code>1</code></td><td>Incremento</td></tr>
+        <tr><td><code>showValue</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Exibe valor numerico</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita interacao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do slider</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

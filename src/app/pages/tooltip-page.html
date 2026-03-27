@@ -1,0 +1,66 @@
+<div class="demo-page">
+  <h1 class="demo-title">Tooltip</h1>
+  <p class="demo-intro">Diretiva de tooltip com posicionamento automatico, delay configuravel e flip de viewport.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Passe o mouse sobre os botoes para ver o tooltip.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <button hyper-raised-button hyperTooltip="Salvar documento">Salvar</button>
+      <button hyper-stroked-button hyperTooltip="Excluir permanentemente" color="destructive">Excluir</button>
+      <span class="material-icons" style="cursor: help; font-size: 1.5rem;" hyperTooltip="Icone informativo">info</span>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button hyperTooltip="Salvar documento"&gt;Salvar&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Posicoes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="posicoes">Posicoes</h2>
+    <p class="demo-card-desc">Posicoes: <code>above</code> (padrao), <code>below</code>, <code>left</code> e <code>right</code>.</p>
+    <div class="demo-row" style="gap: 1.5rem; justify-content: center; padding: 2rem;">
+      <button hyper-stroked-button hyperTooltip="Acima" tooltipPosition="above">Above</button>
+      <button hyper-stroked-button hyperTooltip="Abaixo" tooltipPosition="below">Below</button>
+      <button hyper-stroked-button hyperTooltip="Esquerda" tooltipPosition="left">Left</button>
+      <button hyper-stroked-button hyperTooltip="Direita" tooltipPosition="right">Right</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyperTooltip="Abaixo" tooltipPosition="below"&gt;Below&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Delay ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="delay">Delay</h2>
+    <p class="demo-card-desc">Configure <code>tooltipShowDelay</code> e <code>tooltipHideDelay</code> em milissegundos.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <button hyper-stroked-button hyperTooltip="Aparece rapido" [tooltipShowDelay]="0">Sem delay</button>
+      <button hyper-stroked-button hyperTooltip="Delay de 500ms" [tooltipShowDelay]="500">500ms delay</button>
+      <button hyper-stroked-button hyperTooltip="Permanece 1s" [tooltipHideDelay]="1000">Hide delay 1s</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyperTooltip="Delay" [tooltipShowDelay]="500"&gt;500ms&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[tooltipDisabled]="true"</code> para desabilitar o tooltip.</p>
+    <div class="demo-row" style="gap: 1.5rem;">
+      <button hyper-stroked-button hyperTooltip="Nao aparece" [tooltipDisabled]="true">Disabled</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyperTooltip="Texto" [tooltipDisabled]="true"&gt;Disabled&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyperTooltip</code></td><td><code>string</code></td><td>—</td><td>Texto do tooltip (required)</td></tr>
+        <tr><td><code>tooltipPosition</code></td><td><code>'above' | 'below' | 'left' | 'right'</code></td><td><code>'above'</code></td><td>Posicao do tooltip</td></tr>
+        <tr><td><code>tooltipShowDelay</code></td><td><code>number</code></td><td><code>200</code></td><td>Delay para exibir (ms)</td></tr>
+        <tr><td><code>tooltipHideDelay</code></td><td><code>number</code></td><td><code>0</code></td><td>Delay para esconder (ms)</td></tr>
+        <tr><td><code>tooltipDisabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o tooltip</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

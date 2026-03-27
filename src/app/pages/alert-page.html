@@ -1,0 +1,190 @@
+<div class="demo-page">
+  <h1 class="demo-title">Alert</h1>
+  <p class="demo-intro">Componente de alerta inline para feedback contextual. Suporta variantes de cor, estilos outlined/filled, icones e acoes.</p>
+
+  <!-- ── Variantes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="variantes">Variantes</h2>
+    <p class="demo-card-desc">Quatro variantes semanticas: <code>info</code> (padrao), <code>success</code>, <code>warning</code> e <code>error</code>.</p>
+    <div class="demo-form-col">
+      <hyper-alert variant="info">
+        <hyper-alert-title>Info</hyper-alert-title>
+        Este e um alerta informativo.
+      </hyper-alert>
+      <hyper-alert variant="success">
+        <hyper-alert-title>Sucesso</hyper-alert-title>
+        Operacao realizada com sucesso.
+      </hyper-alert>
+      <hyper-alert variant="warning">
+        <hyper-alert-title>Aviso</hyper-alert-title>
+        Atencao: esta acao pode ter consequencias.
+      </hyper-alert>
+      <hyper-alert variant="error">
+        <hyper-alert-title>Erro</hyper-alert-title>
+        Algo deu errado. Tente novamente.
+      </hyper-alert>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="info"&gt;
+  &lt;hyper-alert-title&gt;Info&lt;/hyper-alert-title&gt;
+  Este e um alerta informativo.
+&lt;/hyper-alert&gt;
+
+&lt;hyper-alert variant="error"&gt;
+  &lt;hyper-alert-title&gt;Erro&lt;/hyper-alert-title&gt;
+  Algo deu errado.
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── Outlined ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="outlined">Outlined</h2>
+    <p class="demo-card-desc">Estilo <code>outlined</code> — borda colorida com fundo transparente.</p>
+    <div class="demo-form-col">
+      <hyper-alert variant="info" [outlined]="true">
+        <hyper-alert-title>Info Outlined</hyper-alert-title>
+        Alerta com borda e sem preenchimento.
+      </hyper-alert>
+      <hyper-alert variant="success" [outlined]="true">
+        <hyper-alert-title>Success Outlined</hyper-alert-title>
+        Confirmacao com estilo outlined.
+      </hyper-alert>
+      <hyper-alert variant="warning" [outlined]="true">
+        <hyper-alert-title>Warning Outlined</hyper-alert-title>
+        Aviso com estilo outlined.
+      </hyper-alert>
+      <hyper-alert variant="error" [outlined]="true">
+        <hyper-alert-title>Error Outlined</hyper-alert-title>
+        Erro com estilo outlined.
+      </hyper-alert>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="success" [outlined]="true"&gt;
+  &lt;hyper-alert-title&gt;Success Outlined&lt;/hyper-alert-title&gt;
+  Confirmacao com estilo outlined.
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── Filled ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="filled">Filled</h2>
+    <p class="demo-card-desc">Estilo <code>filled</code> — fundo solido com texto contrastante.</p>
+    <div class="demo-form-col">
+      <hyper-alert variant="info" [filled]="true">
+        <hyper-alert-title>Info Filled</hyper-alert-title>
+        Alerta com fundo solido.
+      </hyper-alert>
+      <hyper-alert variant="success" [filled]="true">
+        <hyper-alert-title>Success Filled</hyper-alert-title>
+        Confirmacao com fundo solido.
+      </hyper-alert>
+      <hyper-alert variant="warning" [filled]="true">
+        <hyper-alert-title>Warning Filled</hyper-alert-title>
+        Aviso com fundo solido.
+      </hyper-alert>
+      <hyper-alert variant="error" [filled]="true">
+        <hyper-alert-title>Error Filled</hyper-alert-title>
+        Erro com fundo solido.
+      </hyper-alert>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="error" [filled]="true"&gt;
+  &lt;hyper-alert-title&gt;Error Filled&lt;/hyper-alert-title&gt;
+  Erro com fundo solido.
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icone ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icone">Com Icone</h2>
+    <p class="demo-card-desc">Use <code>&lt;hyper-alert-icon&gt;</code> para projetar um icone customizado. Cada variante ja exibe um icone padrao.</p>
+    <div class="demo-form-col">
+      <hyper-alert variant="info">
+        <hyper-alert-icon><span class="material-icons">lightbulb</span></hyper-alert-icon>
+        <hyper-alert-title>Dica</hyper-alert-title>
+        Voce pode customizar o icone com qualquer Material Icon.
+      </hyper-alert>
+      <hyper-alert variant="success">
+        <hyper-alert-icon><span class="material-icons">rocket_launch</span></hyper-alert-icon>
+        <hyper-alert-title>Deploy Concluido</hyper-alert-title>
+        Sua aplicacao foi publicada com sucesso.
+      </hyper-alert>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="info"&gt;
+  &lt;hyper-alert-icon&gt;
+    &lt;span class="material-icons"&gt;lightbulb&lt;/span&gt;
+  &lt;/hyper-alert-icon&gt;
+  &lt;hyper-alert-title&gt;Dica&lt;/hyper-alert-title&gt;
+  Voce pode customizar o icone.
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Acoes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-acoes">Com Acoes</h2>
+    <p class="demo-card-desc">Use <code>&lt;hyper-alert-actions&gt;</code> para adicionar botoes de acao ao alerta.</p>
+    <div class="demo-form-col">
+      <hyper-alert variant="warning">
+        <hyper-alert-title>Atualizacao Disponivel</hyper-alert-title>
+        Uma nova versao esta disponivel. Deseja atualizar agora?
+        <hyper-alert-actions>
+          <button hyper-raised-button size="sm">Atualizar</button>
+          <button hyper-ghost-button size="sm">Depois</button>
+        </hyper-alert-actions>
+      </hyper-alert>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="warning"&gt;
+  &lt;hyper-alert-title&gt;Atualizacao Disponivel&lt;/hyper-alert-title&gt;
+  Uma nova versao esta disponivel.
+  &lt;hyper-alert-actions&gt;
+    &lt;button&gt;Atualizar&lt;/button&gt;
+    &lt;button&gt;Depois&lt;/button&gt;
+  &lt;/hyper-alert-actions&gt;
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── Dismissible ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dismissible">Dismissible</h2>
+    <p class="demo-card-desc">Use <code>[dismissible]="true"</code> para exibir um botao de fechar. O evento <code>(dismissed)</code> e emitido ao clicar.</p>
+    <div class="demo-form-col">
+      @if (showDismissible()) {
+        <hyper-alert variant="info" [dismissible]="true" (dismissed)="showDismissible.set(false)">
+          <hyper-alert-title>Dispensavel</hyper-alert-title>
+          Clique no X para fechar este alerta.
+        </hyper-alert>
+      } @else {
+        <p style="color: var(--muted-foreground);">Alerta dispensado. <button hyper-link-button size="sm" (click)="resetDismissible()">Restaurar</button></p>
+      }
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-alert variant="info" [dismissible]="true" (dismissed)="onDismiss()"&gt;
+  &lt;hyper-alert-title&gt;Dispensavel&lt;/hyper-alert-title&gt;
+  Clique no X para fechar este alerta.
+&lt;/hyper-alert&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>variant</code></td><td><code>'info' | 'success' | 'warning' | 'error'</code></td><td><code>'info'</code></td><td>Variante semantica do alerta</td></tr>
+        <tr><td><code>outlined</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estilo outlined (borda, sem preenchimento)</td></tr>
+        <tr><td><code>filled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estilo filled (fundo solido)</td></tr>
+        <tr><td><code>dismissible</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Exibe botao de fechar</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Output</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>dismissed</code></td><td><code>void</code></td><td>Emitido quando o botao de fechar e clicado</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Diretiva</th><th>Selector</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>HyperAlertIcon</code></td><td><code>hyper-alert-icon</code></td><td>Slot de icone customizado</td></tr>
+        <tr><td><code>HyperAlertTitle</code></td><td><code>hyper-alert-title</code></td><td>Titulo do alerta</td></tr>
+        <tr><td><code>HyperAlertActions</code></td><td><code>hyper-alert-actions</code></td><td>Slot de acoes (botoes)</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

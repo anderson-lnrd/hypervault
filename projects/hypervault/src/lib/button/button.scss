@@ -1,0 +1,326 @@
+// ── Density system ──
+// --hyper-density: 0 (default) to -4 (most compact)
+// Each step reduces sizes by a fixed increment.
+
+// ── Base styles for all button variants ──
+
+:host {
+	--_d: var(--hyper-density, 0);
+	--btn-bg: transparent;
+	--btn-color: var(--foreground, #fafafa);
+	--btn-border-color: transparent;
+	--btn-shadow-color: var(--foreground, #fafafa);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: calc(0.5rem + var(--_d) * 0.05rem);
+	min-height: calc(2.5rem + var(--_d) * 0.25rem);
+	padding: calc(0.5rem + var(--_d) * 0.1rem) calc(1rem + var(--_d) * 0.15rem);
+	border: var(--border-width, 4px) solid var(--btn-border-color);
+	border-radius: var(--border-radius, 0);
+	background: var(--btn-bg);
+	color: var(--btn-color);
+	font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+	font-size: calc(0.875rem + var(--_d) * 0.035rem);
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	cursor: pointer;
+	box-shadow: none;
+	transition:
+		transform 0.1s ease,
+		box-shadow 0.1s ease,
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease;
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+// ── Sizes ──
+
+:host(.hyper-size-sm) {
+	min-height: calc(2rem + var(--_d) * 0.2rem);
+	padding: calc(0.3rem + var(--_d) * 0.06rem) calc(0.65rem + var(--_d) * 0.1rem);
+	font-size: calc(0.75rem + var(--_d) * 0.03rem);
+	border-width: 3px;
+}
+
+:host(.hyper-size-lg) {
+	min-height: calc(3rem + var(--_d) * 0.3rem);
+	padding: calc(0.65rem + var(--_d) * 0.12rem) calc(1.5rem + var(--_d) * 0.2rem);
+	font-size: calc(1rem + var(--_d) * 0.04rem);
+}
+
+// ── Focus visible — keyboard a11y ring ──
+
+:host(:focus-visible) {
+	outline: 2px solid var(--primary, #39ff14);
+	outline-offset: 2px;
+	z-index: 1;
+}
+
+// ── Variant: flat (hyper-button) & raised default to primary ──
+
+:host([hyper-button]),
+:host([hyper-raised-button]) {
+	--btn-bg: var(--primary, #39ff14);
+	--btn-color: var(--primary-foreground, #0f0f0f);
+	--btn-border-color: var(--foreground, #fafafa);
+}
+
+:host([hyper-button]):hover:not(:disabled) {
+	filter: brightness(1.12);
+}
+
+:host([hyper-button]):active:not(:disabled) {
+	filter: brightness(0.9);
+}
+
+// ── Variant: raised — adds brutal shadow ──
+
+:host([hyper-raised-button]) {
+	box-shadow: var(--shadow-offset, 4px) var(--shadow-offset, 4px) 0 var(--btn-shadow-color);
+}
+
+:host([hyper-raised-button]):hover:not(:disabled) {
+	transform: translateY(-2px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) + 2px) calc(var(--shadow-offset, 4px) + 2px) 0
+		var(--btn-shadow-color);
+}
+
+:host([hyper-raised-button]):active:not(:disabled) {
+	transform: translateY(1px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) - 2px) calc(var(--shadow-offset, 4px) - 2px) 0
+		var(--btn-shadow-color);
+}
+
+// ── Color: secondary ──
+
+:host(.hyper-secondary) {
+	--btn-bg: var(--secondary, #ff1493);
+	--btn-color: var(--secondary-foreground, #0f0f0f);
+	--btn-border-color: var(--secondary, #ff1493);
+}
+
+// ── Color: accent ──
+
+:host(.hyper-accent) {
+	--btn-bg: var(--accent, #ffff00);
+	--btn-color: var(--accent-foreground, #0f0f0f);
+	--btn-border-color: var(--accent, #ffff00);
+}
+
+// ── Color: destructive ──
+
+:host(.hyper-destructive) {
+	--btn-bg: var(--destructive, #ff4444);
+	--btn-color: var(--destructive-foreground, #fafafa);
+	--btn-border-color: var(--destructive, #ff4444);
+}
+
+// ── Variant: stroked — transparent bg, border, shadow ──
+
+:host([hyper-stroked-button]) {
+	--btn-bg: transparent;
+	--btn-color: var(--foreground, #fafafa);
+	--btn-border-color: var(--foreground, #fafafa);
+	box-shadow: var(--shadow-offset, 4px) var(--shadow-offset, 4px) 0 var(--btn-shadow-color);
+}
+
+:host([hyper-stroked-button]):hover:not(:disabled) {
+	background: color-mix(in srgb, var(--foreground, #fafafa) 8%, transparent);
+	transform: translateY(-2px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) + 2px) calc(var(--shadow-offset, 4px) + 2px) 0
+		var(--btn-shadow-color);
+}
+
+:host([hyper-stroked-button]):active:not(:disabled) {
+	transform: translateY(1px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) - 2px) calc(var(--shadow-offset, 4px) - 2px) 0
+		var(--btn-shadow-color);
+}
+
+// ── Variant: ghost — no border, no bg, text only ──
+
+:host([hyper-ghost-button]) {
+	--btn-bg: transparent;
+	--btn-color: var(--foreground, #fafafa);
+	--btn-border-color: transparent;
+	border: none;
+	box-shadow: none;
+
+	&:hover:not(:disabled) {
+		--btn-bg: var(--muted, #2a2a2a);
+	}
+}
+
+// ── Variant: link — looks like a hyperlink ──
+
+:host([hyper-link-button]) {
+	--btn-bg: transparent;
+	--btn-color: var(--primary, #39ff14);
+	--btn-border-color: transparent;
+	border: none;
+	box-shadow: none;
+	text-decoration: none;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+
+	&:hover:not(:disabled) {
+		text-decoration: underline;
+	}
+}
+
+// ── Variant: icon button — compact square ──
+
+:host([hyper-icon-button]) {
+	--btn-bg: transparent;
+	--btn-color: var(--foreground, #fafafa);
+	--btn-border-color: var(--foreground, #fafafa);
+	width: calc(2.5rem + var(--_d) * 0.25rem);
+	height: calc(2.5rem + var(--_d) * 0.25rem);
+	min-height: calc(2.5rem + var(--_d) * 0.25rem);
+	padding: 0;
+	box-shadow: var(--shadow-offset, 4px) var(--shadow-offset, 4px) 0 var(--btn-shadow-color);
+}
+
+:host([hyper-icon-button]):hover:not(:disabled) {
+	transform: translateY(-2px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) + 2px) calc(var(--shadow-offset, 4px) + 2px) 0
+		var(--btn-shadow-color);
+}
+
+:host([hyper-icon-button]):active:not(:disabled) {
+	transform: translateY(1px);
+	box-shadow:
+		calc(var(--shadow-offset, 4px) - 2px) calc(var(--shadow-offset, 4px) - 2px) 0
+		var(--btn-shadow-color);
+}
+
+:host([hyper-icon-button]).hyper-size-sm {
+	width: calc(2rem + var(--_d) * 0.2rem);
+	height: calc(2rem + var(--_d) * 0.2rem);
+	min-height: calc(2rem + var(--_d) * 0.2rem);
+	border-width: 3px;
+}
+
+:host([hyper-icon-button]).hyper-size-lg {
+	width: calc(3rem + var(--_d) * 0.3rem);
+	height: calc(3rem + var(--_d) * 0.3rem);
+	min-height: calc(3rem + var(--_d) * 0.3rem);
+}
+
+:host([hyper-icon-button]).hyper-primary {
+	--btn-bg: var(--primary, #39ff14);
+	--btn-color: var(--primary-foreground, #0f0f0f);
+}
+
+:host([hyper-icon-button]).hyper-secondary {
+	--btn-bg: var(--secondary, #ff1493);
+	--btn-color: var(--secondary-foreground, #0f0f0f);
+}
+
+:host([hyper-icon-button]).hyper-accent {
+	--btn-bg: var(--accent, #ffff00);
+	--btn-color: var(--accent-foreground, #0f0f0f);
+}
+
+:host([hyper-icon-button]).hyper-destructive {
+	--btn-bg: var(--destructive, #ff4444);
+	--btn-color: var(--destructive-foreground, #fafafa);
+}
+
+// ── Loading state ──
+
+:host(.hyper-loading) {
+	pointer-events: none;
+	opacity: 0.7;
+}
+
+.hyper-spinner {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: hyper-spin 0.6s linear infinite;
+}
+
+@keyframes hyper-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+// ── Hover effects ──
+
+:host(.hover-float-3d) {
+	&:hover:not(:disabled) {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 var(--btn-shadow-color);
+	}
+
+	&:active:not(:disabled) {
+		transform: translate(0, 0);
+		box-shadow: var(--shadow-offset, 4px) var(--shadow-offset, 4px) 0 var(--btn-shadow-color);
+	}
+}
+
+:host(.hover-press-3d) {
+	&:hover:not(:disabled) {
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0 var(--btn-shadow-color);
+	}
+
+	&:active:not(:disabled) {
+		transform: translate(3px, 3px);
+		box-shadow: 1px 1px 0 var(--btn-shadow-color);
+	}
+}
+
+:host(.hover-hover-accent):hover:not(:disabled) {
+	--btn-bg: var(--accent, #ffff00);
+	--btn-color: var(--accent-foreground, #0f0f0f);
+}
+
+:host(.hover-hover-primary):hover:not(:disabled) {
+	--btn-bg: var(--primary, #39ff14);
+	--btn-color: var(--primary-foreground, #0f0f0f);
+}
+
+:host(.hover-hover-destructive):hover:not(:disabled) {
+	--btn-bg: var(--destructive, #ff4444);
+	--btn-color: var(--destructive-foreground, #fafafa);
+}
+
+// ── Responsive ──
+
+@media (max-width: 640px) {
+	:host {
+		min-height: calc(2.25rem + var(--_d) * 0.2rem);
+		padding: calc(0.4rem + var(--_d) * 0.08rem) calc(0.8rem + var(--_d) * 0.1rem);
+		font-size: calc(0.8rem + var(--_d) * 0.03rem);
+	}
+
+	:host([hyper-raised-button]),
+	:host([hyper-stroked-button]),
+	:host([hyper-icon-button]) {
+		box-shadow: 3px 3px 0 var(--btn-shadow-color);
+	}
+
+	:host([hyper-icon-button]) {
+		width: calc(2.25rem + var(--_d) * 0.2rem);
+		height: calc(2.25rem + var(--_d) * 0.2rem);
+	}
+}

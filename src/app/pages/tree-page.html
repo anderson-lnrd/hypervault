@@ -1,0 +1,199 @@
+<div class="demo-page">
+  <h1 class="demo-title">Tree</h1>
+  <p class="demo-intro">Componente de arvore hierarquica com expansao, icones, niveis e variantes visuais.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Arvore simples com nos expandiveis.</p>
+    <hyper-tree>
+      <hyper-tree-node [expandable]="true" [level]="0">
+        Frutas
+        <hyper-tree-node [level]="1">Maca</hyper-tree-node>
+        <hyper-tree-node [level]="1">Banana</hyper-tree-node>
+        <hyper-tree-node [level]="1">Laranja</hyper-tree-node>
+      </hyper-tree-node>
+      <hyper-tree-node [expandable]="true" [level]="0">
+        Vegetais
+        <hyper-tree-node [level]="1">Cenoura</hyper-tree-node>
+        <hyper-tree-node [level]="1">Brocolis</hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree&gt;
+  &lt;hyper-tree-node [expandable]="true" [level]="0"&gt;
+    Frutas
+    &lt;hyper-tree-node [level]="1"&gt;Maca&lt;/hyper-tree-node&gt;
+  &lt;/hyper-tree-node&gt;
+&lt;/hyper-tree&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Adicione icones com o input <code>icon</code>.</p>
+    <hyper-tree>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="folder">
+        Documentos
+        <hyper-tree-node [level]="1" icon="description">Relatorio.pdf</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="description">Planilha.xlsx</hyper-tree-node>
+        <hyper-tree-node [expandable]="true" [level]="1" icon="folder">
+          Fotos
+          <hyper-tree-node [level]="2" icon="image">foto1.jpg</hyper-tree-node>
+          <hyper-tree-node [level]="2" icon="image">foto2.png</hyper-tree-node>
+        </hyper-tree-node>
+      </hyper-tree-node>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="folder">
+        Musicas
+        <hyper-tree-node [level]="1" icon="music_note">Track 01.mp3</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="music_note">Track 02.mp3</hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree-node icon="folder" [expandable]="true"&gt;...&lt;/hyper-tree-node&gt;</code></pre>
+  </section>
+
+  <!-- ── Niveis Profundos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="niveis-profundos">Niveis Profundos</h2>
+    <p class="demo-card-desc">Suporte a aninhamento profundo com indentacao automatica.</p>
+    <hyper-tree>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="public">
+        Brasil
+        <hyper-tree-node [expandable]="true" [level]="1" icon="location_city">
+          Sao Paulo
+          <hyper-tree-node [expandable]="true" [level]="2" icon="apartment">
+            Capital
+            <hyper-tree-node [level]="3" icon="place">Paulista</hyper-tree-node>
+            <hyper-tree-node [level]="3" icon="place">Pinheiros</hyper-tree-node>
+            <hyper-tree-node [level]="3" icon="place">Vila Mariana</hyper-tree-node>
+          </hyper-tree-node>
+          <hyper-tree-node [level]="2" icon="apartment">Campinas</hyper-tree-node>
+        </hyper-tree-node>
+        <hyper-tree-node [expandable]="true" [level]="1" icon="location_city">
+          Rio de Janeiro
+          <hyper-tree-node [level]="2" icon="apartment">Niteroi</hyper-tree-node>
+        </hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree-node [level]="3" icon="place"&gt;Paulista&lt;/hyper-tree-node&gt;</code></pre>
+  </section>
+
+  <!-- ── Dense ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dense">Dense</h2>
+    <p class="demo-card-desc">Use <code>[dense]="true"</code> para um layout mais compacto.</p>
+    <hyper-tree [dense]="true">
+      <hyper-tree-node [expandable]="true" [level]="0" icon="folder">
+        src
+        <hyper-tree-node [expandable]="true" [level]="1" icon="folder">
+          app
+          <hyper-tree-node [level]="2" icon="code">app.ts</hyper-tree-node>
+          <hyper-tree-node [level]="2" icon="code">app.html</hyper-tree-node>
+          <hyper-tree-node [level]="2" icon="code">app.scss</hyper-tree-node>
+        </hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="code">main.ts</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="code">index.html</hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree [dense]="true"&gt;...&lt;/hyper-tree&gt;</code></pre>
+  </section>
+
+  <!-- ── Bordered ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="bordered">Bordered</h2>
+    <p class="demo-card-desc">Use <code>[bordered]="true"</code> para adicionar bordas entre nos.</p>
+    <hyper-tree [bordered]="true">
+      <hyper-tree-node [expandable]="true" [level]="0" icon="settings">
+        Configuracoes
+        <hyper-tree-node [level]="1" icon="person">Perfil</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="security">Seguranca</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="notifications">Notificacoes</hyper-tree-node>
+      </hyper-tree-node>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="info">
+        Sobre
+        <hyper-tree-node [level]="1" icon="gavel">Licenca</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="update">Versao</hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree [bordered]="true"&gt;...&lt;/hyper-tree&gt;</code></pre>
+  </section>
+
+  <!-- ── Expand / Collapse All ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="expand-collapse-all">Expand / Collapse All</h2>
+    <p class="demo-card-desc">Use <code>expandAll()</code> e <code>collapseAll()</code> para controlar todos os nos.</p>
+    <div class="demo-row" style="margin-bottom: 1rem;">
+      <button hyper-raised-button (click)="treeActions.expandAll()">Expandir Todos</button>
+      <button hyper-stroked-button (click)="treeActions.collapseAll()">Recolher Todos</button>
+    </div>
+    <hyper-tree #treeActions>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="inventory_2">
+        Categorias
+        <hyper-tree-node [expandable]="true" [level]="1" icon="checkroom">
+          Roupas
+          <hyper-tree-node [level]="2">Camisetas</hyper-tree-node>
+          <hyper-tree-node [level]="2">Calcas</hyper-tree-node>
+        </hyper-tree-node>
+        <hyper-tree-node [expandable]="true" [level]="1" icon="devices">
+          Eletronicos
+          <hyper-tree-node [level]="2">Celulares</hyper-tree-node>
+          <hyper-tree-node [level]="2">Notebooks</hyper-tree-node>
+        </hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&#64;ViewChild('tree') tree!: HyperTree;
+tree.expandAll();
+tree.collapseAll();</code></pre>
+  </section>
+
+  <!-- ── Disabled ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para desabilitar nos individuais.</p>
+    <hyper-tree>
+      <hyper-tree-node [expandable]="true" [level]="0" icon="folder">
+        Projeto
+        <hyper-tree-node [level]="1" icon="lock" [disabled]="true">Arquivo bloqueado</hyper-tree-node>
+        <hyper-tree-node [level]="1" icon="description">Arquivo acessivel</hyper-tree-node>
+      </hyper-tree-node>
+    </hyper-tree>
+    <pre class="demo-code"><code>&lt;hyper-tree-node [disabled]="true"&gt;Bloqueado&lt;/hyper-tree-node&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hypertree">API — HyperTree</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>dense</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Layout compacto</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Bordas entre nos</td></tr>
+        <tr><td><code>interactive</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Hover/focus nos nos</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">Metodos</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>expandAll()</code></td><td>Expande todos os nos</td></tr>
+        <tr><td><code>collapseAll()</code></td><td>Recolhe todos os nos</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperTreeNode</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>icon</code></td><td><code>string</code></td><td><code>''</code></td><td>Material icon</td></tr>
+        <tr><td><code>expandable</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Pode expandir</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o no</td></tr>
+        <tr><td><code>level</code></td><td><code>number</code></td><td><code>0</code></td><td>Nivel de indentacao</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">Diretivas</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Seletor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>[hyperTreeNodeToggle]</code></td><td>Toggle de expansao vinculado ao no pai</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

@@ -1,0 +1,226 @@
+<div class="demo-page">
+  <h1 class="demo-title">Accordion</h1>
+  <p class="demo-intro">Conteudo expansivel com paineis colapsaveis. Suporta modo single/multi, icones, descricoes, headers customizados e navegacao por teclado.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Accordion single-expand (padrao) — apenas um painel aberto por vez.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel title="Como funciona o sistema de XP?">
+        Voce acumula XP realizando compras, avaliando produtos e completando desafios semanais. Cada 1000 XP desbloqueia um novo nivel de raridade.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Quais sao os niveis de raridade?">
+        Existem 4 niveis: Comum, Raro, Epico e Lendario. Produtos lendarios sao edicoes limitadas com beneficios exclusivos.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Como resgatar minhas recompensas?">
+        Acesse seu perfil, va ate a secao de recompensas e clique em "Resgatar". Os pontos serao descontados automaticamente.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-accordion&gt;
+  &lt;hyper-expansion-panel title="Pergunta 1?"&gt;
+    Resposta 1.
+  &lt;/hyper-expansion-panel&gt;
+  &lt;hyper-expansion-panel title="Pergunta 2?"&gt;
+    Resposta 2.
+  &lt;/hyper-expansion-panel&gt;
+&lt;/hyper-accordion&gt;</code></pre>
+  </section>
+
+  <!-- ── Multi Expand ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="multi-expand">Multi Expand</h2>
+    <p class="demo-card-desc">Use <code>[multi]="true"</code> para permitir multiplos paineis abertos simultaneamente.</p>
+    <hyper-accordion [multi]="true">
+      <hyper-expansion-panel title="Termos de Uso">
+        Ao utilizar esta plataforma, voce concorda com os termos e condicoes aqui descritos.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Politica de Privacidade">
+        Seus dados sao protegidos conforme a LGPD. Nenhuma informacao e compartilhada com terceiros sem consentimento.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Politica de Reembolso">
+        Solicitacoes de reembolso devem ser realizadas em ate 7 dias apos a compra.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-accordion [multi]="true"&gt;
+  &lt;hyper-expansion-panel title="Termos"&gt;...&lt;/hyper-expansion-panel&gt;
+  &lt;hyper-expansion-panel title="Privacidade"&gt;...&lt;/hyper-expansion-panel&gt;
+&lt;/hyper-accordion&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Adicione icones com o input <code>icon</code> em cada painel.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel title="Configuracoes da Conta" icon="person">
+        Gerencie nome, email, senha e foto de perfil.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Notificacoes" icon="notifications">
+        Configure alertas por email, push e SMS.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Seguranca" icon="shield">
+        Autenticacao de dois fatores, sessoes ativas e logs de acesso.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-expansion-panel title="Configuracoes" icon="person"&gt;
+  ...
+&lt;/hyper-expansion-panel&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Descricao ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-descricao">Com Descricao</h2>
+    <p class="demo-card-desc">Use <code>description</code> para adicionar texto secundario ao header.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel title="Plano Free" description="Gratuito para sempre" icon="star_border">
+        Acesso basico com ate 3 projetos e 1GB de armazenamento.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Plano Pro" description="R$ 29/mes" icon="star_half">
+        Projetos ilimitados, 50GB de armazenamento e suporte prioritario.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Plano Enterprise" description="Sob consulta" icon="star">
+        Tudo do Pro + SLA dedicado, SSO e gerenciamento de equipe.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-expansion-panel
+  title="Plano Pro"
+  description="R$ 29/mes"
+  icon="star_half"&gt;
+  Projetos ilimitados...
+&lt;/hyper-expansion-panel&gt;</code></pre>
+  </section>
+
+  <!-- ── Spaced ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="spaced">Spaced</h2>
+    <p class="demo-card-desc">Use <code>[spaced]="true"</code> para adicionar espaco entre os paineis.</p>
+    <hyper-accordion [spaced]="true" [multi]="true">
+      <hyper-expansion-panel title="Envio" icon="local_shipping">
+        Entrega em ate 5 dias uteis para todo o Brasil.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Trocas" icon="swap_horiz">
+        Primeira troca gratuita. Demais trocas com frete cobrado.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Garantia" icon="verified_user">
+        Garantia de 12 meses contra defeitos de fabricacao.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-accordion [spaced]="true" [multi]="true"&gt;
+  ...
+&lt;/hyper-accordion&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> em paineis individuais.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel title="Disponivel">
+        Este painel pode ser expandido normalmente.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Indisponivel (em breve)" [disabled]="true">
+        Este conteudo sera liberado em breve.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Outro Disponivel">
+        Mais conteudo acessivel.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-expansion-panel title="Em breve" [disabled]="true"&gt;
+  ...
+&lt;/hyper-expansion-panel&gt;</code></pre>
+  </section>
+
+  <!-- ── Sem Toggle ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sem-icone-de-toggle">Sem Icone de Toggle</h2>
+    <p class="demo-card-desc">Use <code>[hideToggle]="true"</code> para esconder a seta.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel title="Clique para expandir" [hideToggle]="true">
+        Conteudo sem indicador visual de toggle.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-expansion-panel title="..." [hideToggle]="true"&gt;
+  ...
+&lt;/hyper-expansion-panel&gt;</code></pre>
+  </section>
+
+  <!-- ── Header Customizado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="header-customizado">Header Customizado</h2>
+    <p class="demo-card-desc">Use <code>hyper-accordion-header</code> para projetar um template customizado no header.</p>
+    <hyper-accordion>
+      <hyper-expansion-panel>
+        <ng-template hyper-accordion-header>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-icons" style="color: var(--accent);">emoji_events</span>
+            <span style="font-weight: 800;">RANKING SEMANAL</span>
+            <span style="margin-left: auto; font-size: 0.7rem; color: var(--primary); font-family: var(--font-mono);">+250 XP</span>
+          </div>
+        </ng-template>
+        Top 3 desta semana: 1. CyberNinja 2. PixelHunter 3. NeonBlade
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-expansion-panel&gt;
+  &lt;ng-template hyper-accordion-header&gt;
+    &lt;div&gt;Custom header content&lt;/div&gt;
+  &lt;/ng-template&gt;
+  Panel body content.
+&lt;/hyper-expansion-panel&gt;</code></pre>
+  </section>
+
+  <!-- ── Sem Borda ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sem-borda">Sem Borda</h2>
+    <p class="demo-card-desc">Use <code>[bordered]="false"</code> para remover as bordas dos paineis.</p>
+    <hyper-accordion [bordered]="false">
+      <hyper-expansion-panel title="Sem borda A">
+        Conteudo sem borda.
+      </hyper-expansion-panel>
+      <hyper-expansion-panel title="Sem borda B">
+        Mais conteudo sem borda.
+      </hyper-expansion-panel>
+    </hyper-accordion>
+    <pre class="demo-code"><code>&lt;hyper-accordion [bordered]="false"&gt;
+  ...
+&lt;/hyper-accordion&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc"><strong>hyper-accordion</strong></p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>multi</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Permite multiplos paineis abertos</td></tr>
+        <tr><td><code>spaced</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Espaco entre paineis</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Borda nos paineis</td></tr>
+      </tbody>
+    </table>
+    <p class="demo-card-desc" style="margin-top: 1rem;"><strong>hyper-expansion-panel</strong></p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>title</code></td><td><code>string</code></td><td><code>''</code></td><td>Titulo do painel</td></tr>
+        <tr><td><code>description</code></td><td><code>string?</code></td><td><code>undefined</code></td><td>Texto secundario no header</td></tr>
+        <tr><td><code>icon</code></td><td><code>string?</code></td><td><code>undefined</code></td><td>Material Icon no header</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o painel</td></tr>
+        <tr><td><code>hideToggle</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Esconde o icone de toggle</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Output</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>opened</code></td><td><code>void</code></td><td>Emitido quando o painel abre</td></tr>
+        <tr><td><code>closed</code></td><td><code>void</code></td><td>Emitido quando o painel fecha</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Diretiva</th><th>Selector</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>HyperAccordionHeader</code></td><td><code>[hyper-accordion-header]</code></td><td>Template customizado para o header</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

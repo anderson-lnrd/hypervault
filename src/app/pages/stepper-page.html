@@ -1,0 +1,179 @@
+<div class="demo-page">
+  <h1 class="demo-title">Stepper</h1>
+  <p class="demo-intro">Componente de etapas para fluxos multi-step. Suporta horizontal, vertical, linear e estados de erro.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Stepper horizontal simples com 3 etapas.</p>
+    <hyper-stepper>
+      <hyper-step label="Dados Pessoais">
+        <p style="margin: 0 0 1rem;">Preencha seu nome e email.</p>
+        <button hyper-raised-button hyperStepperNext>Proximo</button>
+      </hyper-step>
+      <hyper-step label="Endereco">
+        <p style="margin: 0 0 1rem;">Informe seu endereco completo.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button hyperStepperNext>Proximo</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Confirmacao">
+        <p style="margin: 0 0 1rem;">Revise e confirme seus dados.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button color="secondary">Finalizar</button>
+        </div>
+      </hyper-step>
+    </hyper-stepper>
+    <pre class="demo-code"><code>&lt;hyper-stepper&gt;
+  &lt;hyper-step label="Etapa 1"&gt;
+    &lt;button hyperStepperNext&gt;Proximo&lt;/button&gt;
+  &lt;/hyper-step&gt;
+&lt;/hyper-stepper&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Adicione icones customizados com o input <code>icon</code>.</p>
+    <hyper-stepper color="secondary">
+      <hyper-step label="Carrinho" icon="shopping_cart">
+        <p style="margin: 0 0 1rem;">Revise os itens do carrinho.</p>
+        <button hyper-raised-button color="secondary" hyperStepperNext>Ir para Pagamento</button>
+      </hyper-step>
+      <hyper-step label="Pagamento" icon="payment">
+        <p style="margin: 0 0 1rem;">Escolha a forma de pagamento.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button color="secondary" hyperStepperNext>Revisar Pedido</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Envio" icon="local_shipping">
+        <p style="margin: 0 0 1rem;">Selecione o metodo de envio.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button color="secondary" hyperStepperNext>Confirmar</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Concluido" icon="check_circle">
+        <p style="margin: 0 0 1rem;">Pedido realizado com sucesso!</p>
+        <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+      </hyper-step>
+    </hyper-stepper>
+    <pre class="demo-code"><code>&lt;hyper-step label="Carrinho" icon="shopping_cart"&gt;...&lt;/hyper-step&gt;</code></pre>
+  </section>
+
+  <!-- ── Vertical ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="vertical">Vertical</h2>
+    <p class="demo-card-desc">Use <code>orientation="vertical"</code> para layout em coluna.</p>
+    <hyper-stepper orientation="vertical">
+      <hyper-step label="Criar conta">
+        <p style="margin: 0 0 1rem;">Registre-se com email e senha.</p>
+        <button hyper-raised-button hyperStepperNext>Continuar</button>
+      </hyper-step>
+      <hyper-step label="Verificar email">
+        <p style="margin: 0 0 1rem;">Verifique o codigo enviado ao seu email.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button hyperStepperNext>Verificar</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Completar perfil" [optional]="true">
+        <p style="margin: 0 0 1rem;">Adicione foto e bio (opcional).</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button hyperStepperNext>Finalizar</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Tudo pronto">
+        <p style="margin: 0;">Sua conta esta configurada!</p>
+      </hyper-step>
+    </hyper-stepper>
+    <pre class="demo-code"><code>&lt;hyper-stepper orientation="vertical"&gt;...&lt;/hyper-stepper&gt;</code></pre>
+  </section>
+
+  <!-- ── Linear ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="linear">Linear</h2>
+    <p class="demo-card-desc">Com <code>[linear]="true"</code>, so avanca se o step anterior estiver completo.</p>
+    <hyper-stepper [linear]="true" #linearStepper>
+      <hyper-step label="Termos de Uso">
+        <p style="margin: 0 0 1rem;">Aceite os termos para continuar.</p>
+        <button hyper-raised-button hyperStepperNext>Aceitar e Continuar</button>
+      </hyper-step>
+      <hyper-step label="Dados">
+        <p style="margin: 0 0 1rem;">Preencha os dados obrigatorios.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-raised-button hyperStepperNext>Proximo</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Fim">
+        <p style="margin: 0 0 1rem;">Processo concluido.</p>
+        <div class="demo-row">
+          <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+          <button hyper-stroked-button (click)="linearStepper.reset()">Reset</button>
+        </div>
+      </hyper-step>
+    </hyper-stepper>
+    <pre class="demo-code"><code>&lt;hyper-stepper [linear]="true"&gt;...&lt;/hyper-stepper&gt;</code></pre>
+  </section>
+
+  <!-- ── Error State ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="estado-de-erro">Estado de Erro</h2>
+    <p class="demo-card-desc">Use <code>[hasError]="true"</code> e <code>errorMessage</code> para indicar problemas.</p>
+    <hyper-stepper>
+      <hyper-step label="Formulario" [hasError]="hasError()" errorMessage="Campos obrigatorios">
+        <p style="margin: 0 0 1rem;">Simule um erro no formulario.</p>
+        <div class="demo-row">
+          <button hyper-raised-button color="destructive" (click)="simulateError()">Simular Erro</button>
+          <button hyper-stroked-button (click)="clearError()">Limpar Erro</button>
+          <button hyper-raised-button hyperStepperNext>Proximo</button>
+        </div>
+      </hyper-step>
+      <hyper-step label="Revisao">
+        <p style="margin: 0;">Revise as informacoes.</p>
+        <button hyper-stroked-button hyperStepperPrevious>Voltar</button>
+      </hyper-step>
+    </hyper-stepper>
+    <pre class="demo-code"><code>&lt;hyper-step [hasError]="true" errorMessage="Campos obrigatorios"&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperstepper">API — HyperStepper</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>orientation</code></td><td><code>'horizontal' | 'vertical'</code></td><td><code>'horizontal'</code></td><td>Layout do stepper</td></tr>
+        <tr><td><code>linear</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Modo linear (exige completar step)</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do stepper</td></tr>
+        <tr><td><code>labelPosition</code></td><td><code>'bottom' | 'end'</code></td><td><code>'bottom'</code></td><td>Posicao do label (horizontal)</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperStep</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td><code>''</code></td><td>Texto do step</td></tr>
+        <tr><td><code>icon</code></td><td><code>string</code></td><td>—</td><td>Material icon</td></tr>
+        <tr><td><code>optional</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Marca como opcional</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o step</td></tr>
+        <tr><td><code>hasError</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado de erro</td></tr>
+        <tr><td><code>errorMessage</code></td><td><code>string</code></td><td><code>''</code></td><td>Mensagem de erro</td></tr>
+        <tr><td><code>editable</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Pode voltar ao step</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">Diretivas</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Seletor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyperStepperNext</code></td><td>Avanca para o proximo step</td></tr>
+        <tr><td><code>hyperStepperPrevious</code></td><td>Volta para o step anterior</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

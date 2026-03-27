@@ -1,0 +1,54 @@
+$sidenav-width: 260px;
+
+:host {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  width: $sidenav-width;
+  overflow-y: auto;
+  background: var(--card);
+  border-right: 2px solid var(--muted);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  &.hyper-sidenav-end {
+    right: 0;
+    left: auto;
+    border-right: none;
+    border-left: 2px solid var(--muted);
+    transform: translateX(100%);
+  }
+
+  &.hyper-sidenav-opened {
+    transform: translateX(0);
+  }
+
+  // Side mode: static in flow
+  &.hyper-sidenav-side {
+    position: relative;
+    flex-shrink: 0;
+    transform: none;
+    width: 0;
+    overflow: hidden;
+    border-right: none;
+    transition: width 0.3s ease;
+
+    &.hyper-sidenav-opened {
+      width: $sidenav-width;
+      border-right: 2px solid var(--muted);
+      overflow-y: auto;
+    }
+
+    &.hyper-sidenav-end.hyper-sidenav-opened {
+      border-right: none;
+      border-left: 2px solid var(--muted);
+    }
+  }
+
+  // Push mode
+  &.hyper-sidenav-push {
+    position: absolute;
+  }
+}

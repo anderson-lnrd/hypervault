@@ -1,0 +1,356 @@
+<div class="demo-page">
+  <h1 class="demo-title">Getting <span>Started</span></h1>
+  <p class="demo-intro">Guia completo para instalar, configurar e comecar a usar o HyperVault no seu projeto Angular.</p>
+
+  <!-- ── Requisitos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="requisitos">Requisitos</h2>
+    <p class="demo-card-desc">Antes de comecar, certifique-se de ter:</p>
+    <ul class="gs-list">
+      <li><hyper-badge>obrigatorio</hyper-badge> Angular 21+</li>
+      <li><hyper-badge>obrigatorio</hyper-badge> Node.js 20+</li>
+      <li><hyper-badge variant="secondary">recomendado</hyper-badge> Angular CLI instalado globalmente</li>
+    </ul>
+  </section>
+
+  <!-- ── Instalacao ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="instalacao">1. Instalacao (recomendado)</h2>
+    <p class="demo-card-desc">Use <code>ng add</code> para instalar e configurar tudo automaticamente — fontes, CSS variables, scrollbar e SCSS include paths:</p>
+    <pre class="demo-code"><code>ng add hypervault</code></pre>
+    <p class="demo-card-desc">O schematic faz automaticamente:</p>
+    <ul class="gs-list">
+      <li><hyper-badge variant="secondary">auto</hyper-badge> Adiciona fontes (Space Grotesk, Space Mono, Material Icons) ao <code>index.html</code></li>
+      <li><hyper-badge variant="secondary">auto</hyper-badge> Injeta CSS variables (design tokens) no <code>styles.scss</code></li>
+      <li><hyper-badge variant="secondary">auto</hyper-badge> Importa o scrollbar customizado</li>
+      <li><hyper-badge variant="secondary">auto</hyper-badge> Configura <code>stylePreprocessorOptions.includePaths</code> no <code>angular.json</code></li>
+    </ul>
+    <p class="demo-card-desc" style="margin-top: 0.5rem;">Opcoes disponiveis:</p>
+    <pre class="demo-code"><code># Sem scrollbar customizado
+ng add hypervault --no-scrollbar
+
+# Especificar projeto em monorepo
+ng add hypervault --project=meu-app</code></pre>
+  </section>
+
+  <!-- ── Instalacao Manual ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="instalacao-manual">1b. Instalacao Manual</h2>
+    <p class="demo-card-desc">Se preferir configurar manualmente, instale o pacote:</p>
+    <pre class="demo-code"><code>npm install hypervault
+# ou
+yarn add hypervault
+# ou
+pnpm add hypervault</code></pre>
+    <p class="demo-card-desc">E siga os passos 2, 3 e 4 abaixo.</p>
+  </section>
+
+  <!-- ── Fontes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="fontes">2. Fontes <hyper-badge variant="outline">manual</hyper-badge></h2>
+    <p class="demo-card-desc">O HyperVault usa <code>Space Grotesk</code> (sans) e <code>Space Mono</code> (mono) para tipografia, e <code>Material Icons</code> para icones. Adicione ao seu <code>index.html</code>:</p>
+    <pre class="demo-code"><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght&#64;400;500;600;700&amp;family=Space+Mono:wght&#64;400;700&amp;display=swap" rel="stylesheet" /&gt;
+&lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /&gt;</code></pre>
+    <p class="demo-card-desc"><em>Passo desnecessario se voce usou <code>ng add hypervault</code>.</em></p>
+  </section>
+
+  <!-- ── CSS Variables ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="css-vars">3. Variaveis CSS <hyper-badge variant="outline">manual</hyper-badge></h2>
+    <p class="demo-card-desc">Defina os design tokens no seu <code>styles.scss</code> global. Estes sao os valores padrao do tema <strong>Cyber</strong>:</p>
+    <pre class="demo-code"><code>:root &#123;
+  /* Cores */
+  --background: #0f0f0f;
+  --foreground: #fafafa;
+  --card: #1a1a1a;
+  --muted: #2a2a2a;
+  --muted-foreground: #a3a3a3;
+  --input: #242424;
+  --border: #fafafa;
+  --primary: #39ff14;
+  --primary-foreground: #0f0f0f;
+  --secondary: #ff1493;
+  --secondary-foreground: #0f0f0f;
+  --accent: #ffff00;
+  --accent-foreground: #0f0f0f;
+  --destructive: #ff4444;
+  --destructive-foreground: #fafafa;
+
+  /* Tipografia */
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Neo-Brutalist */
+  --border-width: 4px;
+  --border-radius: 0px;
+  --shadow-offset: 4px;
+&#125;
+
+body &#123;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+&#125;</code></pre>
+    <p class="demo-card-desc">Ou use o <code>HyperThemeService</code> para aplicar temas programaticamente — veja a pagina <a routerLink="/theming">Theming</a>.</p>
+  </section>
+
+  <!-- ── Scrollbar ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="scrollbar">4. Scrollbar (opcional) <hyper-badge variant="outline">manual</hyper-badge></h2>
+    <p class="demo-card-desc">Importe o modulo de scrollbar para customizar todas as barras de rolagem:</p>
+    <pre class="demo-code"><code>// styles.scss
+&#64;use 'hypervault/styles/scrollbar';</code></pre>
+    <p class="demo-card-desc">Configure o SCSS include path no <code>angular.json</code>:</p>
+    <pre class="demo-code"><code>"stylePreprocessorOptions": &#123;
+  "includePaths": ["node_modules"]
+&#125;</code></pre>
+    <p class="demo-card-desc">Para reverter ao scrollbar nativo em qualquer elemento:</p>
+    <pre class="demo-code"><code>&lt;div class="hyper-scrollbar-native"&gt;...&lt;/div&gt;</code></pre>
+  </section>
+
+  <!-- ── Importando Componentes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="componentes">5. Usando Componentes</h2>
+    <p class="demo-card-desc">Importe componentes diretamente nos seus standalone components via subpath imports:</p>
+    <pre class="demo-code"><code>import &#123; Component &#125; from '&#64;angular/core';
+import &#123; HyperButton &#125; from 'hypervault/button';
+import &#123; HyperIcon &#125; from 'hypervault/icon';
+
+&#64;Component(&#123;
+  selector: 'app-meu-componente',
+  imports: [HyperButton, HyperIcon],
+  template: `
+    &lt;button hyper-raised-button color="primary"&gt;
+      &lt;hyper-icon&gt;rocket_launch&lt;/hyper-icon&gt;
+      Lancar!
+    &lt;/button&gt;
+  `,
+&#125;)
+export class MeuComponente &#123;&#125;</code></pre>
+    <p class="demo-card-desc">Cada componente vive em seu proprio entry point — o tree-shaking garante que apenas o codigo usado entre no bundle.</p>
+  </section>
+
+  <!-- ── Subpath Imports ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="entry-points">6. Entry Points Disponiveis</h2>
+    <p class="demo-card-desc">O HyperVault exporta 33 subpath imports independentes:</p>
+    <div class="gs-entrypoints">
+      <code>hypervault/accordion</code>
+      <code>hypervault/alert</code>
+      <code>hypervault/badge</code>
+      <code>hypervault/breadcrumb</code>
+      <code>hypervault/button</code>
+      <code>hypervault/checkbox</code>
+      <code>hypervault/chip</code>
+      <code>hypervault/core</code>
+      <code>hypervault/datepicker</code>
+      <code>hypervault/density</code>
+      <code>hypervault/dialog</code>
+      <code>hypervault/divider</code>
+      <code>hypervault/form-field</code>
+      <code>hypervault/icon</code>
+      <code>hypervault/list</code>
+      <code>hypervault/menu</code>
+      <code>hypervault/paginator</code>
+      <code>hypervault/progress-bar</code>
+      <code>hypervault/radio</code>
+      <code>hypervault/select</code>
+      <code>hypervault/sidenav</code>
+      <code>hypervault/slider</code>
+      <code>hypervault/snackbar</code>
+      <code>hypervault/spinner</code>
+      <code>hypervault/stepper</code>
+      <code>hypervault/switch</code>
+      <code>hypervault/table</code>
+      <code>hypervault/tabs</code>
+      <code>hypervault/theming</code>
+      <code>hypervault/toolbar</code>
+      <code>hypervault/tooltip</code>
+      <code>hypervault/tree</code>
+      <code>hypervault/page-summary</code>
+    </div>
+  </section>
+
+  <!-- ── Defaults Globais ── -->
+  <section class="demo-card" id="defaults">
+    <h2 class="demo-card-title" id="defaults-h">7. Defaults Globais (opcional)</h2>
+    <p class="demo-card-desc">Configure valores padrao para componentes com <code>provideHyperDefaults()</code> no <code>app.config.ts</code>:</p>
+    <pre class="demo-code"><code>import &#123; provideHyperDefaults &#125; from 'hypervault/core';
+
+export const appConfig = &#123;
+  providers: [
+    provideHyperDefaults(&#123;
+      button: &#123; color: 'primary', size: 'md' &#125;,
+      checkbox: &#123; color: 'primary' &#125;,
+      switch: &#123; color: 'primary' &#125;,
+      toolbar: &#123; color: 'primary', sticky: true &#125;,
+    &#125;),
+  ],
+&#125;;</code></pre>
+  </section>
+
+  <!-- ── Theming ── -->
+  <section class="demo-card" id="theming">
+    <h2 class="demo-card-title" id="theming-h">8. Theming</h2>
+    <p class="demo-card-desc">O HyperVault inclui 27 temas built-in. Use o <code>HyperThemeService</code> para trocar em runtime:</p>
+    <pre class="demo-code"><code>import &#123; HyperThemeService &#125; from 'hypervault/theming';
+
+export class AppComponent &#123;
+  private themeService = inject(HyperThemeService);
+
+  ngOnInit() &#123;
+    this.themeService.setTheme('dracula');
+    this.themeService.setDarkMode(true);
+  &#125;
+&#125;</code></pre>
+    <p class="demo-card-desc">Ou use o componente <code>&lt;hyper-theme-picker /&gt;</code> para um seletor visual. Veja todos os temas em <a routerLink="/theming">Theming</a>.</p>
+  </section>
+
+  <!-- ── Density ── -->
+  <section class="demo-card" id="density">
+    <h2 class="demo-card-title" id="density-h">9. Densidade</h2>
+    <p class="demo-card-desc">Controle o espacamento de componentes via diretiva <code>[hyperDensity]</code> (escala de 0 a -4):</p>
+    <pre class="demo-code"><code>&lt;!-- Todos os componentes filhos ficam mais compactos --&gt;
+&lt;div [hyperDensity]="-2"&gt;
+  &lt;button hyper-raised-button&gt;Compacto&lt;/button&gt;
+  &lt;hyper-form-field label="Email"&gt;
+    &lt;input type="email" /&gt;
+  &lt;/hyper-form-field&gt;
+&lt;/div&gt;</code></pre>
+  </section>
+
+  <!-- ── Proximo passo ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="proximo-passo">Proximo Passo</h2>
+    <p class="demo-card-desc">Explore os componentes disponiveis:</p>
+    <div class="gs-next-links">
+      <a routerLink="/" class="gs-next-link">
+        <span class="material-icons">dashboard</span>
+        Overview
+      </a>
+      <a routerLink="/button" class="gs-next-link">
+        <span class="material-icons">smart_button</span>
+        Button
+      </a>
+      <a routerLink="/theming" class="gs-next-link">
+        <span class="material-icons">color_lens</span>
+        Theming
+      </a>
+      <a routerLink="/form-field" class="gs-next-link">
+        <span class="material-icons">text_fields</span>
+        Form Field
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Sidenav + Anchor Scrolling ── -->
+  <section class="demo-card" id="anchor-scrolling">
+    <h2 class="demo-card-title" id="nota-anchor-scrolling-com-sidenav">Nota: Anchor Scrolling com Sidenav</h2>
+    <p class="demo-card-desc">
+      O <code>anchorScrolling: 'enabled'</code> do Angular Router usa <code>window.scrollTo()</code>,
+      que nao funciona quando o scroll container e um elemento interno (como o <code>hyper-sidenav-content</code>).
+      Para navegar corretamente para fragmentos de URL (<code>routerLink fragment="..."</code>),
+      implemente um listener manual de <code>NavigationEnd</code> no componente raiz:
+    </p>
+    <pre class="demo-code"><code>import &#123; NavigationEnd, Router &#125; from '&#64;angular/router';
+import &#123; filter &#125; from 'rxjs';
+
+export class AppComponent implements OnInit &#123;
+  private router = inject(Router);
+
+  ngOnInit() &#123;
+    this.router.events
+      .pipe(filter(e =&gt; e instanceof NavigationEnd))
+      .subscribe(() =&gt; &#123;
+        const fragment = this.router.parseUrl(this.router.url).fragment;
+        if (!fragment) return;
+        // Aguarda o componente lazy-loaded renderizar antes de rolar
+        setTimeout(() =&gt; &#123;
+          document.getElementById(fragment)?.scrollIntoView(&#123;
+            behavior: 'smooth',
+            block: 'start',
+          &#125;);
+        &#125;, 150);
+      &#125;);
+  &#125;
+&#125;</code></pre>
+    <p class="demo-card-desc">
+      O <code>scrollIntoView()</code> identifica corretamente o ancestral rolavel mais proximo
+      (o wrapper do sidenav), e a propriedade CSS <code>scroll-margin-top</code> nos elementos
+      alvo garante que o conteudo nao fique escondido atras da toolbar sticky:
+    </p>
+    <pre class="demo-code"><code>/* styles.scss — offset para toolbar sticky */
+[id] &#123;
+  scroll-margin-top: 4rem;
+&#125;</code></pre>
+  </section>
+</div>
+
+<style>
+  .gs-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+  }
+
+  .gs-entrypoints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    code {
+      background: var(--muted);
+      padding: 0.25rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      border: 1px solid var(--border);
+    }
+  }
+
+  .gs-next-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .gs-next-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: var(--border-width) solid var(--border);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+    color: var(--foreground);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: transform 0.15s, box-shadow 0.15s;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--primary);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .material-icons {
+      font-size: 20px;
+      color: var(--primary);
+    }
+  }
+</style>

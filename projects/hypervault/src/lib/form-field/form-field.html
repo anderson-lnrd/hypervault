@@ -1,0 +1,8 @@
+@if (label()) {
+  <label class="hyper-form-field-label">{{ label() }}</label>
+}
+<div class="hyper-form-field-container">
+  <ng-content select="[hyperPrefix]"></ng-content>
+  <ng-content></ng-content>
+  <ng-content select="[hyperSuffix]"></ng-content>
+</div>

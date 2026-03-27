@@ -1,0 +1,18 @@
+<div class="hyper-ps-inner">
+  @if (title()) {
+    <div class="hyper-ps-header">
+      <span class="material-icons">toc</span>
+      <span class="hyper-ps-header-text">{{ title() }}</span>
+    </div>
+  }
+  <nav class="hyper-ps-nav" aria-label="Sumário da página">
+    @if (entries().length) {
+      <hyper-page-summary-list
+        [entries]="entries()"
+        [activeId]="activeId()"
+        [onScrollTo]="scrollTo" />
+    } @else {
+      <p class="hyper-ps-empty">Nenhuma seção encontrada</p>
+    }
+  </nav>
+</div>

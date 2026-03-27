@@ -1,0 +1,100 @@
+<!-- Hidden host for step component instantiation -->
+<ng-content />
+
+@if (orientation() === 'horizontal') {
+  <div class="hyper-stepper-header"
+       [class.hyper-stepper-label-bottom]="labelPosition() === 'bottom'"
+       [class.hyper-stepper-label-end]="labelPosition() === 'end'">
+    @for (step of steps; track step._index; let i = $index; let last = $last) {
+      <div class="hyper-step-header"
+           [class.hyper-step-header-active]="selectedIndex() === i"
+           [class.hyper-step-header-completed]="step.completed()"
+           [class.hyper-step-header-error]="step.hasError()"
+           [class.hyper-step-header-disabled]="step.disabled()"
+           (click)="selectStep(i)"
+           [attr.tabindex]="step.disabled() ? -1 : 0"
+           role="tab"
+           [attr.aria-selected]="selectedIndex() === i"
+           (keydown.enter)="selectStep(i)"
+           (keydown.space)="$event.preventDefault(); selectStep(i)">
+        <div class="hyper-step-icon">
+          @if (step.hasError()) {
+            <span class="material-icons">error</span>
+          } @else if (step.completed() && selectedIndex() !== i) {
+            <span class="material-icons">check</span>
+          } @else if (step.icon()) {
+            <span class="material-icons">{{ step.icon() }}</span>
+          } @else {
+            <span class="hyper-step-number">{{ i + 1 }}</span>
+          }
+        </div>
+        <div class="hyper-step-label-container">
+          <span class="hyper-step-label">{{ step.label() }}</span>
+          @if (step.optional()) {
+            <span class="hyper-step-optional">Opcional</span>
+          }
+          @if (step.hasError() && step.errorMessage()) {
+            <span class="hyper-step-error-message">{{ step.errorMessage() }}</span>
+          }
+        </div>
+      </div>
+      @if (!last) {
+        <div class="hyper-step-connector" [class.hyper-step-connector-completed]="step.completed()"></div>
+      }
+    }
+  </div>
+  <div class="hyper-stepper-content">
+    @for (step of steps; track step._index) {
+      @if (step.active()) {
+        <div class="hyper-step-body">
+          <ng-container [ngTemplateOutlet]="step._bodyTpl" />
+        </div>
+      }
+    }
+  </div>
+} @else {
+  <!-- Vertical layout: interleaved headers + content -->
+  @for (step of steps; track step._index; let i = $index; let last = $last) {
+    <div class="hyper-step-header"
+         [class.hyper-step-header-active]="selectedIndex() === i"
+         [class.hyper-step-header-completed]="step.completed()"
+         [class.hyper-step-header-error]="step.hasError()"
+         [class.hyper-step-header-disabled]="step.disabled()"
+         (click)="selectStep(i)"
+         [attr.tabindex]="step.disabled() ? -1 : 0"
+         role="tab"
+         [attr.aria-selected]="selectedIndex() === i"
+         (keydown.enter)="selectStep(i)"
+         (keydown.space)="$event.preventDefault(); selectStep(i)">
+      <div class="hyper-step-icon">
+        @if (step.hasError()) {
+          <span class="material-icons">error</span>
+        } @else if (step.completed() && selectedIndex() !== i) {
+          <span class="material-icons">check</span>
+        } @else if (step.icon()) {
+          <span class="material-icons">{{ step.icon() }}</span>
+        } @else {
+          <span class="hyper-step-number">{{ i + 1 }}</span>
+        }
+      </div>
+      <div class="hyper-step-label-container">
+        <span class="hyper-step-label">{{ step.label() }}</span>
+        @if (step.optional()) {
+          <span class="hyper-step-optional">Opcional</span>
+        }
+        @if (step.hasError() && step.errorMessage()) {
+          <span class="hyper-step-error-message">{{ step.errorMessage() }}</span>
+        }
+      </div>
+    </div>
+    <div class="hyper-step-vertical-body"
+         [class.hyper-step-vertical-body-completed]="step.completed()"
+         [class.hyper-step-vertical-body-last]="last">
+      @if (step.active()) {
+        <div class="hyper-step-body">
+          <ng-container [ngTemplateOutlet]="step._bodyTpl" />
+        </div>
+      }
+    </div>
+  }
+}

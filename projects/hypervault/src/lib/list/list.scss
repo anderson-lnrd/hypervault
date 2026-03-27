@@ -1,0 +1,116 @@
+// ── List ──
+
+.hyper-list {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  background: var(--card);
+  padding: 0.25rem 0;
+}
+
+.hyper-list.hyper-list-bordered {
+  border: var(--border-width) solid var(--border);
+}
+
+// ── List Item ──
+
+.hyper-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  color: var(--foreground);
+  cursor: default;
+  outline: none;
+  transition: background 0.1s;
+}
+
+.hyper-list.hyper-list-interactive .hyper-list-item {
+  cursor: pointer;
+}
+
+// Hover — applied via host-context of interactive list
+.hyper-list-item:hover {
+  background: var(--muted);
+}
+
+.hyper-list-item:focus-visible {
+  background: var(--muted);
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.hyper-list-item.hyper-list-item-selected {
+  background: var(--muted);
+  color: var(--primary);
+}
+
+.hyper-list-item.hyper-list-item-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// ── Content ──
+
+.hyper-list-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+// Multi-line
+.hyper-list-item-content .hyper-list-item-line:first-child {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.hyper-list-item-content .hyper-list-item-line:nth-child(2) {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+}
+
+// ── Dense ──
+
+.hyper-list-dense .hyper-list-item {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+}
+
+// ── Selection checkbox ──
+
+.hyper-list-option-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.hyper-list-option-checked.hyper-list-option-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.hyper-list-option-checked.hyper-list-option-secondary {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+// ── Density ──
+
+$density: var(--hyper-density, 0);
+
+:host(.hyper-list-item) {
+  padding-top: calc(0.65rem + #{$density} * 2px);
+  padding-bottom: calc(0.65rem + #{$density} * 2px);
+}

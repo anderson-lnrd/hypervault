@@ -1,0 +1,92 @@
+// ── HyperVault Scrollbar ──
+// Customizes all scrollbars to follow the library's identity.
+//
+// Usage:
+//   @use 'hypervault/styles/scrollbar';
+//
+// Opt-out per element:
+//   <div class="hyper-scrollbar-native"> ... </div>
+//
+// Opt-out globally:
+//   html.hyper-scrollbar-native { ... }
+//
+// Customization via CSS variables on any ancestor:
+//   :root {
+//     --hyper-scrollbar-size: 10px;
+//     --hyper-scrollbar-track: #1a1a1a;
+//     --hyper-scrollbar-thumb: #39ff14;
+//     --hyper-scrollbar-thumb-hover: #ff1493;
+//     --hyper-scrollbar-border: #fafafa;
+//     --hyper-scrollbar-border-width: 2px;
+//     --hyper-scrollbar-radius: 0px;
+//   }
+
+// ── Defaults (inherit from theme tokens) ──
+:root {
+  --hyper-scrollbar-size: 10px;
+  --hyper-scrollbar-track: var(--muted, #2a2a2a);
+  --hyper-scrollbar-thumb: var(--primary, #39ff14);
+  --hyper-scrollbar-thumb-hover: var(--secondary, #ff1493);
+  --hyper-scrollbar-border: var(--border, #fafafa);
+  --hyper-scrollbar-border-width: 2px;
+  --hyper-scrollbar-radius: 0px;
+}
+
+// ── Firefox ──
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--hyper-scrollbar-thumb) var(--hyper-scrollbar-track);
+}
+
+// ── Webkit / Blink (Chrome, Safari, Edge) ──
+::-webkit-scrollbar {
+  width: var(--hyper-scrollbar-size);
+  height: var(--hyper-scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hyper-scrollbar-track);
+  border: var(--hyper-scrollbar-border-width) solid var(--hyper-scrollbar-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hyper-scrollbar-thumb);
+  border: var(--hyper-scrollbar-border-width) solid var(--hyper-scrollbar-border);
+  border-radius: var(--hyper-scrollbar-radius);
+
+  &:hover {
+    background: var(--hyper-scrollbar-thumb-hover);
+  }
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--hyper-scrollbar-track);
+}
+
+// ── Opt-out: native scrollbar ──
+.hyper-scrollbar-native {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-corner {
+    all: unset;
+  }
+}
+
+// ── Variant: thin ──
+.hyper-scrollbar-thin {
+  --hyper-scrollbar-size: 6px;
+  --hyper-scrollbar-border-width: 1px;
+}
+
+// ── Variant: hidden (scrollable but no visible bar) ──
+.hyper-scrollbar-hidden {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

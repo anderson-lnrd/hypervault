@@ -1,0 +1,1 @@
+export { HyperIcon } from 'hypervault';

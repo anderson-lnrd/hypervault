@@ -1,0 +1,205 @@
+<div class="demo-page">
+  <h1 class="demo-title">Button</h1>
+  <p class="demo-intro">Componente de botao com multiplas variantes, tamanhos, estados e efeitos hover. Suporta icones, loading state e o sistema de densidade.</p>
+
+  <!-- ── Variantes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="variantes">Variantes</h2>
+    <p class="demo-card-desc">Seis variantes de botao disponiveis, cada uma com identidade visual propria.</p>
+    <div class="demo-row">
+      <button hyper-raised-button>Raised</button>
+      <button hyper-raised-button color="secondary">Secondary</button>
+      <button hyper-stroked-button>Stroked</button>
+      <button hyper-raised-button color="destructive">Destructive</button>
+      <button hyper-ghost-button>Ghost</button>
+      <button hyper-link-button>Link</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button&gt;Raised&lt;/button&gt;
+&lt;button hyper-raised-button color="secondary"&gt;Secondary&lt;/button&gt;
+&lt;button hyper-stroked-button&gt;Stroked&lt;/button&gt;
+&lt;button hyper-raised-button color="destructive"&gt;Destructive&lt;/button&gt;
+&lt;button hyper-ghost-button&gt;Ghost&lt;/button&gt;
+&lt;button hyper-link-button&gt;Link&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cada variante aceita um input <code>color</code> com os valores: <code>primary</code>, <code>secondary</code>, <code>accent</code> e <code>destructive</code>.</p>
+    <div class="demo-row">
+      <button hyper-raised-button color="primary">Primary</button>
+      <button hyper-raised-button color="secondary">Secondary</button>
+      <button hyper-raised-button color="accent">Accent</button>
+      <button hyper-raised-button color="destructive">Destructive</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button color="primary"&gt;Primary&lt;/button&gt;
+&lt;button hyper-raised-button color="secondary"&gt;Secondary&lt;/button&gt;
+&lt;button hyper-raised-button color="accent"&gt;Accent&lt;/button&gt;
+&lt;button hyper-raised-button color="destructive"&gt;Destructive&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Tamanhos ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tamanhos">Tamanhos</h2>
+    <p class="demo-card-desc">Tres tamanhos disponiveis: <code>sm</code>, <code>md</code> (padrao) e <code>lg</code>.</p>
+    <div class="demo-row">
+      <button hyper-raised-button size="sm">Small</button>
+      <button hyper-raised-button>Default (md)</button>
+      <button hyper-raised-button size="lg">Large</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button size="sm"&gt;Small&lt;/button&gt;
+&lt;button hyper-raised-button&gt;Default (md)&lt;/button&gt;
+&lt;button hyper-raised-button size="lg"&gt;Large&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icones ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icones">Com Icones</h2>
+    <p class="demo-card-desc">Use <code>&lt;hyper-icon&gt;</code> dentro do botao para adicionar icones Material Icons antes ou depois do texto.</p>
+    <div class="demo-row">
+      <button hyper-raised-button>
+        <hyper-icon>shopping_cart</hyper-icon>
+        Adicionar
+      </button>
+      <button hyper-raised-button color="secondary">
+        <hyper-icon>favorite</hyper-icon>
+        Favoritar
+      </button>
+      <button hyper-stroked-button>
+        Continuar
+        <hyper-icon>arrow_forward</hyper-icon>
+      </button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button&gt;
+  &lt;hyper-icon&gt;shopping_cart&lt;/hyper-icon&gt;
+  Adicionar
+&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Icon Buttons ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="icon-buttons">Icon Buttons</h2>
+    <p class="demo-card-desc">Botoes redondos apenas com icone. Use o seletor <code>hyper-icon-button</code> e sempre forneça <code>aria-label</code>.</p>
+    <div class="demo-row">
+      <button hyper-icon-button color="primary" aria-label="Adicionar">
+        <hyper-icon>add</hyper-icon>
+      </button>
+      <button hyper-icon-button color="secondary" aria-label="Favoritar">
+        <hyper-icon>favorite</hyper-icon>
+      </button>
+      <button hyper-icon-button aria-label="Editar">
+        <hyper-icon>edit</hyper-icon>
+      </button>
+      <button hyper-icon-button color="destructive" aria-label="Excluir">
+        <hyper-icon>delete</hyper-icon>
+      </button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-icon-button color="primary" aria-label="Adicionar"&gt;
+  &lt;hyper-icon&gt;add&lt;/hyper-icon&gt;
+&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Estados ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="estados">Estados</h2>
+    <p class="demo-card-desc">Os inputs <code>disabled</code> e <code>[loading]</code> controlam o estado do botao. Loading exibe um spinner e desabilita automaticamente.</p>
+    <div class="demo-row">
+      <button hyper-raised-button disabled>Desabilitado</button>
+      <button hyper-raised-button [loading]="true">Carregando...</button>
+      <button hyper-stroked-button disabled>Stroked Disabled</button>
+    </div>
+    <pre class="demo-code"><code>&lt;button hyper-raised-button disabled&gt;Desabilitado&lt;/button&gt;
+&lt;button hyper-raised-button [loading]="true"&gt;Carregando...&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Hover Effects ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="hover-effects">Hover Effects</h2>
+    <p class="demo-card-desc">Efeitos personalizados ao passar o mouse. Valores disponiveis: <code>"float-3d"</code>, <code>"press-3d"</code>, <code>"hover-accent"</code>, <code>"hover-primary"</code> e <code>"hover-destructive"</code>. Combine efeitos separados por espaco.</p>
+
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8;">3D — Float vs Press</h3>
+    <div class="demo-row">
+      <button hyper-raised-button hoverEffect="float-3d">Float 3D ↑</button>
+      <button hyper-raised-button hoverEffect="press-3d">Press 3D ↓</button>
+      <button hyper-stroked-button hoverEffect="float-3d">Float Stroked</button>
+      <button hyper-stroked-button hoverEffect="press-3d">Press Stroked</button>
+    </div>
+
+    <h3 class="demo-card-title" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">Troca de Cor</h3>
+    <div class="demo-row">
+      <button hyper-stroked-button hoverEffect="hover-accent">Hover Accent</button>
+      <button hyper-raised-button color="secondary" hoverEffect="hover-primary">Hover Primary</button>
+      <button hyper-raised-button hoverEffect="hover-destructive">Hover Destructive</button>
+    </div>
+
+    <h3 class="demo-card-title" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">Combinados (3D + Cor)</h3>
+    <div class="demo-row">
+      <button hyper-raised-button hoverEffect="float-3d hover-accent">Float + Accent</button>
+      <button hyper-raised-button color="secondary" hoverEffect="press-3d hover-primary">Press + Primary</button>
+      <button hyper-stroked-button hoverEffect="float-3d hover-destructive">Float + Destructive</button>
+      <button hyper-stroked-button hoverEffect="press-3d hover-accent">Press + Accent</button>
+    </div>
+
+    <pre class="demo-code"><code>&lt;!-- Float 3D — flutua para cima --&gt;
+&lt;button hyper-raised-button hoverEffect="float-3d"&gt;Float 3D&lt;/button&gt;
+
+&lt;!-- Press 3D — pressiona para baixo --&gt;
+&lt;button hyper-raised-button hoverEffect="press-3d"&gt;Press 3D&lt;/button&gt;
+
+&lt;!-- Combinando 3D + troca de cor --&gt;
+&lt;button hyper-raised-button hoverEffect="float-3d hover-accent"&gt;Float + Accent&lt;/button&gt;
+&lt;button hyper-stroked-button hoverEffect="press-3d hover-destructive"&gt;Press + Destructive&lt;/button&gt;</code></pre>
+  </section>
+
+  <!-- ── Density ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="density">Density Scale</h2>
+    <p class="demo-card-desc">Sistema de densidade de 0 (mais espaçoso) a -4 (mais compacto). Aplique a diretiva <code>[hyperDensity]</code> no elemento pai.</p>
+    <div style="display: grid; gap: 1.5rem;">
+      @for (d of [0, -1, -2, -3, -4]; track d) {
+        <div [hyperDensity]="$any(d)" class="demo-row" style="align-items: center;">
+          <span class="demo-density-label">density: {{ d }}</span>
+          <button hyper-raised-button>Primary</button>
+          <button hyper-raised-button color="secondary">Secondary</button>
+          <button hyper-stroked-button>
+            <hyper-icon>grid_view</hyper-icon>
+            Outline
+          </button>
+        </div>
+      }
+    </div>
+    <pre class="demo-code"><code>&lt;div [hyperDensity]="-2"&gt;
+  &lt;button hyper-raised-button&gt;Compact&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc">Referencia completa dos seletores e inputs do componente.</p>
+
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8;">Seletores</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Seletor</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>button[hyper-button]</code></td><td>Botao flat (sem sombra)</td></tr>
+        <tr><td><code>button[hyper-raised-button]</code></td><td>Botao elevado com sombra brutal</td></tr>
+        <tr><td><code>button[hyper-stroked-button]</code></td><td>Botao com borda e sombra, fundo transparente</td></tr>
+        <tr><td><code>button[hyper-icon-button]</code></td><td>Botao quadrado para icones</td></tr>
+        <tr><td><code>button[hyper-ghost-button]</code></td><td>Botao fantasma, sem borda nem sombra</td></tr>
+        <tr><td><code>button[hyper-link-button]</code></td><td>Botao estilo hyperlink</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="demo-card-title" style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">Inputs</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent' | 'destructive'</code></td><td>—</td><td>Cor do botao</td></tr>
+        <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Tamanho do botao</td></tr>
+        <tr><td><code>hoverEffect</code></td><td><code>'none' | 'float-3d' | 'press-3d' | 'hover-accent' | 'hover-primary' | 'hover-destructive'</code></td><td><code>'none'</code></td><td>Efeito ao passar o mouse. Combine valores separados por espaco.</td></tr>
+        <tr><td><code>loading</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Exibe spinner e desabilita o botao</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

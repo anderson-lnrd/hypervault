@@ -1,0 +1,140 @@
+.hyper-table-container {
+  display: block;
+  overflow-x: auto;
+}
+
+.hyper-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+
+// ── Cells ──
+.hyper-header-cell,
+.hyper-cell,
+.hyper-footer-cell {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 2px solid var(--muted);
+}
+
+.hyper-header-cell {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
+  background: var(--card);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.hyper-footer-cell {
+  font-weight: 600;
+  background: var(--card);
+}
+
+// ── Sort Header ──
+.hyper-sort-header {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    opacity: 0.25;
+    transition: opacity 0.15s, transform 0.15s;
+    border-bottom: 5px solid currentColor;
+  }
+
+  &:hover::after {
+    opacity: 0.5;
+  }
+
+  &.hyper-sort-active::after {
+    opacity: 1;
+  }
+
+  &.hyper-sort-desc::after {
+    transform: rotate(180deg);
+  }
+}
+
+// ── Sticky Header ──
+.hyper-table-sticky-header {
+  thead .hyper-header-cell {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+// ── Row ──
+.hyper-row {
+  transition: background 0.1s;
+}
+
+// ── Variants ──
+:host(.hyper-table-bordered) {
+  .hyper-table {
+    border: var(--border-width) solid var(--border);
+  }
+
+  .hyper-header-cell,
+  .hyper-cell,
+  .hyper-footer-cell {
+    border: 1px solid var(--muted);
+  }
+}
+
+:host(.hyper-table-striped) {
+  .hyper-row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+:host(.hyper-table-hoverable) {
+  .hyper-row:hover {
+    background: rgba(57, 255, 20, 0.04);
+  }
+}
+
+:host(.hyper-table-dense) {
+  .hyper-header-cell,
+  .hyper-cell,
+  .hyper-footer-cell {
+    padding: 0.4rem 0.75rem;
+  }
+}
+
+// ── Color Variants ──
+.hyper-table-color-primary {
+  .hyper-header-cell {
+    border-bottom-color: var(--primary);
+  }
+}
+
+.hyper-table-color-secondary {
+  .hyper-header-cell {
+    border-bottom-color: var(--secondary);
+  }
+}
+
+// ── No Data ──
+.hyper-no-data-cell {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}

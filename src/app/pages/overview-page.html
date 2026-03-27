@@ -1,0 +1,315 @@
+<div class="demo-page">
+  <h1 class="demo-title">Hyper<span>Vault</span></h1>
+  <p class="demo-intro">Biblioteca de componentes Angular com identidade neo-brutalist cyberpunk. Bordas solidas, sombras offset, cores vibrantes e tipografia monospace. 31 componentes prontos para producao.</p>
+
+  <!-- ── Demo Showcase ── -->
+  <h2 class="demo-card-title" id="demos-interativas" style="margin-top: 0.5rem;">Demos Interativas</h2>
+  <div class="overview-grid" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">
+  </div>
+
+  <hyper-divider />
+
+  <!-- ── Live Hero ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="amostra-ao-vivo">Amostra ao Vivo</h2>
+    <p class="demo-card-desc">Demonstracao rapida dos componentes mais usados.</p>
+    <div class="demo-row">
+      <button hyper-raised-button>Primary</button>
+      <button hyper-raised-button color="secondary">Secondary</button>
+      <button hyper-stroked-button color="accent">Accent</button>
+      <button hyper-icon-button color="destructive" aria-label="Delete">
+        <hyper-icon>delete</hyper-icon>
+      </button>
+    </div>
+    <div class="demo-row">
+      <hyper-badge>default</hyper-badge>
+      <hyper-badge variant="secondary">secondary</hyper-badge>
+      <hyper-badge variant="outline">outline</hyper-badge>
+      <hyper-badge rarity="rare">rare</hyper-badge>
+      <hyper-badge rarity="epic">epic</hyper-badge>
+      <hyper-badge rarity="legendary">legendary</hyper-badge>
+    </div>
+    <div class="demo-row">
+      <hyper-checkbox color="primary">Opcao A</hyper-checkbox>
+      <hyper-checkbox color="secondary" [checked]="true">Opcao B</hyper-checkbox>
+      <hyper-switch color="secondary" [checked]="true">Ativo</hyper-switch>
+    </div>
+    <div class="demo-row" style="max-width: 300px; width: 100%;">
+      <hyper-slider [value]="65" color="primary" [showValue]="true" />
+    </div>
+    <div class="demo-row">
+      <hyper-chip-set>
+        <hyper-chip color="primary">Angular</hyper-chip>
+        <hyper-chip color="secondary">TypeScript</hyper-chip>
+        <hyper-chip color="accent">Signals</hyper-chip>
+      </hyper-chip-set>
+    </div>
+    <div class="demo-row" style="max-width: 300px; width: 100%;">
+      <hyper-progress-bar [value]="72" color="primary" [striped]="true" [animated]="true" />
+    </div>
+    <div class="demo-row">
+      <hyper-spinner size="sm" color="primary" />
+      <hyper-spinner size="sm" color="secondary" />
+      <hyper-spinner size="sm" color="accent" />
+    </div>
+  </section>
+
+  <!-- ── Foundation ── -->
+  <h2 class="demo-card-title" id="fundacao" style="margin-top: 1rem;">Fundacao</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/colors">
+      <span class="material-icons overview-icon">palette</span>
+      <h2>Cores</h2>
+      <p>Paleta completa, superficies, foregrounds e design tokens CSS</p>
+      <hyper-badge rarity="epic">fundacao</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/typography">
+      <span class="material-icons overview-icon">text_format</span>
+      <h2>Tipografia</h2>
+      <p>Space Grotesk + Space Mono, escala tipografica e convencoes</p>
+      <hyper-badge rarity="epic">fundacao</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/theming">
+      <span class="material-icons overview-icon">color_lens</span>
+      <h2>Theming</h2>
+      <p>27 temas built-in, dark/light mode, alto contraste, custom themes</p>
+      <hyper-badge rarity="epic">fundacao</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Actions ── -->
+  <h2 class="demo-card-title" id="acoes" style="margin-top: 1rem;">Acoes</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/button">
+      <span class="material-icons overview-icon">smart_button</span>
+      <h2>Button</h2>
+      <p>6 variantes, 4 cores, 3 tamanhos, loading, density, hover effects</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/menu">
+      <span class="material-icons overview-icon">menu</span>
+      <h2>Menu</h2>
+      <p>Dropdown contextual com grupos, divisores e posicionamento</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/tooltip">
+      <span class="material-icons overview-icon">chat_bubble_outline</span>
+      <h2>Tooltip</h2>
+      <p>Dica flutuante com posicoes, delay e portal overlay</p>
+      <hyper-badge>diretiva</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Forms ── -->
+  <h2 class="demo-card-title" id="formularios" style="margin-top: 1rem;">Formularios</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/form-field">
+      <span class="material-icons overview-icon">text_fields</span>
+      <h2>Form Field</h2>
+      <p>Wrapper com label, prefixo, sufixo, textarea</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/checkbox">
+      <span class="material-icons overview-icon">check_box</span>
+      <h2>Checkbox</h2>
+      <p>ControlValueAccessor, indeterminate, 4 cores</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/switch">
+      <span class="material-icons overview-icon">toggle_on</span>
+      <h2>Switch</h2>
+      <p>Toggle on/off com cores e ControlValueAccessor</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/slider">
+      <span class="material-icons overview-icon">tune</span>
+      <h2>Slider</h2>
+      <p>Range input com fill bar, min/max/step, cores</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/radio">
+      <span class="material-icons overview-icon">radio_button_checked</span>
+      <h2>Radio</h2>
+      <p>Grupo de radio buttons, horizontal/vertical, cores, CVA</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/select">
+      <span class="material-icons overview-icon">arrow_drop_down_circle</span>
+      <h2>Select</h2>
+      <p>Dropdown select, multipla selecao, optgroup, CVA</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/datepicker">
+      <span class="material-icons overview-icon">date_range</span>
+      <h2>Datepicker</h2>
+      <p>Calendario com min/max, filtro de datas, toggle, CVA</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/chip">
+      <span class="material-icons overview-icon">label</span>
+      <h2>Chip</h2>
+      <p>Tags removiveis, chip set, chip input, selecao</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Layout & Navigation ── -->
+  <h2 class="demo-card-title" id="layout-navegacao" style="margin-top: 1rem;">Layout & Navegacao</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/toolbar">
+      <span class="material-icons overview-icon">web</span>
+      <h2>Toolbar</h2>
+      <p>Barra superior com slots, cores, multi-row, sticky, density</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/sidenav">
+      <span class="material-icons overview-icon">menu_open</span>
+      <h2>Sidenav</h2>
+      <p>Drawer lateral com modos over, push e side</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/breadcrumb">
+      <span class="material-icons overview-icon">chevron_right</span>
+      <h2>Breadcrumb</h2>
+      <p>Navegacao hierarquica com auto-detect via Angular Router</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/tabs">
+      <span class="material-icons overview-icon">tab</span>
+      <h2>Tabs</h2>
+      <p>Abas com icones, cores, alinhamento, lazy content</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/stepper">
+      <span class="material-icons overview-icon">linear_scale</span>
+      <h2>Stepper</h2>
+      <p>Wizard passo-a-passo, horizontal/vertical, linear, erro</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/divider">
+      <span class="material-icons overview-icon">horizontal_rule</span>
+      <h2>Divider</h2>
+      <p>Separador horizontal/vertical, cores, espessura, tracejado</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Data Display ── -->
+  <h2 class="demo-card-title" id="exibicao-de-dados" style="margin-top: 1rem;">Exibicao de Dados</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/badge">
+      <span class="material-icons overview-icon">sell</span>
+      <h2>Badge</h2>
+      <p>Rotulos, status, gamificacao com sistema de raridade</p>
+      <hyper-badge variant="secondary">componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/list">
+      <span class="material-icons overview-icon">list</span>
+      <h2>List</h2>
+      <p>Lista com icones, meta, multi-linha, selection list</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/table">
+      <span class="material-icons overview-icon">table_chart</span>
+      <h2>Table</h2>
+      <p>Tabela com sort, bordered, striped, paginator, no-data</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/paginator">
+      <span class="material-icons overview-icon">last_page</span>
+      <h2>Paginator</h2>
+      <p>Paginacao com page size, first/last buttons</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/tree">
+      <span class="material-icons overview-icon">account_tree</span>
+      <h2>Tree</h2>
+      <p>Arvore hierarquica com expand/collapse, icones, dense</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/accordion">
+      <span class="material-icons overview-icon">expand_circle_down</span>
+      <h2>Accordion</h2>
+      <p>Paineis expansiveis, multi-expand, icones, borderless</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Feedback ── -->
+  <h2 class="demo-card-title" id="feedback" style="margin-top: 1rem;">Feedback</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/alert">
+      <span class="material-icons overview-icon">notification_important</span>
+      <h2>Alert</h2>
+      <p>Alerta inline com variantes, outlined, filled, acoes</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/snackbar">
+      <span class="material-icons overview-icon">chat_bubble</span>
+      <h2>Snackbar</h2>
+      <p>Toast notification com posicoes, variantes, acoes</p>
+      <hyper-badge>servico</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/dialog">
+      <span class="material-icons overview-icon">open_in_new</span>
+      <h2>Dialog</h2>
+      <p>Modal com backdrop, data injection, ref programatica</p>
+      <hyper-badge>servico</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/progress">
+      <span class="material-icons overview-icon">hourglass_top</span>
+      <h2>Progress & Spinner</h2>
+      <p>Barra de progresso e spinner com modos e cores</p>
+      <hyper-badge>componente</hyper-badge>
+    </a>
+  </div>
+
+  <!-- ── Utilities ── -->
+  <h2 class="demo-card-title" id="utilitarios" style="margin-top: 1rem;">Utilitarios</h2>
+  <div class="overview-grid">
+    <a class="overview-card" routerLink="/getting-started" fragment="density">
+      <span class="material-icons overview-icon">density_small</span>
+      <h2>Density</h2>
+      <p>Sistema de densidade global via diretiva e token de injecao</p>
+      <hyper-badge variant="outline">diretiva</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/page-summary">
+      <span class="material-icons overview-icon">toc</span>
+      <h2>Page Summary</h2>
+      <p>Sumário automático com detecção de âncoras, hierarquia h2→h3, ícones e IntersectionObserver</p>
+      <hyper-badge variant="outline">componente</hyper-badge>
+    </a>
+
+    <a class="overview-card" routerLink="/getting-started" fragment="defaults">
+      <span class="material-icons overview-icon">settings</span>
+      <h2>Defaults</h2>
+      <p>provideHyperDefaults() para configuracao global de componentes</p>
+      <hyper-badge variant="outline">provider</hyper-badge>
+    </a>
+  </div>
+</div>

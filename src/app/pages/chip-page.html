@@ -1,0 +1,185 @@
+<div class="demo-page">
+  <h1 class="demo-title">Chip</h1>
+  <p class="demo-intro">Chips compactos para tags, filtros e selecao. Inclui chip-set com selecao e chip-input para entrada dinamica.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Chips simples com label.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <hyper-chip label="Angular" />
+      <hyper-chip label="React" />
+      <hyper-chip label="Vue" />
+      <hyper-chip label="Svelte" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Angular" /&gt;
+&lt;hyper-chip label="React" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Variantes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="variantes">Variantes</h2>
+    <p class="demo-card-desc">Variantes: <code>filled</code> (padrao), <code>outlined</code> e <code>tonal</code>.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <hyper-chip label="Filled" variant="filled" />
+      <hyper-chip label="Outlined" variant="outlined" />
+      <hyper-chip label="Tonal" variant="tonal" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Filled" variant="filled" /&gt;
+&lt;hyper-chip label="Outlined" variant="outlined" /&gt;
+&lt;hyper-chip label="Tonal" variant="tonal" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores: <code>primary</code>, <code>secondary</code>, <code>accent</code> e <code>destructive</code>.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <hyper-chip label="Primary" color="primary" />
+      <hyper-chip label="Secondary" color="secondary" />
+      <hyper-chip label="Accent" color="accent" />
+      <hyper-chip label="Destructive" color="destructive" />
+    </div>
+    <div class="demo-row" style="gap: 0.5rem; margin-top: 0.75rem;">
+      <hyper-chip label="Primary" color="primary" variant="outlined" />
+      <hyper-chip label="Secondary" color="secondary" variant="outlined" />
+      <hyper-chip label="Accent" color="accent" variant="outlined" />
+      <hyper-chip label="Destructive" color="destructive" variant="outlined" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Secondary" color="secondary" /&gt;
+&lt;hyper-chip label="Accent" color="accent" variant="outlined" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icone ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icone">Com Icone</h2>
+    <p class="demo-card-desc">Adicione icones com o input <code>icon</code>.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <hyper-chip label="Favorito" icon="star" />
+      <hyper-chip label="Configuracao" icon="settings" variant="outlined" />
+      <hyper-chip label="Alerta" icon="warning" color="destructive" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Favorito" icon="star" /&gt;
+&lt;hyper-chip label="Configuracao" icon="settings" variant="outlined" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Removivel ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="removivel">Removivel</h2>
+    <p class="demo-card-desc">Use <code>[removable]="true"</code> para exibir botao de remocao.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      @for (item of removableItems(); track item) {
+        <hyper-chip [label]="item" [removable]="true" (removed)="removeItem(item)" />
+      }
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Tag" [removable]="true" (removed)="onRemove()" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Chip Set com Selecao ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="chip-set-selecao">Chip Set — Selecao</h2>
+    <p class="demo-card-desc">Use <code>hyper-chip-set</code> com <code>selectionMode</code> para selecao unica ou multipla.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <h3 style="width: 100%; font-size: 0.85rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Single</h3>
+      <hyper-chip-set selectionMode="single" color="secondary">
+        <hyper-chip label="Opcao A" [selectable]="true" />
+        <hyper-chip label="Opcao B" [selectable]="true" />
+        <hyper-chip label="Opcao C" [selectable]="true" />
+      </hyper-chip-set>
+    </div>
+    <div class="demo-row" style="gap: 0.5rem; margin-top: 1rem;">
+      <h3 style="width: 100%; font-size: 0.85rem; color: var(--muted-foreground); margin-bottom: 0.25rem;">Multiple</h3>
+      <hyper-chip-set selectionMode="multiple" color="accent">
+        <hyper-chip label="Angular" [selectable]="true" />
+        <hyper-chip label="React" [selectable]="true" />
+        <hyper-chip label="Vue" [selectable]="true" />
+        <hyper-chip label="Svelte" [selectable]="true" />
+      </hyper-chip-set>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip-set selectionMode="single" color="secondary"&gt;
+  &lt;hyper-chip label="A" [selectable]="true" /&gt;
+  &lt;hyper-chip label="B" [selectable]="true" /&gt;
+&lt;/hyper-chip-set&gt;</code></pre>
+  </section>
+
+  <!-- ── Chip Input ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="chip-input">Chip Input</h2>
+    <p class="demo-card-desc">Entrada de chips dinamica com <code>hyper-chip-input</code>. Suporta separadores (Enter, virgula), paste e ControlValueAccessor.</p>
+    <div class="demo-row">
+      <hyper-chip-input placeholder="Digite e pressione Enter..." />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip-input placeholder="Digite e pressione Enter..." [(value)]="tags" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Chip Input com Opcoes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="chip-input-opcoes">Chip Input — Opcoes</h2>
+    <p class="demo-card-desc">Limite maximo de chips, sem duplicatas, com add on blur.</p>
+    <div class="demo-row">
+      <hyper-chip-input
+        placeholder="Max 5 tags, sem duplicatas..."
+        [maxChips]="5"
+        [allowDuplicates]="false"
+        [addOnBlur]="true"
+        color="secondary"
+      />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip-input
+  [maxChips]="5"
+  [allowDuplicates]="false"
+  [addOnBlur]="true"
+  color="secondary"
+/&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Chips e chip-input podem ser desabilitados.</p>
+    <div class="demo-row" style="gap: 0.5rem;">
+      <hyper-chip label="Disabled" [disabled]="true" />
+      <hyper-chip label="Disabled Removable" [disabled]="true" [removable]="true" />
+    </div>
+    <div class="demo-row" style="margin-top: 0.75rem;">
+      <hyper-chip-input placeholder="Disabled" [disabled]="true" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-chip label="Disabled" [disabled]="true" /&gt;
+&lt;hyper-chip-input [disabled]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperchip">API — HyperChip</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td><code>''</code></td><td>Texto do chip</td></tr>
+        <tr><td><code>icon</code></td><td><code>string</code></td><td><code>''</code></td><td>Icone Material (leading)</td></tr>
+        <tr><td><code>avatar</code></td><td><code>string</code></td><td><code>''</code></td><td>URL da imagem de avatar</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent' | 'destructive'</code></td><td><code>'primary'</code></td><td>Cor do chip</td></tr>
+        <tr><td><code>variant</code></td><td><code>'filled' | 'outlined' | 'tonal'</code></td><td><code>'filled'</code></td><td>Variante visual</td></tr>
+        <tr><td><code>removable</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Exibir botao de remocao</td></tr>
+        <tr><td><code>selectable</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Permitir selecao</td></tr>
+        <tr><td><code>selected</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado selecionado (two-way)</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o chip</td></tr>
+        <tr><td><code>size</code></td><td><code>'sm' | 'md' | 'lg'</code></td><td><code>'md'</code></td><td>Tamanho do chip</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 1.5rem;">API — HyperChipInput</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>value</code></td><td><code>string[]</code></td><td><code>[]</code></td><td>Lista de chips (two-way, CVA)</td></tr>
+        <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>''</code></td><td>Placeholder do input</td></tr>
+        <tr><td><code>maxChips</code></td><td><code>number</code></td><td><code>Infinity</code></td><td>Maximo de chips</td></tr>
+        <tr><td><code>allowDuplicates</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Permitir valores duplicados</td></tr>
+        <tr><td><code>addOnBlur</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Adicionar chip ao perder foco</td></tr>
+        <tr><td><code>removable</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Chips removiveis</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary' | 'accent' | 'destructive'</code></td><td><code>'primary'</code></td><td>Cor dos chips</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita o input</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

@@ -1,0 +1,6 @@
+<div class="hyper-progress-track">
+  @if (mode() === 'buffer') {
+    <div class="hyper-progress-buffer" [style.transform]="bufferTransform()"></div>
+  }
+  <div class="hyper-progress-fill" [style.transform]="barTransform()"></div>
+</div>

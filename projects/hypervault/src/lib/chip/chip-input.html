@@ -1,0 +1,23 @@
+<div class="hyper-chip-input-wrapper">
+  @for (chip of chips(); track $index) {
+    <span class="hyper-chip hyper-chip-filled hyper-chip-{{ color() }} hyper-chip-sm">
+      <span class="hyper-chip-label">{{ chip }}</span>
+      @if (removable()) {
+        <button class="hyper-chip-remove" aria-label="Remover" (click)="removeChip($index)" tabindex="-1">
+          <span class="material-icons">close</span>
+        </button>
+      }
+    </span>
+  }
+  <input
+    class="hyper-chip-input-field"
+    [placeholder]="chips().length === 0 ? placeholder() : ''"
+    [disabled]="disabled()"
+    [value]="inputValue()"
+    (input)="onInput($event)"
+    (keydown)="onInputKeydown($event)"
+    (focus)="focused.set(true)"
+    (blur)="onBlur()"
+    (paste)="onPaste($event)"
+  />
+</div>

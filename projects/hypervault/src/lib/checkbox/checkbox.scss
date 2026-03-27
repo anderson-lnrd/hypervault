@@ -1,0 +1,95 @@
+// ── Density system ──
+// Inherits --hyper-density from parent (0 to -4)
+
+$frame-size: 1.25rem;
+$frame-density-step: 0.075rem;
+
+:host {
+	--_d: var(--hyper-density, 0);
+	--_frame-size: calc(#{$frame-size} + var(--_d) * #{$frame-density-step});
+	--_check-color: var(--primary-foreground, #0f0f0f);
+	--_check-bg: var(--primary, #39ff14);
+	--_border-color: var(--border, #fafafa);
+
+	display: inline-flex;
+	cursor: pointer;
+	user-select: none;
+}
+
+// ── Colors ──
+
+:host(.hyper-secondary) {
+	--_check-bg: var(--secondary, #ff1493);
+	--_check-color: var(--secondary-foreground, #0f0f0f);
+	--_border-color: var(--secondary, #ff1493);
+}
+
+// ── Disabled ──
+
+:host(.hyper-checkbox-disabled) {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+// ── Layout ──
+
+.hyper-checkbox-layout {
+	display: inline-flex;
+	align-items: center;
+	gap: calc(0.5rem + var(--_d) * 0.04rem);
+	cursor: inherit;
+}
+
+// ── Frame (the box) ──
+
+.hyper-checkbox-frame {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: var(--_frame-size);
+	height: var(--_frame-size);
+	border: var(--border-width, 4px) solid var(--_border-color);
+	border-radius: var(--border-radius, 0);
+	background: transparent;
+	color: var(--_check-color);
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+	outline: none;
+
+	&:focus-visible {
+		box-shadow: 0 0 0 2px var(--_check-bg);
+	}
+}
+
+// ── Checked / Indeterminate states ──
+
+:host(.hyper-checkbox-checked),
+:host(.hyper-checkbox-indeterminate) {
+	.hyper-checkbox-frame {
+		background: var(--_check-bg);
+		border-color: var(--_check-bg);
+	}
+}
+
+// ── Check icon ──
+
+.hyper-checkbox-icon {
+	width: 80%;
+	height: 80%;
+}
+
+// ── Label ──
+
+.hyper-checkbox-label {
+	font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+	font-size: calc(0.875rem + var(--_d) * 0.03rem);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--foreground, #fafafa);
+	line-height: 1;
+}

@@ -1,0 +1,58 @@
+<div class="demo-page">
+  <h1 class="demo-title">Switch</h1>
+  <p class="demo-intro">Toggle switch com suporte a ControlValueAccessor, cores e estados. Ideal para configuracoes on/off.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Switch simples com label via content projection e two-way binding.</p>
+    <div class="demo-form-col">
+      <hyper-switch [(checked)]="notifications">Notificacoes: {{ notifications ? 'ON' : 'OFF' }}</hyper-switch>
+      <hyper-switch>Modo Offline</hyper-switch>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-switch [(checked)]="notifications"&gt;
+  Notificacoes: {{'{{' }} notifications ? 'ON' : 'OFF' {{ '}}' }}
+&lt;/hyper-switch&gt;</code></pre>
+  </section>
+
+  <!-- ── Cores ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="cores">Cores</h2>
+    <p class="demo-card-desc">Cores disponiveis: <code>primary</code> (padrao) e <code>secondary</code>.</p>
+    <div class="demo-form-col">
+      <hyper-switch [checked]="true">Primary</hyper-switch>
+      <hyper-switch color="secondary" [checked]="true">Secondary</hyper-switch>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-switch color="secondary"&gt;Modo Turbo&lt;/hyper-switch&gt;</code></pre>
+  </section>
+
+  <!-- ── Desabilitado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para impedir interacao.</p>
+    <div class="demo-form-col">
+      <hyper-switch [disabled]="true">Desabilitado</hyper-switch>
+      <hyper-switch [disabled]="true" [checked]="true">Checked Disabled</hyper-switch>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-switch [disabled]="true"&gt;Desabilitado&lt;/hyper-switch&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>checked</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Estado do switch (two-way binding)</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita interacao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do switch</td></tr>
+      </tbody>
+    </table>
+    <table class="demo-api-table" style="margin-top: 1rem;">
+      <thead><tr><th>Output</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>change</code></td><td><code>boolean</code></td><td>Emitido quando o estado muda</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

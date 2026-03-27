@@ -1,0 +1,18 @@
+<label
+  class="hyper-switch-layout"
+  (click)="toggle(); $event.preventDefault()"
+  (keydown)="onKeydown($event)"
+>
+  <span class="hyper-switch-label">
+    <ng-content></ng-content>
+  </span>
+  <span
+    class="hyper-switch-track"
+    role="switch"
+    tabindex="0"
+    [attr.aria-checked]="checked()"
+    [attr.aria-disabled]="disabled()"
+  >
+    <span class="hyper-switch-thumb"></span>
+  </span>
+</label>

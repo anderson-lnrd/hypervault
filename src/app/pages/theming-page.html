@@ -1,0 +1,228 @@
+<div class="demo-page">
+  <h1 class="demo-title">Theming</h1>
+  <p class="demo-intro">Sistema de temas com 27 paletas pre-definidas, dark/light mode, auto-contraste para acessibilidade, e suporte a temas customizados via CSS variables.</p>
+
+  <!-- ── Theme Picker ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="theme-picker">Theme Picker</h2>
+    <p class="demo-card-desc">Use o componente <code>hyper-theme-picker</code> para trocar entre temas.</p>
+    <hyper-theme-picker />
+    <p style="margin: 0.5rem 0 0;">
+      Tema atual: <strong style="color: var(--primary);">{{ themeService.activeTheme().label }}</strong>
+      · Modo: <strong style="color: var(--secondary);">{{ themeService.darkMode() ? 'Dark' : 'Light' }}</strong>
+      · Contraste: <strong style="color: var(--accent);">{{ themeService.highContrast() ? 'Alto' : 'Normal' }}</strong>
+    </p>
+    <pre class="demo-code"><code>&lt;hyper-theme-picker /&gt;</code></pre>
+  </section>
+
+  <!-- ── Temas Disponiveis ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="temas-disponiveis">Temas Disponiveis</h2>
+    <p class="demo-card-desc">27 paletas pre-definidas com variantes dark e light.</p>
+    <div class="theme-gallery">
+      @for (theme of themeService.themes(); track theme.name) {
+        <button
+          class="theme-preview-card"
+          [class.theme-preview-active]="themeService.themeName() === theme.name"
+          (click)="themeService.setTheme(theme.name)"
+          type="button">
+          <div class="theme-preview-colors">
+            <span [style.background]="themeService.darkMode() ? theme.dark.background : theme.light.background"
+                  class="theme-preview-bg"></span>
+            <span [style.background]="themeService.darkMode() ? theme.dark.primary : theme.light.primary"
+                  class="theme-preview-swatch"></span>
+            <span [style.background]="themeService.darkMode() ? theme.dark.secondary : theme.light.secondary"
+                  class="theme-preview-swatch"></span>
+            <span [style.background]="themeService.darkMode() ? theme.dark.accent : theme.light.accent"
+                  class="theme-preview-swatch"></span>
+          </div>
+          <span class="theme-preview-label">{{ theme.label }}</span>
+        </button>
+      }
+    </div>
+  </section>
+
+  <!-- ── Preview de Componentes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="preview">Preview</h2>
+    <p class="demo-card-desc">Visualize como os componentes se adaptam ao tema ativo.</p>
+    <div class="demo-row">
+      <button hyper-raised-button>Primary</button>
+      <button hyper-raised-button color="secondary">Secondary</button>
+      <button hyper-raised-button color="accent">Accent</button>
+      <button hyper-raised-button color="destructive">Destructive</button>
+    </div>
+    <div class="demo-row">
+      <button hyper-stroked-button>Stroked</button>
+      <button hyper-flat-button color="secondary">Flat</button>
+      <button hyper-tonal-button color="accent">Tonal</button>
+    </div>
+    <div class="demo-row">
+      <hyper-badge>Primary</hyper-badge>
+      <hyper-badge variant="secondary">Secondary</hyper-badge>
+      <hyper-badge variant="outline">Outline</hyper-badge>
+      <hyper-badge variant="destructive">Destructive</hyper-badge>
+    </div>
+  </section>
+
+  <!-- ── Dark / Light Toggle ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="dark-light">Dark / Light</h2>
+    <p class="demo-card-desc">Toggle via servico ou com o botao no picker.</p>
+    <div class="demo-row">
+      <button hyper-raised-button (click)="themeService.setDarkMode(true)">
+        <span class="material-icons" style="font-size: 18px; margin-right: 0.4rem;">dark_mode</span>
+        Dark
+      </button>
+      <button hyper-stroked-button (click)="themeService.setDarkMode(false)">
+        <span class="material-icons" style="font-size: 18px; margin-right: 0.4rem;">light_mode</span>
+        Light
+      </button>
+    </div>
+    <pre class="demo-code"><code>themeService = inject(HyperThemeService);
+themeService.setDarkMode(true);
+themeService.toggleDarkMode();</code></pre>
+  </section>
+
+  <!-- ── Alto Contraste ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="alto-contraste">Alto Contraste</h2>
+    <p class="demo-card-desc">Auto-contraste garante acessibilidade WCAG recalculando foregrounds para maximo contraste, engrossando bordas e realcando focus rings.</p>
+    <div class="demo-row">
+      <button hyper-raised-button (click)="themeService.setHighContrast(true)">
+        <span class="material-icons" style="font-size: 18px; margin-right: 0.4rem;">contrast</span>
+        Ativar
+      </button>
+      <button hyper-stroked-button (click)="themeService.setHighContrast(false)">
+        <span class="material-icons" style="font-size: 18px; margin-right: 0.4rem;">contrast</span>
+        Desativar
+      </button>
+    </div>
+    <p style="margin: 0.75rem 0 0; font-family: var(--font-mono); font-size: 0.8rem;">
+      Estado: <strong style="color: var(--primary);">{{ themeService.highContrast() ? 'Alto contraste ativo' : 'Contraste normal' }}</strong>
+    </p>
+    <pre class="demo-code"><code>// Auto-contraste calcula luminancia relativa (WCAG 2.1)
+// e forca foregrounds para #000 ou #fff conforme necessario.
+themeService.setHighContrast(true);
+themeService.toggleHighContrast();
+themeService.highContrast(); // signal&lt;boolean&gt;
+
+// Quando ativo:
+// - Foregrounds: recalculados para maximo contraste
+// - --border-width: 4px → 6px
+// - --shadow-offset: 4px → 6px
+// - Focus ring: 3px solid var(--primary)
+// - Classe .hyper-high-contrast no &lt;html&gt;</code></pre>
+  </section>
+
+  <!-- ── Programatico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="uso-programatico">Uso Programatico</h2>
+    <p class="demo-card-desc">Use <code>HyperThemeService</code> para controlar temas via codigo.</p>
+    <div class="demo-row" style="flex-wrap: wrap;">
+      @for (theme of themeService.themes(); track theme.name) {
+        <button hyper-stroked-button (click)="themeService.setTheme(theme.name)">
+          {{ theme.label }}
+        </button>
+      }
+    </div>
+    <pre class="demo-code"><code>themeService = inject(HyperThemeService);
+themeService.setTheme('ocean');
+themeService.themeName();     // signal&lt;string&gt;
+themeService.darkMode();      // signal&lt;boolean&gt;
+themeService.activeTheme();   // signal&lt;HyperThemeDefinition&gt;</code></pre>
+  </section>
+
+  <!-- ── Tema Customizado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tema-customizado">Tema Customizado</h2>
+    <p class="demo-card-desc">Registre temas customizados em runtime com <code>registerTheme()</code>.</p>
+    <pre class="demo-code" ngNonBindable><code>import &#123; HyperThemeService, HyperThemeDefinition &#125; from 'hypervault';
+
+const meuTema: HyperThemeDefinition = &#123;
+  name: 'meu-tema',
+  label: 'Meu Tema',
+  dark: &#123;
+    background: '#0d1117',
+    foreground: '#c9d1d9',
+    card: '#161b22',
+    muted: '#21262d',
+    'muted-foreground': '#8b949e',
+    input: '#161b22',
+    border: '#c9d1d9',
+    primary: '#58a6ff',
+    'primary-foreground': '#0d1117',
+    secondary: '#f78166',
+    'secondary-foreground': '#0d1117',
+    accent: '#7ee787',
+    'accent-foreground': '#0d1117',
+    destructive: '#f85149',
+    'destructive-foreground': '#c9d1d9',
+  &#125;,
+  light: &#123;
+    background: '#ffffff',
+    foreground: '#24292f',
+    card: '#ffffff',
+    muted: '#f6f8fa',
+    'muted-foreground': '#57606a',
+    input: '#ffffff',
+    border: '#24292f',
+    primary: '#0969da',
+    'primary-foreground': '#ffffff',
+    secondary: '#cf222e',
+    'secondary-foreground': '#ffffff',
+    accent: '#1a7f37',
+    'accent-foreground': '#ffffff',
+    destructive: '#cf222e',
+    'destructive-foreground': '#ffffff',
+  &#125;,
+&#125;;
+
+themeService.registerTheme(meuTema);
+themeService.setTheme('meu-tema');</code></pre>
+  </section>
+
+  <!-- ── CSS Variables ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="css-variables">CSS Variables</h2>
+    <p class="demo-card-desc">Todos os tokens sao CSS custom properties. Voce tambem pode definir temas puramente via CSS.</p>
+    <pre class="demo-code"><code>:root &#123;
+  --background: #0f0f0f;
+  --foreground: #fafafa;
+  --card: #1a1a1a;
+  --muted: #2a2a2a;
+  --muted-foreground: #a3a3a3;
+  --input: #242424;
+  --border: #fafafa;
+  --primary: #39ff14;
+  --primary-foreground: #0f0f0f;
+  --secondary: #ff1493;
+  --secondary-foreground: #0f0f0f;
+  --accent: #ffff00;
+  --accent-foreground: #0f0f0f;
+  --destructive: #ff4444;
+  --destructive-foreground: #fafafa;
+&#125;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperthemeservice">API — HyperThemeService</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo / Property</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>themeName()</code></td><td><code>Signal&lt;string&gt;</code></td><td>Nome do tema ativo</td></tr>
+        <tr><td><code>darkMode()</code></td><td><code>Signal&lt;boolean&gt;</code></td><td>Estado do dark mode</td></tr>
+        <tr><td><code>highContrast()</code></td><td><code>Signal&lt;boolean&gt;</code></td><td>Estado do alto contraste</td></tr>
+        <tr><td><code>themes()</code></td><td><code>Signal&lt;HyperThemeDefinition[]&gt;</code></td><td>Todos os temas disponiveis</td></tr>
+        <tr><td><code>activeTheme()</code></td><td><code>Signal&lt;HyperThemeDefinition&gt;</code></td><td>Definicao do tema ativo</td></tr>
+        <tr><td><code>setTheme(name)</code></td><td><code>void</code></td><td>Muda para o tema especificado</td></tr>
+        <tr><td><code>toggleDarkMode()</code></td><td><code>void</code></td><td>Alterna entre dark e light</td></tr>
+        <tr><td><code>setDarkMode(dark)</code></td><td><code>void</code></td><td>Define dark mode explicitamente</td></tr>
+        <tr><td><code>toggleHighContrast()</code></td><td><code>void</code></td><td>Alterna alto contraste</td></tr>
+        <tr><td><code>setHighContrast(on)</code></td><td><code>void</code></td><td>Define alto contraste explicitamente</td></tr>
+        <tr><td><code>registerTheme(theme)</code></td><td><code>void</code></td><td>Registra um tema customizado</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

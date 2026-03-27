@@ -1,0 +1,306 @@
+// ── Calendar ──
+.hyper-calendar {
+  display: block;
+  width: 280px;
+  font-family: var(--font-sans);
+  user-select: none;
+}
+
+// ── Header ──
+.hyper-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: var(--border-width) solid var(--muted);
+}
+
+.hyper-calendar-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 2px solid transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s, border-color 0.1s;
+
+  &:hover {
+    background: var(--muted);
+    border-color: var(--border);
+  }
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+.hyper-calendar-header-label {
+  background: none;
+  border: 2px solid transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+// ── Month Grid ──
+.hyper-calendar-month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 0.5rem;
+}
+
+.hyper-calendar-weekday {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--muted-foreground);
+  padding: 0.35rem 0;
+  letter-spacing: 0.04em;
+}
+
+.hyper-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: auto;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: none;
+  border: 2px solid transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+
+  &:hover:not(:disabled) {
+    background: var(--muted);
+    border-color: var(--border);
+  }
+}
+
+.hyper-calendar-day-other {
+  color: var(--muted-foreground);
+  opacity: 0.4;
+}
+
+.hyper-calendar-day-today {
+  border-color: var(--primary) !important;
+  font-weight: 700;
+}
+
+.hyper-calendar-day-selected {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  font-weight: 700;
+}
+
+.hyper-calendar-day-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+// ── Year / Multi-year Grid ──
+.hyper-calendar-year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  padding: 0.5rem;
+}
+
+.hyper-calendar-multiyear-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 0.5rem;
+}
+
+.hyper-calendar-month-cell,
+.hyper-calendar-year-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: none;
+  border: 2px solid transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
+
+  &:hover {
+    background: var(--muted);
+    border-color: var(--border);
+  }
+}
+
+.hyper-calendar-cell-current {
+  border-color: var(--primary) !important;
+  font-weight: 700;
+}
+
+.hyper-calendar-cell-selected {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  font-weight: 700;
+}
+
+// ── Footer ──
+.hyper-calendar-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0.4rem 0.5rem;
+  border-top: 2px solid var(--muted);
+}
+
+.hyper-calendar-today-btn {
+  background: none;
+  border: 2px solid var(--muted);
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+
+  &:hover {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+}
+
+// ── Secondary Color ──
+.hyper-calendar-secondary {
+  .hyper-calendar-day-today {
+    border-color: var(--secondary) !important;
+  }
+
+  .hyper-calendar-day-selected {
+    background: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+    color: var(--secondary-foreground) !important;
+  }
+
+  .hyper-calendar-cell-current {
+    border-color: var(--secondary) !important;
+  }
+
+  .hyper-calendar-cell-selected {
+    background: var(--secondary) !important;
+    border-color: var(--secondary) !important;
+    color: var(--secondary-foreground) !important;
+  }
+
+  .hyper-calendar-header-label:hover {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  .hyper-calendar-today-btn {
+    color: var(--secondary);
+
+    &:hover {
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+      border-color: var(--secondary);
+    }
+  }
+}
+
+// ── Datepicker ──
+.hyper-datepicker {
+  display: inline-block;
+  position: relative;
+}
+
+.hyper-datepicker-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: var(--border-width) solid var(--border);
+  background: var(--input);
+  cursor: pointer;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+}
+
+.hyper-datepicker-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  width: 140px;
+
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+}
+
+.hyper-datepicker-toggle-icon {
+  font-size: 18px;
+  color: var(--muted-foreground);
+  padding-right: 0.6rem;
+  transition: color 0.15s;
+}
+
+.hyper-datepicker-input-wrapper:hover .hyper-datepicker-toggle-icon {
+  color: var(--primary);
+}
+
+.hyper-datepicker-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+// ── Panel ──
+.hyper-datepicker-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1500;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+  animation: hyper-datepicker-enter 0.12s ease-out;
+}
+
+@keyframes hyper-datepicker-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

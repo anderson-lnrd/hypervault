@@ -1,0 +1,33 @@
+<div class="hyper-paginator-inner">
+  @if (!hidePageSize()) {
+    <div class="hyper-paginator-page-size">
+      <span class="hyper-paginator-label">Itens por pagina:</span>
+      <select class="hyper-paginator-select" [value]="pageSize()" (change)="onPageSizeChange($event)" [disabled]="disabled()">
+        @for (opt of pageSizeOptions(); track opt) {
+          <option [value]="opt" [selected]="opt === pageSize()">{{ opt }}</option>
+        }
+      </select>
+    </div>
+  }
+
+  <span class="hyper-paginator-range">{{ rangeLabel() }}</span>
+
+  <div class="hyper-paginator-actions">
+    @if (showFirstLastButtons()) {
+      <button class="hyper-paginator-btn" (click)="firstPage()" [disabled]="!hasPrevious() || disabled()" aria-label="Primeira pagina">
+        <span class="material-icons">first_page</span>
+      </button>
+    }
+    <button class="hyper-paginator-btn" (click)="previousPage()" [disabled]="!hasPrevious() || disabled()" aria-label="Pagina anterior">
+      <span class="material-icons">chevron_left</span>
+    </button>
+    <button class="hyper-paginator-btn" (click)="nextPage()" [disabled]="!hasNext() || disabled()" aria-label="Proxima pagina">
+      <span class="material-icons">chevron_right</span>
+    </button>
+    @if (showFirstLastButtons()) {
+      <button class="hyper-paginator-btn" (click)="lastPage()" [disabled]="!hasNext() || disabled()" aria-label="Ultima pagina">
+        <span class="material-icons">last_page</span>
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,138 @@
+// ── Alert ──
+
+.hyper-alert {
+  --_alert-bg: rgba(68, 136, 255, 0.1);
+  --_alert-color: #4488ff;
+  --_alert-border: #4488ff;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--_alert-border);
+  background: var(--_alert-bg);
+  color: var(--foreground, #fafafa);
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+// ── Variants ──
+
+.hyper-alert.hyper-alert-info {
+  --_alert-bg: rgba(68, 136, 255, 0.1);
+  --_alert-color: #4488ff;
+  --_alert-border: #4488ff;
+}
+
+.hyper-alert.hyper-alert-success {
+  --_alert-bg: rgba(57, 255, 20, 0.1);
+  --_alert-color: var(--primary, #39ff14);
+  --_alert-border: var(--primary, #39ff14);
+}
+
+.hyper-alert.hyper-alert-warning {
+  --_alert-bg: rgba(255, 255, 0, 0.1);
+  --_alert-color: var(--accent, #ffff00);
+  --_alert-border: var(--accent, #ffff00);
+}
+
+.hyper-alert.hyper-alert-error {
+  --_alert-bg: rgba(255, 68, 68, 0.1);
+  --_alert-color: var(--destructive, #ff4444);
+  --_alert-border: var(--destructive, #ff4444);
+}
+
+// ── Outlined ──
+
+.hyper-alert.hyper-alert-outlined {
+  background: transparent;
+}
+
+// ── Filled ──
+
+.hyper-alert.hyper-alert-filled {
+  background: var(--_alert-color);
+  color: var(--background, #0f0f0f);
+  border-color: var(--_alert-color);
+
+  .hyper-alert-default-icon,
+  .hyper-alert-dismiss {
+    color: var(--background, #0f0f0f);
+  }
+}
+
+// ── Body ──
+
+.hyper-alert-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.hyper-alert-default-icon {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--_alert-color);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hyper-alert-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.hyper-alert .hyper-alert-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hyper-alert .hyper-alert-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hyper-alert .hyper-alert-icon {
+  flex-shrink: 0;
+  line-height: 1;
+  font-size: 20px;
+  color: var(--_alert-color);
+
+  // Hide default icon when custom provided
+  & ~ .hyper-alert-default-icon {
+    display: none;
+  }
+}
+
+// ── Dismiss ──
+
+.hyper-alert-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--muted-foreground, #a3a3a3);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  margin-left: auto;
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  &:hover {
+    color: var(--foreground, #fafafa);
+  }
+}

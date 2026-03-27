@@ -1,0 +1,158 @@
+<div class="demo-page">
+  <h1 class="demo-title">Table</h1>
+  <p class="demo-intro">Tabela de dados com sorting, sticky header, variantes visuais e no-data row.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Tabela simples com header e rows.</p>
+    <hyper-table [dataSource]="allData" [hyperHeaderRowDef]="columns" [hyperRowDef]="columns" [hoverable]="true">
+      <ng-container hyperColumnDef="id">
+        <span *hyperHeaderCellDef>ID</span>
+        <span *hyperCellDef="let row">{{ row.id }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="name">
+        <span *hyperHeaderCellDef>Nome</span>
+        <span *hyperCellDef="let row">{{ row.name }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="role">
+        <span *hyperHeaderCellDef>Cargo</span>
+        <span *hyperCellDef="let row">{{ row.role }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="level">
+        <span *hyperHeaderCellDef>Nivel</span>
+        <span *hyperCellDef="let row">{{ row.level }}</span>
+      </ng-container>
+    </hyper-table>
+    <pre class="demo-code" ngNonBindable><code>&lt;hyper-table [dataSource]="data" [hyperHeaderRowDef]="cols" [hyperRowDef]="cols"&gt;
+  &lt;ng-container hyperColumnDef="name"&gt;
+    &lt;span *hyperHeaderCellDef&gt;Nome&lt;/span&gt;
+    &lt;span *hyperCellDef="let row"&gt;&#123;&#123; row.name &#125;&#125;&lt;/span&gt;
+  &lt;/ng-container&gt;
+&lt;/hyper-table&gt;</code></pre>
+  </section>
+
+  <!-- ── Bordered & Striped ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="bordered-striped">Bordered & Striped</h2>
+    <p class="demo-card-desc">Variantes visuais com <code>[bordered]</code> e <code>[striped]</code>.</p>
+    <hyper-table [dataSource]="allData" [hyperHeaderRowDef]="columns" [hyperRowDef]="columns" [bordered]="true" [striped]="true" [dense]="true">
+      <ng-container hyperColumnDef="id">
+        <span *hyperHeaderCellDef>ID</span>
+        <span *hyperCellDef="let row">{{ row.id }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="name">
+        <span *hyperHeaderCellDef>Nome</span>
+        <span *hyperCellDef="let row">{{ row.name }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="role">
+        <span *hyperHeaderCellDef>Cargo</span>
+        <span *hyperCellDef="let row">{{ row.role }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="level">
+        <span *hyperHeaderCellDef>Nivel</span>
+        <span *hyperCellDef="let row">{{ row.level }}</span>
+      </ng-container>
+    </hyper-table>
+    <pre class="demo-code"><code>&lt;hyper-table [bordered]="true" [striped]="true" [dense]="true"&gt;...&lt;/hyper-table&gt;</code></pre>
+  </section>
+
+  <!-- ── Sort ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sorting">Sorting</h2>
+    <p class="demo-card-desc">Clique nos headers para ordenar. Ciclo: asc → desc → sem ordenacao.</p>
+    <hyper-table [dataSource]="sortedData()" [hyperHeaderRowDef]="columns" [hyperRowDef]="columns" [hoverable]="true" (sortChange)="onSort($event)">
+      <ng-container hyperColumnDef="id">
+        <span *hyperHeaderCellDef><span hyper-sort-header="id">ID</span></span>
+        <span *hyperCellDef="let row">{{ row.id }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="name">
+        <span *hyperHeaderCellDef><span hyper-sort-header="name">Nome</span></span>
+        <span *hyperCellDef="let row">{{ row.name }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="role">
+        <span *hyperHeaderCellDef><span hyper-sort-header="role">Cargo</span></span>
+        <span *hyperCellDef="let row">{{ row.role }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="level">
+        <span *hyperHeaderCellDef><span hyper-sort-header="level">Nivel</span></span>
+        <span *hyperCellDef="let row">{{ row.level }}</span>
+      </ng-container>
+    </hyper-table>
+    <pre class="demo-code"><code>&lt;span *hyperHeaderCellDef&gt;
+  &lt;span hyper-sort-header="name"&gt;Nome&lt;/span&gt;
+&lt;/span&gt;
+
+(sortChange)="onSort($event)"</code></pre>
+  </section>
+
+  <!-- ── Com Paginator ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-paginator">Com Paginator</h2>
+    <p class="demo-card-desc">Combine Table com Paginator para paginacao.</p>
+    <hyper-table [dataSource]="data()" [hyperHeaderRowDef]="columns" [hyperRowDef]="columns" [hoverable]="true" [bordered]="true" color="secondary">
+      <ng-container hyperColumnDef="id">
+        <span *hyperHeaderCellDef>ID</span>
+        <span *hyperCellDef="let row">{{ row.id }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="name">
+        <span *hyperHeaderCellDef>Nome</span>
+        <span *hyperCellDef="let row">{{ row.name }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="role">
+        <span *hyperHeaderCellDef>Cargo</span>
+        <span *hyperCellDef="let row">{{ row.role }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="level">
+        <span *hyperHeaderCellDef>Nivel</span>
+        <span *hyperCellDef="let row">{{ row.level }}</span>
+      </ng-container>
+    </hyper-table>
+    <hyper-paginator [length]="allData.length" [pageSize]="pageSize()" [pageSizeOptions]="[5, 10]" [showFirstLastButtons]="true" (page)="onPage($event)" />
+    <pre class="demo-code"><code>&lt;hyper-paginator [length]="total" [pageSize]="5" (page)="onPage($event)" /&gt;</code></pre>
+  </section>
+
+  <!-- ── No Data ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="no-data-row">No Data Row</h2>
+    <p class="demo-card-desc">Quando <code>dataSource</code> esta vazio, exibe conteudo fallback.</p>
+    <hyper-table [dataSource]="emptyData()" [hyperHeaderRowDef]="['name', 'role']" [hyperRowDef]="['name', 'role']" [bordered]="true">
+      <ng-container hyperColumnDef="name">
+        <span *hyperHeaderCellDef>Nome</span>
+        <span *hyperCellDef="let row">{{ row.name }}</span>
+      </ng-container>
+      <ng-container hyperColumnDef="role">
+        <span *hyperHeaderCellDef>Cargo</span>
+        <span *hyperCellDef="let row">{{ row.role }}</span>
+      </ng-container>
+      <div hyperNoDataRow>Nenhum dado encontrado.</div>
+    </hyper-table>
+    <pre class="demo-code"><code>&lt;div hyperNoDataRow&gt;Nenhum dado encontrado.&lt;/div&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hypertable">API — HyperTable</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>dataSource</code></td><td><code>T[]</code></td><td><code>[]</code></td><td>Array de dados</td></tr>
+        <tr><td><code>hyperHeaderRowDef</code></td><td><code>string[]</code></td><td><code>[]</code></td><td>Colunas do header</td></tr>
+        <tr><td><code>hyperRowDef</code></td><td><code>string[]</code></td><td><code>[]</code></td><td>Colunas do body</td></tr>
+        <tr><td><code>bordered</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Bordas em todas as celulas</td></tr>
+        <tr><td><code>striped</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Listras alternadas</td></tr>
+        <tr><td><code>hoverable</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Hover nas linhas</td></tr>
+        <tr><td><code>dense</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Padding reduzido</td></tr>
+        <tr><td><code>stickyHeader</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Header fixo ao scroll</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor do header</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperSortHeader</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>hyper-sort-header</code></td><td><code>string</code></td><td>Nome da coluna para sort</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

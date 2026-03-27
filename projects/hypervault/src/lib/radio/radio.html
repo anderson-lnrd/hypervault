@@ -1,0 +1,20 @@
+<label
+  class="hyper-radio-layout"
+  [class.hyper-radio-label-before]="labelPosition() === 'before'"
+  [class]="'hyper-' + groupColor()"
+  (click)="select(); $event.preventDefault()"
+  (keydown)="onKeydown($event)"
+>
+  <span
+    class="hyper-radio-outer"
+    role="radio"
+    tabindex="0"
+    [attr.aria-checked]="isChecked()"
+    [attr.aria-disabled]="effectiveDisabled()"
+  >
+    <span class="hyper-radio-inner"></span>
+  </span>
+  <span class="hyper-radio-label">
+    <ng-content />
+  </span>
+</label>

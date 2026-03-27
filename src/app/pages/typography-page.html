@@ -1,0 +1,114 @@
+<div class="demo-page">
+  <h1 class="demo-title">Tipografia</h1>
+  <p class="demo-intro">Sistema tipografico do HyperVault. Duas familias complementares: <strong>Space Grotesk</strong> para titulos e UI, <strong>Space Mono</strong> para codigo e dados.</p>
+
+  <!-- ── Familias ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="familias">Familias Tipograficas</h2>
+    <p class="demo-card-desc">Duas variaveis CSS controlam toda a tipografia.</p>
+    <div class="type-specimen">
+      <div class="type-specimen-row">
+        <span class="type-label">--font-sans</span>
+        <span class="type-sample" style="font-family: var(--font-sans);">Space Grotesk — ABCDEFGHIJKLM abcdefghijklm 0123456789</span>
+      </div>
+      <div class="type-specimen-row">
+        <span class="type-label">--font-mono</span>
+        <span class="type-sample" style="font-family: var(--font-mono);">Space Mono — ABCDEFGHIJKLM abcdefghijklm 0123456789</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Escala Sans ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="escala-sans">Escala — Sans (Space Grotesk)</h2>
+    <p class="demo-card-desc">Usada em titulos, labels, botoes e elementos de interface.</p>
+    <div class="type-scale">
+      <div class="type-scale-row">
+        <span class="type-meta">2.5rem / 900</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 2.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em;">HYPERVAULT</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">1.5rem / 800</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;">Section Title</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">1.1rem / 700</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;">Card Title</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.875rem / 600</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em;">BUTTON LABEL</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.85rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 400;">Corpo de texto padrao para paragrafos e descricoes mais longas.</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.75rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 400; opacity: 0.7;">Caption ou texto auxiliar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Escala Mono ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="escala-mono">Escala — Mono (Space Mono)</h2>
+    <p class="demo-card-desc">Usada em codigo, badges, dados, labels de formulario e texto tecnico.</p>
+    <div class="type-scale">
+      <div class="type-scale-row">
+        <span class="type-meta">0.85rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-mono); font-size: 0.85rem;">Descricao tecnica ou label</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.8rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-mono); font-size: 0.8rem;">Corpo monospace para dados</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.75rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--primary);">const vault = new HyperVault();</span>
+      </div>
+      <div class="type-scale-row">
+        <span class="type-meta">0.7rem / 400</span>
+        <span class="type-display" style="font-family: var(--font-mono); font-size: 0.7rem; opacity: 0.6;">Texto auxiliar menor</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Convencoes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="convencoes">Convencoes</h2>
+    <p class="demo-card-desc">Padroes tipograficos usados nos componentes.</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Elemento</th><th>Familia</th><th>Peso</th><th>Transform</th><th>Spacing</th></tr></thead>
+      <tbody>
+        <tr><td>Titulo principal</td><td><code>--font-sans</code></td><td><code>900</code></td><td><code>uppercase</code></td><td><code>0.04em</code></td></tr>
+        <tr><td>Titulo secao</td><td><code>--font-sans</code></td><td><code>700</code></td><td><code>uppercase</code></td><td><code>0.06em</code></td></tr>
+        <tr><td>Botao</td><td><code>--font-sans</code></td><td><code>600</code></td><td><code>uppercase</code></td><td><code>0.02em</code></td></tr>
+        <tr><td>Corpo</td><td><code>--font-sans</code></td><td><code>400</code></td><td><code>none</code></td><td><code>normal</code></td></tr>
+        <tr><td>Descricao / Mono</td><td><code>--font-mono</code></td><td><code>400</code></td><td><code>none</code></td><td><code>normal</code></td></tr>
+        <tr><td>Codigo</td><td><code>--font-mono</code></td><td><code>400</code></td><td><code>none</code></td><td><code>normal</code></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Uso ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="como-usar">Como Usar</h2>
+    <pre class="demo-code"><code>/* Aplicando tipografia */
+.title {{ '{' }}
+  font-family: var(--font-sans);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+{{ '}' }}
+
+.code-block {{ '{' }}
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--primary);
+{{ '}' }}
+
+/* Google Fonts (ja incluido no index.html) */
+&#64;import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght&#64;400;600;700;800;900&amp;family=Space+Mono:wght&#64;400;700&amp;display=swap');</code></pre>
+  </section>
+</div>

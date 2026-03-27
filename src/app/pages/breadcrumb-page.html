@@ -1,0 +1,155 @@
+<div class="demo-page">
+  <h1 class="demo-title" id="topo">Breadcrumb</h1>
+  <p class="demo-intro">Navegacao hierarquica que se integra automaticamente com o Angular Router. Plug and play: basta definir <code>data: {{ '{' }} breadcrumb: 'Label' {{ '}' }}</code> nas rotas.</p>
+
+  <!-- ── Auto Mode ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="modo-automatico">Modo Automatico (Router)</h2>
+    <p class="demo-card-desc">Zero configuracao. O componente le a arvore de rotas ativas e monta o breadcrumb automaticamente. So precisa de <code>data.breadcrumb</code> nas rotas.</p>
+    <hyper-breadcrumb />
+    <pre class="demo-code"><code>&lt;!-- No template: apenas isso --&gt;
+&lt;hyper-breadcrumb /&gt;
+
+&lt;!-- Nas rotas: --&gt;
+const routes: Routes = [
+  {{ '{' }} path: 'produtos', data: {{ '{' }} breadcrumb: 'Produtos' {{ '}' }}, ... {{ '}' }},
+  {{ '{' }} path: 'detalhes/:id', data: {{ '{' }} breadcrumb: 'Detalhes' {{ '}' }}, ... {{ '}' }},
+];</code></pre>
+  </section>
+
+  <!-- ── Manual Items ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="modo-manual">Modo Manual</h2>
+    <p class="demo-card-desc">Passe <code>[items]</code> para controle total. Ideal para cenarios sem router ou com navegacao customizada.</p>
+    <hyper-breadcrumb [items]="manualItems" [navigable]="false" />
+    <pre class="demo-code"><code>&lt;hyper-breadcrumb [items]="items" /&gt;
+
+items: HyperBreadcrumbItem[] = [
+  {{ '{' }} label: 'Home', url: '/', icon: 'home' {{ '}' }},
+  {{ '{' }} label: 'Categorias', url: '/categorias' {{ '}' }},
+  {{ '{' }} label: 'Perifericos', url: '/categorias/perifericos' {{ '}' }},
+  {{ '{' }} label: 'Teclados', url: '/categorias/perifericos/teclados' {{ '}' }},
+];</code></pre>
+  </section>
+
+  <!-- ── Custom Separator ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="separadores">Separador Customizado</h2>
+    <p class="demo-card-desc">O separador padrao e <code>›</code>. Use o input <code>[separator]</code> para trocar.</p>
+    <div style="display: grid; gap: 1rem;">
+      <hyper-breadcrumb [items]="simpleItems" separator=">" [navigable]="false" />
+      <hyper-breadcrumb [items]="simpleItems" separator="/" [navigable]="false" />
+      <hyper-breadcrumb [items]="simpleItems" separator="→" [navigable]="false" />
+      <hyper-breadcrumb [items]="simpleItems" separator="|" [navigable]="false" />
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-breadcrumb [items]="items" separator="&gt;" /&gt;
+&lt;hyper-breadcrumb [items]="items" separator="/" /&gt;
+&lt;hyper-breadcrumb [items]="items" separator="→" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Dynamic Labels ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="labels-dinamicos">Labels Dinamicos (Resolvers)</h2>
+    <p class="demo-card-desc">Use uma funcao em <code>data.breadcrumb</code> para gerar labels dinamicos a partir de dados resolvidos.</p>
+    <pre class="demo-code"><code>const routes: Routes = [
+  {{ '{' }}
+    path: 'produto/:id',
+    resolve: {{ '{' }} produto: produtoResolver {{ '}' }},
+    data: {{ '{' }}
+      breadcrumb: (data: Data) =&gt; data['produto'].nome
+    {{ '}' }},
+    component: ProdutoPage,
+  {{ '}' }},
+];</code></pre>
+  </section>
+
+  <!-- ── Home via Token ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="home-global">Home Global (Injection Token)</h2>
+    <p class="demo-card-desc">Configure um item "Home" global com <code>HYPER_BREADCRUMB_HOME</code>. Sera prepended automaticamente em todas as paginas.</p>
+    <pre class="demo-code"><code>import {{ '{' }} HYPER_BREADCRUMB_HOME {{ '}' }} from 'hypervault';
+
+// No app.config.ts ou providers do modulo:
+providers: [
+  {{ '{' }}
+    provide: HYPER_BREADCRUMB_HOME,
+    useValue: {{ '{' }} label: 'Inicio', url: '/', icon: 'home' {{ '}' }}
+  {{ '}' }}
+]</code></pre>
+  </section>
+
+  <!-- ── Fallback: Route Title ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="fallback">Fallback: Route Title</h2>
+    <p class="demo-card-desc">Quando <code>data.breadcrumb</code> nao esta definido, o componente usa a propriedade <code>title</code> da rota como fallback. Isso valoriza quem ja configura rotas conforme a documentacao oficial do Angular.</p>
+    <pre class="demo-code"><code>const routes: Routes = [
+  {{ '{' }}
+    path: 'dashboard',
+    title: 'Dashboard',  // &lt;-- usado como breadcrumb automaticamente
+    component: DashboardPage,
+  {{ '}' }},
+];</code></pre>
+  </section>
+
+  <!-- ── Anchor Navigation ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="ancoras">Navegacao por Ancora (Fragment)</h2>
+    <p class="demo-card-desc">Use a propriedade <code>fragment</code> nos items para criar breadcrumbs que navegam para secoes internas da pagina — pontos de ancoragem via <code>id</code>.</p>
+    <hyper-breadcrumb [items]="anchorItems" separator="›" />
+    <pre class="demo-code"><code>&lt;hyper-breadcrumb [items]="anchorItems" /&gt;
+
+anchorItems: HyperBreadcrumbItem[] = [
+  {{ '{' }} label: 'Topo', url: '/breadcrumb', fragment: 'topo', icon: 'vertical_align_top' {{ '}' }},
+  {{ '{' }} label: 'Modo Automatico', url: '/breadcrumb', fragment: 'modo-automatico' {{ '}' }},
+  {{ '{' }} label: 'Separadores', url: '/breadcrumb', fragment: 'separadores' {{ '}' }},
+  {{ '{' }} label: 'API', url: '/breadcrumb', fragment: 'api' {{ '}' }},
+];
+
+&lt;!-- No template, use ids nas secoes: --&gt;
+&lt;section id="modo-automatico"&gt;...&lt;/section&gt;
+&lt;section id="separadores"&gt;...&lt;/section&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+
+    <h3 class="demo-card-title" style="font-size: 0.85rem; opacity: 0.8;">HyperBreadcrumb</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>items</code></td><td><code>HyperBreadcrumbItem[]</code></td><td>auto (router)</td><td>Items manuais. Quando definido, sobrepoe o modo automatico.</td></tr>
+        <tr><td><code>separator</code></td><td><code>string</code></td><td><code>'›'</code></td><td>Caractere separador entre items</td></tr>
+        <tr><td><code>navigable</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Quando false, links sao renderizados como spans sem navegacao. Util para demos visuais.</td></tr>
+        <tr><td><code>ariaLabel</code></td><td><code>string</code></td><td><code>'Breadcrumb'</code></td><td>Label acessivel do nav</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="demo-card-title" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">HyperBreadcrumbItem</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Propriedade</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>label</code></td><td><code>string</code></td><td>Texto exibido</td></tr>
+        <tr><td><code>url</code></td><td><code>string</code></td><td>URL de navegacao (routerLink)</td></tr>
+        <tr><td><code>icon</code></td><td><code>string</code></td><td>Icone Material Icons (opcional)</td></tr>
+        <tr><td><code>fragment</code></td><td><code>string</code></td><td>Fragmento para navegacao por ancora (opcional). Ex: 'secao-1'</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="demo-card-title" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">Providers</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Token</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>HYPER_BREADCRUMB_HOME</code></td><td><code>HyperBreadcrumbHomeConfig</code></td><td>Configura item "Home" global (label, url, icon)</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="demo-card-title" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">HyperBreadcrumbService</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Propriedade</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>items</code></td><td><code>Signal&lt;HyperBreadcrumbItem[]&gt;</code></td><td>Signal reativo com os items detectados da rota atual</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

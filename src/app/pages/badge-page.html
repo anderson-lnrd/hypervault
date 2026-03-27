@@ -1,0 +1,67 @@
+<div class="demo-page">
+  <h1 class="demo-title">Badge</h1>
+  <p class="demo-intro">Componente de badge para rotulos, status e gamificacao. Suporta variantes de cor, sistema de raridade e icones inline.</p>
+
+  <!-- ── Variantes ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="variantes">Variantes</h2>
+    <p class="demo-card-desc">Quatro variantes base: <code>default</code> (primaria), <code>secondary</code>, <code>outline</code> e <code>destructive</code>.</p>
+    <div class="demo-row">
+      <hyper-badge>Default</hyper-badge>
+      <hyper-badge variant="secondary">Secondary</hyper-badge>
+      <hyper-badge variant="outline">Outline</hyper-badge>
+      <hyper-badge variant="destructive">Destructive</hyper-badge>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-badge&gt;Default&lt;/hyper-badge&gt;
+&lt;hyper-badge variant="secondary"&gt;Secondary&lt;/hyper-badge&gt;
+&lt;hyper-badge variant="outline"&gt;Outline&lt;/hyper-badge&gt;
+&lt;hyper-badge variant="destructive"&gt;Destructive&lt;/hyper-badge&gt;</code></pre>
+  </section>
+
+  <!-- ── Raridade ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="raridade">Badges de Raridade</h2>
+    <p class="demo-card-desc">Sistema de gamificacao com quatro niveis: <code>common</code>, <code>rare</code>, <code>epic</code> e <code>legendary</code>. Quando <code>rarity</code> e definido, sobrepoe a variante.</p>
+    <div class="demo-row">
+      <hyper-badge rarity="common">Comum</hyper-badge>
+      <hyper-badge rarity="rare">Raro</hyper-badge>
+      <hyper-badge rarity="epic">Epico</hyper-badge>
+      <hyper-badge rarity="legendary">Lendario</hyper-badge>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-badge rarity="common"&gt;Comum&lt;/hyper-badge&gt;
+&lt;hyper-badge rarity="rare"&gt;Raro&lt;/hyper-badge&gt;
+&lt;hyper-badge rarity="epic"&gt;Epico&lt;/hyper-badge&gt;
+&lt;hyper-badge rarity="legendary"&gt;Lendario&lt;/hyper-badge&gt;</code></pre>
+  </section>
+
+  <!-- ── Com Icone ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-icone">Badges com Icone</h2>
+    <p class="demo-card-desc">Projete icones Material Icons junto com texto usando content projection.</p>
+    <div class="demo-row">
+      <hyper-badge><span class="material-icons">bolt</span> +50 XP</hyper-badge>
+      <hyper-badge variant="secondary"><span class="material-icons">star</span> 4.9</hyper-badge>
+      <hyper-badge><span class="material-icons">check</span> Em Estoque</hyper-badge>
+      <hyper-badge variant="destructive"><span class="material-icons">close</span> Esgotado</hyper-badge>
+    </div>
+    <pre class="demo-code"><code>&lt;hyper-badge&gt;
+  &lt;span class="material-icons"&gt;bolt&lt;/span&gt; +50 XP
+&lt;/hyper-badge&gt;
+&lt;hyper-badge variant="destructive"&gt;
+  &lt;span class="material-icons"&gt;close&lt;/span&gt; Esgotado
+&lt;/hyper-badge&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <p class="demo-card-desc">Referencia completa dos inputs do componente.</p>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>variant</code></td><td><code>'default' | 'secondary' | 'outline' | 'destructive'</code></td><td><code>'default'</code></td><td>Variante visual do badge</td></tr>
+        <tr><td><code>rarity</code></td><td><code>'common' | 'rare' | 'epic' | 'legendary' | undefined</code></td><td><code>undefined</code></td><td>Nivel de raridade (sobrepoe variant)</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

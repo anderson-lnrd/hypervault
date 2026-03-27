@@ -1,0 +1,132 @@
+$track-height: 6px;
+$thumb-size: 1rem;
+
+:host {
+	display: block;
+}
+
+.hyper-slider-layout {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.hyper-slider-label {
+	font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--foreground, #fafafa);
+}
+
+.hyper-slider-value {
+	font-family: var(--font-mono, 'Space Mono', monospace);
+	font-size: 0.8rem;
+	color: var(--muted-foreground, #a3a3a3);
+}
+
+.hyper-slider-track-wrapper {
+	position: relative;
+	height: $thumb-size;
+	display: flex;
+	align-items: center;
+}
+
+.hyper-slider-fill {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	height: $track-height;
+	background: var(--primary, #39ff14);
+	border-radius: 0;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.hyper-slider-input {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: $track-height;
+	background: var(--muted, #2a2a2a);
+	border-radius: 0;
+	outline: none;
+	cursor: pointer;
+	margin: 0;
+
+	&:focus-visible {
+		outline: 2px solid var(--primary, #39ff14);
+		outline-offset: 4px;
+	}
+	&::-webkit-slider-runnable-track {
+		height: $track-height;
+		background: transparent;
+		border-radius: 0;
+	}
+
+	// Track — Firefox
+	&::-moz-range-track {
+		height: $track-height;
+		background: transparent;
+		border-radius: 0;
+		border: none;
+	}
+
+	// Thumb — WebKit
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: $thumb-size;
+		height: $thumb-size;
+		background: var(--foreground, #fafafa);
+		border: 2px solid var(--foreground, #fafafa);
+		border-radius: 50%;
+		cursor: pointer;
+		position: relative;
+		z-index: 2;
+		margin-top: calc((#{$track-height} - #{$thumb-size}) / 2);
+	}
+
+	// Thumb — Firefox
+	&::-moz-range-thumb {
+		width: $thumb-size;
+		height: $thumb-size;
+		background: var(--foreground, #fafafa);
+		border: 2px solid var(--foreground, #fafafa);
+		border-radius: 50%;
+		cursor: pointer;
+		position: relative;
+		z-index: 2;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+
+		&::-webkit-slider-thumb {
+			cursor: not-allowed;
+		}
+
+		&::-moz-range-thumb {
+			cursor: not-allowed;
+		}
+	}
+}
+
+// ── Colors ──
+
+:host(.hyper-secondary) {
+	.hyper-slider-fill {
+		background: var(--secondary, #ff1493);
+	}
+}
+
+// ── Disabled ──
+
+:host(.hyper-slider-disabled) {
+	opacity: 0.5;
+}

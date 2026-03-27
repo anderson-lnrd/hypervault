@@ -1,0 +1,34 @@
+<div class="hyper-tabs-header" role="tablist">
+  @for (tab of tabList(); track $index) {
+    <button
+      class="hyper-tab-button"
+      role="tab"
+      [class.hyper-tab-active]="$index === selectedIndex()"
+      [class.hyper-tab-disabled]="tab.disabled()"
+      [attr.aria-selected]="$index === selectedIndex()"
+      [attr.aria-disabled]="tab.disabled() || null"
+      [attr.tabindex]="$index === selectedIndex() ? 0 : -1"
+      (click)="selectTab($index)"
+      (keydown)="onKeydown($event, $index)"
+    >
+      @if (tab.icon()) {
+        <span class="material-icons hyper-tab-icon">{{ tab.icon() }}</span>
+      }
+      @if (tab.labelTpl(); as labelTpl) {
+        <ng-container *ngTemplateOutlet="labelTpl.template" />
+      } @else {
+        {{ tab.label() }}
+      }
+    </button>
+  }
+</div>
+
+<div class="hyper-tabs-body" role="tabpanel">
+  @if (activeTab(); as active) {
+    @if (active.lazyContent(); as lazy) {
+      <ng-container *ngTemplateOutlet="lazy.template" />
+    } @else {
+      <ng-content />
+    }
+  }
+</div>

@@ -1,0 +1,14 @@
+<div class="hyper-alert-body">
+  <span class="hyper-alert-default-icon material-icons">{{ defaultIcon() }}</span>
+  <ng-content select="hyper-alert-icon, [hyper-alert-icon]"></ng-content>
+  <div class="hyper-alert-content">
+    <ng-content select="hyper-alert-title, [hyper-alert-title]"></ng-content>
+    <ng-content></ng-content>
+  </div>
+</div>
+<ng-content select="hyper-alert-actions, [hyper-alert-actions]"></ng-content>
+@if (dismissible()) {
+  <button class="hyper-alert-dismiss" aria-label="Fechar" (click)="onDismiss()">
+    <span class="material-icons">close</span>
+  </button>
+}

@@ -1,0 +1,110 @@
+<div class="demo-page">
+  <h1 class="demo-title">Dialog</h1>
+  <p class="demo-intro">Servico imperativo para abrir modais com backdrop, focus trap, ESC e injecao de dados.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Abre um dialog de confirmacao. O resultado retorna via <code>afterClosed()</code>.</p>
+    <div class="demo-row">
+      <button hyper-raised-button (click)="openBasic()">Abrir Dialog</button>
+    </div>
+    @if (result) {
+      <p style="margin-top: 0.5rem; color: var(--muted-foreground);">{{ result }}</p>
+    }
+    <pre class="demo-code"><code>const ref = this.dialog.open(MyDialogComponent);
+ref.afterClosed().subscribe(result =&gt; console.log(result));</code></pre>
+  </section>
+
+  <!-- ── Com Dados ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="com-dados">Com Dados</h2>
+    <p class="demo-card-desc">Passe dados via <code>config.data</code> e injete com <code>HYPER_DIALOG_DATA</code>.</p>
+    <div class="demo-row">
+      <button hyper-raised-button color="secondary" (click)="openWithData()">Dialog c/ Dados</button>
+    </div>
+    <pre class="demo-code"><code>this.dialog.open(MyComponent, &#123;
+  data: &#123; title: 'Titulo', message: 'Mensagem' &#125;,
+  width: '400px',
+&#125;);
+
+// No componente:
+readonly data = inject(HYPER_DIALOG_DATA);</code></pre>
+  </section>
+
+  <!-- ── Tamanho Customizado ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="tamanho-customizado">Tamanho Customizado</h2>
+    <p class="demo-card-desc">Configure <code>width</code>, <code>maxWidth</code>, <code>height</code> e <code>maxHeight</code>.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button (click)="openWide()">Dialog Largo (700px)</button>
+    </div>
+    <pre class="demo-code"><code>this.dialog.open(Comp, &#123; width: '700px', maxHeight: '300px' &#125;);</code></pre>
+  </section>
+
+  <!-- ── Disable Close ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="disable-close">Disable Close</h2>
+    <p class="demo-card-desc">Com <code>disableClose: true</code>, o dialog so fecha via botao interno.</p>
+    <div class="demo-row">
+      <button hyper-stroked-button color="destructive" (click)="openNoClose()">Sem fechar por fora</button>
+    </div>
+    <pre class="demo-code"><code>this.dialog.open(Comp, &#123; disableClose: true &#125;);</code></pre>
+  </section>
+
+  <!-- ── Componente do Dialog ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="estrutura-do-dialog">Estrutura do Dialog</h2>
+    <p class="demo-card-desc">Use as diretivas de layout dentro do componente do dialog.</p>
+    <pre class="demo-code"><code>&#64;Component(&#123;
+  imports: [HyperDialogTitle, HyperDialogContent, HyperDialogActions, HyperButton],
+  template: \`
+    &lt;hyper-dialog-title&gt;Titulo&lt;/hyper-dialog-title&gt;
+    &lt;hyper-dialog-content&gt;
+      &lt;p&gt;Conteudo do dialog.&lt;/p&gt;
+    &lt;/hyper-dialog-content&gt;
+    &lt;hyper-dialog-actions&gt;
+      &lt;button hyper-stroked-button (click)="dialogRef.close()"&gt;Cancelar&lt;/button&gt;
+      &lt;button hyper-raised-button (click)="dialogRef.close('ok')"&gt;OK&lt;/button&gt;
+    &lt;/hyper-dialog-actions&gt;
+  \`,
+&#125;)
+export class MyDialog &#123;
+  readonly dialogRef = inject(HyperDialogRef);
+&#125;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api-hyperdialog">API — HyperDialog</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo</th><th>Retorno</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>open(component, config?)</code></td><td><code>HyperDialogRef</code></td><td>Abre um dialog com o componente dado</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperDialogConfig</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Propriedade</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>width</code></td><td><code>string</code></td><td><code>'480px'</code></td><td>Largura do painel</td></tr>
+        <tr><td><code>maxWidth</code></td><td><code>string</code></td><td><code>'90vw'</code></td><td>Largura maxima</td></tr>
+        <tr><td><code>height</code></td><td><code>string</code></td><td>auto</td><td>Altura do painel</td></tr>
+        <tr><td><code>maxHeight</code></td><td><code>string</code></td><td><code>'85vh'</code></td><td>Altura maxima</td></tr>
+        <tr><td><code>data</code></td><td><code>any</code></td><td><code>null</code></td><td>Dados injetados via HYPER_DIALOG_DATA</td></tr>
+        <tr><td><code>disableClose</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Impede fechar via backdrop/ESC</td></tr>
+        <tr><td><code>hasBackdrop</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Exibir backdrop</td></tr>
+        <tr><td><code>autoFocus</code></td><td><code>boolean</code></td><td><code>true</code></td><td>Auto-focus no primeiro elemento focavel</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperDialogRef</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Metodo</th><th>Retorno</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>close(result?)</code></td><td><code>void</code></td><td>Fecha o dialog com resultado opcional</td></tr>
+        <tr><td><code>afterClosed()</code></td><td><code>Observable</code></td><td>Emite o resultado ao fechar</td></tr>
+        <tr><td><code>backdropClick()</code></td><td><code>Observable</code></td><td>Emite ao clicar no backdrop</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>

@@ -1,0 +1,54 @@
+<table [class.hyper-table-sticky-header]="stickyHeader()" [class]="'hyper-table hyper-table-color-' + color()">
+  <!-- Header -->
+  @if (headerColumns().length) {
+    <thead>
+      <tr>
+        @for (col of headerColumns(); track col) {
+          <th class="hyper-header-cell">
+            @if (getHeaderCellTemplate(col); as tmpl) {
+              <ng-container *ngTemplateOutlet="tmpl; context: { $implicit: col }" />
+            } @else {
+              {{ col }}
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+  }
+
+  <!-- Body -->
+  <tbody>
+    @for (row of renderedRows(); track $index; let i = $index) {
+      <tr class="hyper-row">
+        @for (col of (rowColumns().length ? rowColumns() : headerColumns()); track col) {
+          <td class="hyper-cell">
+            @if (getCellTemplate(col); as tmpl) {
+              <ng-container *ngTemplateOutlet="tmpl; context: { $implicit: row, index: i }" />
+            }
+          </td>
+        }
+      </tr>
+    } @empty {
+      <tr class="hyper-no-data-row">
+        <td [attr.colspan]="headerColumns().length || 1" class="hyper-cell hyper-no-data-cell">
+          <ng-content select="[hyperNoDataRow]" />
+        </td>
+      </tr>
+    }
+  </tbody>
+
+  <!-- Footer -->
+  @if (footerColumns().length) {
+    <tbody class="hyper-footer">
+      <tr>
+        @for (col of footerColumns(); track col) {
+          <td class="hyper-footer-cell">
+            @if (getFooterCellTemplate(col); as tmpl) {
+              <ng-container *ngTemplateOutlet="tmpl; context: { $implicit: col }" />
+            }
+          </td>
+        }
+      </tr>
+    </tbody>
+  }
+</table>

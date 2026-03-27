@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "HyperVaultNgAdd",
+  "title": "HyperVault ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Nome do projeto Angular alvo."
+    },
+    "scrollbar": {
+      "type": "boolean",
+      "description": "Importar o modulo de scrollbar customizado.",
+      "default": true
+    },
+    "theme": {
+      "type": "string",
+      "description": "Tema inicial (cyber, ocean, sunset, vapor, mono, mocha, dracula, etc.).",
+      "default": "cyber"
+    }
+  },
+  "required": []
+}

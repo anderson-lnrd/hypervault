@@ -1,0 +1,127 @@
+// ── Backdrop ──
+.hyper-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1499;
+}
+
+// ── Panel ──
+.hyper-menu-panel {
+  position: fixed;
+  z-index: 1500;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--border);
+  min-width: 180px;
+  max-width: 300px;
+  padding: 0.4rem 0;
+  font-family: var(--font-sans);
+  overflow-y: auto;
+  max-height: 60vh;
+  animation: hyper-menu-enter 0.12s ease-out;
+}
+
+@keyframes hyper-menu-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// ── Item ──
+.hyper-menu-item {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  transition: background 0.1s, color 0.1s;
+  position: relative;
+}
+
+.hyper-menu-item-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.hyper-menu-item-icon {
+  font-size: 18px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.hyper-menu-item:hover:not(.hyper-menu-item-disabled),
+.hyper-menu-item:focus-visible:not(.hyper-menu-item-disabled) {
+  background: var(--primary);
+
+  .hyper-menu-item-inner {
+    color: var(--primary-foreground);
+    font-weight: 700;
+  }
+
+  .hyper-menu-item-icon {
+    color: var(--primary-foreground);
+  }
+}
+
+.hyper-menu-item:focus-visible:not(.hyper-menu-item-disabled) {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.hyper-menu-item:active:not(.hyper-menu-item-disabled) {
+  background: var(--secondary);
+
+  .hyper-menu-item-inner {
+    color: var(--secondary-foreground);
+  }
+
+  .hyper-menu-item-icon {
+    color: var(--secondary-foreground);
+  }
+}
+
+.hyper-menu-item-disabled {
+  cursor: not-allowed;
+
+  .hyper-menu-item-inner {
+    opacity: 0.35;
+  }
+}
+
+// ── Divider ──
+.hyper-menu-divider {
+  display: block;
+  height: 0;
+  margin: 0.4rem 0.5rem;
+  border: none;
+  border-top: var(--border-width) solid var(--muted);
+}
+
+// ── Group ──
+.hyper-menu-group {
+  display: block;
+}
+
+.hyper-menu-group-label {
+  padding: 0.65rem 1rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  border-bottom: 2px solid var(--muted);
+  margin-bottom: 0.2rem;
+}

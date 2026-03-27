@@ -1,0 +1,165 @@
+// ── Host ──
+
+.hyper-page-summary {
+  display: block;
+  width: 220px;
+  min-width: 180px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+}
+
+// ── Panel ──
+
+.hyper-ps-inner {
+  background: var(--card, #1a1a1a);
+  border: var(--border-width, 4px) solid var(--foreground, #fafafa);
+  box-shadow: var(--shadow-offset, 4px) var(--shadow-offset, 4px) 0 var(--foreground, #fafafa);
+  overflow: hidden;
+}
+
+// ── Header ──
+
+.hyper-ps-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--muted, #2a2a2a);
+  color: var(--primary, #39ff14);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  user-select: none;
+
+  .material-icons {
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+}
+
+.hyper-ps-header-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ── Nav ──
+
+.hyper-ps-nav {
+  padding: 0.3rem 0;
+}
+
+.hyper-ps-empty {
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--muted-foreground, #a3a3a3);
+  margin: 0;
+  opacity: 0.6;
+}
+
+// ── List ──
+
+.hyper-ps-list {
+  display: block;
+}
+
+.hyper-ps-item {
+  display: block;
+}
+
+// ── Link ──
+
+.hyper-ps-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.35rem 0.75rem;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  color: var(--muted-foreground, #a3a3a3);
+  font-family: inherit;
+  font-size: 0.72rem;
+  text-align: left;
+  line-height: 1.3;
+  transition: color 0.12s, background 0.12s, border-color 0.12s;
+
+  &:hover {
+    color: var(--foreground, #fafafa);
+    background: color-mix(in srgb, var(--muted, #2a2a2a) 60%, transparent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary, #39ff14);
+    outline-offset: -2px;
+  }
+}
+
+.hyper-ps-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.12s;
+}
+
+.hyper-ps-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ── Active state ──
+
+.hyper-ps-item-active > .hyper-ps-link {
+  color: var(--primary, #39ff14);
+  border-left-color: var(--primary, #39ff14);
+  background: color-mix(in srgb, var(--primary, #39ff14) 8%, transparent);
+  font-weight: 600;
+
+  .hyper-ps-icon {
+    opacity: 1;
+    color: var(--primary, #39ff14);
+  }
+}
+
+// ── Nested indentation ──
+
+.hyper-ps-children {
+  > .hyper-ps-list > .hyper-ps-item > .hyper-ps-link {
+    padding-left: 1.75rem;
+    font-size: 0.68rem;
+  }
+
+  > .hyper-ps-list > .hyper-ps-item > .hyper-ps-children {
+    > .hyper-ps-list > .hyper-ps-item > .hyper-ps-link {
+      padding-left: 2.5rem;
+      font-size: 0.65rem;
+    }
+  }
+}
+
+// ── Position: sticky ──
+// Place the component in a CSS Grid column or layout where `align-self: start`
+// takes effect — the summary then sticks within its scroll container.
+
+.hyper-page-summary.hyper-ps-sticky {
+  position: sticky;
+  top: 4.5rem;
+  align-self: start;
+}
+
+// ── Position: fixed-end ──
+// Floats the summary over the page, pinned to the right side of the viewport.
+
+.hyper-page-summary.hyper-ps-fixed-end {
+  position: fixed;
+  right: 1.5rem;
+  top: 5rem;
+  z-index: 500;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}

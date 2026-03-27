@@ -1,0 +1,33 @@
+<ol>
+  @for (item of resolvedItems(); track $index; let last = $last) {
+    <li>
+      @if (!last) {
+        @if (navigable()) {
+          <a [routerLink]="item.url" [fragment]="item.fragment" (click)="scrollToFragment(item.fragment)">
+            @if (item.icon) {
+              <span class="material-icons hyper-breadcrumb-icon">{{ item.icon }}</span>
+            }
+            {{ item.label }}
+          </a>
+        } @else {
+          <span class="hyper-breadcrumb-link-static">
+            @if (item.icon) {
+              <span class="material-icons hyper-breadcrumb-icon">{{ item.icon }}</span>
+            }
+            {{ item.label }}
+          </span>
+        }
+        <span class="hyper-breadcrumb-sep" aria-hidden="true">
+          <ng-content select="hyper-breadcrumb-separator">{{ separator() }}</ng-content>
+        </span>
+      } @else {
+        <span class="hyper-breadcrumb-current" aria-current="page">
+          @if (item.icon) {
+            <span class="material-icons hyper-breadcrumb-icon">{{ item.icon }}</span>
+          }
+          {{ item.label }}
+        </span>
+      }
+    </li>
+  }
+</ol>

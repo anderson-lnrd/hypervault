@@ -1,0 +1,68 @@
+<div class="demo-page">
+  <h1 class="demo-title">Paginator</h1>
+  <p class="demo-intro">Controle de paginacao com seletor de itens por pagina, navegacao e range label.</p>
+
+  <!-- ── Basico ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="basico">Basico</h2>
+    <p class="demo-card-desc">Paginator com 50 itens, 10 por pagina.</p>
+    <hyper-paginator [length]="50" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]" (page)="onPage($event)" />
+    @if (pageEvent(); as pe) {
+      <p style="margin-top: 0.5rem; color: var(--muted-foreground); font-size: 0.8rem; font-family: var(--font-mono);">
+        pageIndex: {{ pe.pageIndex }}, pageSize: {{ pe.pageSize }}, prev: {{ pe.previousPageIndex }}
+      </p>
+    }
+    <pre class="demo-code"><code>&lt;hyper-paginator [length]="50" [pageSize]="10" (page)="onPage($event)" /&gt;</code></pre>
+  </section>
+
+  <!-- ── First/Last ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="first-last-buttons">First/Last Buttons</h2>
+    <p class="demo-card-desc">Com <code>[showFirstLastButtons]="true"</code> exibe botoes de ir para primeira/ultima pagina.</p>
+    <hyper-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10, 25, 50]" [showFirstLastButtons]="true" />
+    <pre class="demo-code"><code>&lt;hyper-paginator [showFirstLastButtons]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Hide Page Size ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="sem-seletor-de-tamanho">Sem Seletor de Tamanho</h2>
+    <p class="demo-card-desc">Use <code>[hidePageSize]="true"</code> para esconder o seletor.</p>
+    <hyper-paginator [length]="30" [pageSize]="5" [hidePageSize]="true" [showFirstLastButtons]="true" />
+    <pre class="demo-code"><code>&lt;hyper-paginator [hidePageSize]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── Disabled ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="desabilitado">Desabilitado</h2>
+    <p class="demo-card-desc">Use <code>[disabled]="true"</code> para desabilitar toda interacao.</p>
+    <hyper-paginator [length]="50" [pageSize]="10" [disabled]="true" />
+    <pre class="demo-code"><code>&lt;hyper-paginator [disabled]="true" /&gt;</code></pre>
+  </section>
+
+  <!-- ── API ── -->
+  <section class="demo-card">
+    <h2 class="demo-card-title" id="api">API</h2>
+    <table class="demo-api-table">
+      <thead><tr><th>Input</th><th>Tipo</th><th>Default</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>length</code></td><td><code>number</code></td><td><code>0</code></td><td>Total de itens</td></tr>
+        <tr><td><code>pageSize</code></td><td><code>number</code></td><td><code>10</code></td><td>Itens por pagina</td></tr>
+        <tr><td><code>pageSizeOptions</code></td><td><code>number[]</code></td><td><code>[5, 10, 25, 50]</code></td><td>Opcoes de tamanho</td></tr>
+        <tr><td><code>showFirstLastButtons</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Botoes primeira/ultima</td></tr>
+        <tr><td><code>hidePageSize</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Esconde seletor de tamanho</td></tr>
+        <tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Desabilita paginacao</td></tr>
+        <tr><td><code>color</code></td><td><code>'primary' | 'secondary'</code></td><td><code>'primary'</code></td><td>Cor de destaque</td></tr>
+      </tbody>
+    </table>
+    <h3 style="margin-top: 1rem;">HyperPageEvent</h3>
+    <table class="demo-api-table">
+      <thead><tr><th>Propriedade</th><th>Tipo</th><th>Descricao</th></tr></thead>
+      <tbody>
+        <tr><td><code>pageIndex</code></td><td><code>number</code></td><td>Indice da pagina atual</td></tr>
+        <tr><td><code>pageSize</code></td><td><code>number</code></td><td>Itens por pagina</td></tr>
+        <tr><td><code>length</code></td><td><code>number</code></td><td>Total de itens</td></tr>
+        <tr><td><code>previousPageIndex</code></td><td><code>number</code></td><td>Indice anterior</td></tr>
+      </tbody>
+    </table>
+  </section>
+</div>
